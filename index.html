@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>南京文学地理可视化系统</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="header">
+        <h1>探索作家笔下的人文南京</h1>
+        <p>南京文学地理可视化系统</p>
+    </div>
+    
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="请输入作家姓名(如:叶兆言、朱自清、李白...)">
+        <button id="searchBtn">搜索</button>
+    </div>
+    
+    <div class="container">
+        <div id="mapContainer"></div>
+        
+        <div class="sidebar">
+            <div id="infoPanel">
+                <div class="default-message">
+                    <h3>欢迎使用南京文学地图</h3>
+                    <p>在搜索框中输入作家姓名，查看他们在南京的创作足迹</p>
+                    <p>点击地图上的标记点，查看作品详情</p>
+                    <p>已收录23位作家，147部南京相关作品</p>
+                </div>
+            </div>
+            
+            <div id="counter">
+                <div class="counter-label">当前展示作品</div>
+                <div class="counter-number">0</div>
+                <div class="counter-label">部文学作品</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
