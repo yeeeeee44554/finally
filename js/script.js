@@ -239,14 +239,25 @@ $(document).ready(function() {
     
     // 加载南京地图数据
     function loadNanjingMap() {
-        // 使用阿里云DataV提供的南京市GeoJSON
-        fetch('data/nanjing.json')
+        const chartDom = document.getElementById('mapContainer');
+        const myChart = echarts.init(chartDom);
+        
+        // 显示加载动画
+        myChart.showLoading({
+            text: '正在加载南京地图数据...',
+            color: '#4a6cf7',
+            textColor: '#4a5568',
+            maskColor: 'rgba(255, 255, 255, 0.9)'
+        });
+    
+        // 使用本地地图数据（基于您的文件结构）
+        fetch('../data/nanjing.json')
             .then(response => response.json())
             .then(nanjingGeoJSON => {
                 // 注册南京地图
                 echarts.registerMap('nanjing', nanjingGeoJSON);
                 
-                // 配置地图选项
+                // 配置地图选项（保持原有逻辑）
                 const option = {
                     title: {
                         text: '南京文学地图',
@@ -338,17 +349,45 @@ $(document).ready(function() {
             .catch(error => {
                 console.error('加载南京地图数据失败:', error);
                 myChart.hideLoading();
-                myChart.setOption({
+                
+                // 创建备用坐标视图
+                const backupOption = {
                     title: {
-                        text: '数据加载失败',
-                        subtext: '请检查网络连接或稍后再试',
-                        left: 'center',
-                        top: 'center'
-                    }
-                });
+                        text: '南京文学地标图',
+                        subtext: '使用坐标视图展示',
+                        left: 'center'
+                    },
+                    xAxis: {
+                        name: '经度',
+                        min: 118.5,
+                        max: 119.0
+                    },
+                    yAxis: {
+                        name: '纬度',
+                        min: 31.8,
+                        max: 32.2
+                    },
+                    series: [{
+                        type: 'scatter',
+                        symbol: 'pin',
+                        symbolSize: [40, 50],
+                        itemStyle: { 
+                            color: '#ff6b6b' 
+                        },
+                        data: initialMarkers.map(marker => ({
+                            ...marker,
+                            value: marker.value,
+                            name: marker.name
+                        }))
+                    }]
+                };
+                
+                myChart.setOption(backupOption);
             });
+        
+        // 响应窗口大小变化
+        window.addEventListener('resize', () => myChart.resize());
     }
-    
     // 显示作家信息及作品
     function showAuthorWorks(authorName) {
         const author = authorsData[authorName];
