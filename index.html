@@ -3,521 +3,297 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>南京文学主题文创产品集</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>文都云图：南京现当代文学地图数字导览与文创平台</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/ai_assistant.css"> 
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Microsoft YaHei', 'Segoe UI', sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #f8f5ef 0%, #e6e0d6 100%);
-            color: #333;
-            line-height: 1.6;
-            position: relative;
-        }
-        
-        .header {
-            background: linear-gradient(to right, #8b0000 0%, #a52a2a 100%);
-            color: #fff;
+       .explore-btn-container {
             text-align: center;
-            padding: 3rem 1rem;
-            position: relative;
-            overflow: hidden;
+            padding: 40px 0; 
+            margin-top: 20px;
+            background: linear-gradient(135deg, #1a5fad, #2a8fe6, #c2e5ff);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255,255,255,0.1) 20%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255,255,255,0.1) 15%, transparent 30%);
+            box-shadow: 0 4px 15px rgba(0, 100, 200, 0.3); 
         }
-        
-        .header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><path fill="none" stroke="%23ffffff22" stroke-width="2" d="M100 0 L0 100 L100 200 L200 100 Z"/></svg>');
-            background-size: 150px;
-            opacity: 0.1;
-        }
-        
-        .title-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .intro {
-            background-color: #dcd0c0;
-            padding: 2rem 1rem;
-            text-align: center;
-            color: #5d4037;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-        
-        .intro p {
-            max-width: 800px;
-            margin: 0 auto 1rem;
-        }
-        
-        .products-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 1.5rem;
-        }
-        
-        .product-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(139, 0, 0, 0.2);
-        }
-        
-        .product-header {
-            background: linear-gradient(to right, #8b0000, #d2691e);
+
+        .explore-btn {
+            background: linear-gradient(to right, #2a6fc7, #4a9df7);
             color: white;
-            padding: 1rem;
-            text-align: center;
-            font-weight: 600;
-            font-size: 1.2rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3); 
+            transition: all 0.3s; 
+            font-size: 1.6rem;
         }
-        
-        .product-image {
-            width: 100%;
-            height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            background: #f7f4f0;
+        .explore-btn:hover {
+            background: linear-gradient(to right, #1a5fad, #3a8de0); 
+            transform: translateY(-2px); 
         }
-        
-        .product-image .placeholder {
-            width: 90%;
-            height: 90%;
-            background: #e5e0d6;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: #d2691e;
-        }
-        
-        .product-info {
-            padding: 1.2rem;
-            text-align: center;
-            min-height: 140px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        
-        .product-title {
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-            color: #5d4037;
-        }
-        
-        .product-description {
-            font-size: 0.95rem;
-            color: #666;
-            margin-bottom: 1rem;
-        }
-        
-        .quote {
-            font-style: italic;
-            color: #8b4513;
-            padding: 0.5rem;
-            border-left: 3px solid #d2691e;
-            background: #fcf8f3;
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-        }
-        
-        .author {
-            text-align: right;
-            font-size: 0.85rem;
-            color: #a52a2a;
-            margin-top: 0.3rem;
-        }
-        
-        .category-title {
-            text-align: center;
-            margin: 3rem 0 1.5rem;
-            position: relative;
-            font-size: 2rem;
-            color: #5d4037;
-        }
-        
-        .category-title:after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(to right, #8b0000, #d2691e);
-            margin: 0.5rem auto 0;
-            border-radius: 2px;
-        }
-        
-        .cta-container {
-            text-align: center;
-            padding: 3rem 1rem;
-            background: linear-gradient(to bottom, #f8f5ef, #e6e0d6);
-            position: relative;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            padding: 15px 40px;
-            background: linear-gradient(to right, #8b0000 0%, #a52a2a 100%);
-            color: white;
-            font-size: 1.4rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s;
-            box-shadow: 0 8px 20px rgba(139, 0, 0, 0.35);
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cta-button:before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: linear-gradient(45deg, #d2691e, #8b0000, #d2691e, #8b0000);
-            z-index: -1;
-            background-size: 400%;
-            border-radius: 60px;
-            animation: glow 20s linear infinite;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .cta-button:hover:before {
-            opacity: 1;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(139, 0, 0, 0.45);
-        }
-        
-        .cta-text {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            color: #5d4037;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        @keyframes glow {
-            0% { background-position: 0 0; }
-            100% { background-position: 400% 0; }
-        }
-        
-        .footer {
-            background: #5d4037;
-            color: #e1d7c8;
-            text-align: center;
-            padding: 2rem;
-            font-size: 0.9rem;
-        }
-        
-        .footer a {
-            color: #e1d7c8;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer a:hover {
-            color: #d2691e;
-        }
-        
-        .maple-leaf {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            background: #d2691e;
-            clip-path: polygon(50% 0%, 15% 25%, 10% 45%, 20% 60%, 30% 80%, 50% 100%, 70% 80%, 80% 60%, 90% 45%, 85% 25%);
-            opacity: 0.5;
-            pointer-events: none;
-            animation: float 15s infinite linear;
-        }
-        
-        @keyframes float {
-            0% {
-                transform: translate(0, 0) rotate(0deg);
-                opacity: 0.4;
-            }
-            100% {
-                transform: translate(100vw, -100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                gap: 1.5rem;
-            }
-            
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            .cta-button {
-                padding: 12px 30px;
-                font-size: 1.2rem;
-            }
-        }
+                
+                @media (max-width: 768px) {
+                    .explore-btn {
+                        padding: 12px 30px;
+                        font-size: 1.4rem;
+                    }
+                }
     </style>
 </head>
 <body>
     <div class="header">
-        <div class="title-container">
-            <h1>南京文学主题文创产品集</h1>
-            <div class="subtitle">探索金陵文脉，感受历史气息，收藏文化记忆</div>
-        </div>
+        <h1>探索作家笔下的人文南京</h1>
+        <p>文都云图：南京现当代文学地图数字导览与文创平台</p>
     </div>
     
-    <div class="intro">
-        <p>从朱自清笔下的秦淮河畔，到叶兆言纸上的历史脉络，南京文学如秦淮流水，浸润千年</p>
-        <p>这些文创产品汲取南京文学的灵感，将名家的文字与金陵的风物融合，以匠心打造文化记忆</p>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="请输入作家姓名(如:叶兆言、朱自清...)">
+        <button id="searchBtn">搜索</button>
     </div>
     
-    <div class="products-container">
-        <h2 class="category-title">纸品墨香</h2>
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="product-header">四季书签</div>
-                <div class="product-image">
-                    <div class="placeholder"><i class="fas fa-bookmark"></i></div>
-                </div>
-                <div class="product-info">
-                    <div class="product-title">南京四季风韵</div>
-                    <div class="product-description">枫叶造型书签，融合南京四季景致与名家语录</div>
-                    <div class="quote">"逛南京像逛古董铺子，到处都有些时代侵蚀的遗痕"</div>
-                    <div class="author">——朱自清《南京》</div>
-                </div>
-            </div>
-            
-            <div class="product-card">
-                <div class="product-header">四季明信片</div>
-                <div class="product-image">
-                    <div class="placeholder"><i class="fas fa-sticky-note"></i></div>
-                </div>
-                <div class="product-info">
-                    <div class="product-title">金陵四时之美</div>
-                    <div class="product-description">精选南京四季风景，记录季节变迁中的古都风貌</div>
-                    <div class="quote">"烟雨迷蒙，远山近湖，若隐若现，眼前斑驳的树，脚下枯黄的草"</div>
-                </div>
-            </div>
-            
-            <div class="product-card">
-                <div class="product-header">文学地图手册</div>
-                <div class="product-image">
-                    <div class="placeholder"><i class="fas fa-book"></i></div>
-                </div>
-                <div class="product-info">
-                    <div class="product-title">文学寻踪指南</div>
-                    <div class="product-description">精选南京文学地标，收录作家与地点的不解之缘</div>
-                    <div class="quote">"南京是一本最好的历史教科书，阅读这个城市，就是在回忆中国的历史"</div>
-                    <div class="author">——叶兆言《南京，历史和人文》</div>
-                </div>
-            </div>
-        </div>
+    <div class="container">
+        <div id="mapContainer"></div>
         
-        <h2 class="category-title">生活实用</h2>
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="product-header">大logo渐变T恤</div>
-                <div class="product-image">
-                    <div class="placeholder"><i class="fas fa-tshirt"></i></div>
-                </div>
-                <div class="product-info">
-                    <div class="product-title">城市记忆随行</div>
-                    <div class="product-description">枫叶与地图融合设计，男女同款舒适百搭</div>
+        <div class="sidebar">
+            <div id="infoPanel">
+                <div class="default-message">
+                    <h3>欢迎使用南京现当代文学地图数字导览与文创平台</h3>
+                    <p>在搜索框中输入作家姓名，查看他们在南京的创作足迹</p>
+                    <p>点击地图上的标记点，查看作品详情</p>
+                    <p>已收录23位作家，147部南京相关作品</p>
                 </div>
             </div>
             
-            <div class="product-card">
-                <div class="product-header">帆布托特包</div>
-                <div class="product-image">
-                    <div class="placeholder"><i class="fas fa-shopping-bag"></i></div>
-                </div>
-                <div class="product-info">
-                    <div class="product-title">文艺出行伴侣</div>
-                    <div class="product-description">大容量设计，适合书本、平板及日常物品</div>
-                </div>
-            </div>
-            
-            <div class="product-card">
-                <div class="product-header">文创马克杯</div>
-                <div class="product-image">
-                    <div class="placeholder"><i class="fas fa-mug-hot"></i></div>
-                </div>
-                <div class="product-info">
-                    <div class="product-title">书香氤氲时光</div>
-                    <div class="product-description">枫叶地图图案，为每日清晨添一抹文艺气息</div>
-                    <div class="quote">"我记得离正是久晴的秋日，石头城满城的金桂盛开"</div>
-                    <div class="author">——余光中《金陵子弟江湖客》</div>
-                </div>
-            </div>
-        </div>
-        
-        <h2 class="category-title">家居雅趣</h2>
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="product-header">地图主题抱枕</div>
-                <div class="product-image">
-                    <div class="placeholder"><i class="fas fa-couch"></i></div>
-                </div>
-                <div class="product-info">
-                    <div class="product-title">文学中的舒适</div>
-                    <div class="product-description">枫叶造型地图设计，为居家空间增添文艺氛围</div>
-                </div>
-            </div>
-            
-            <div class="product-card">
-                <div class="product-header">南京文学地图冰箱贴</div>
-                <div class="product-image">
-                    <div class="placeholder"><i class="fas fa-map-pin"></i></div>
-                </div>
-                <div class="product-info">
-                    <div class="product-title">会移动的城市记忆</div>
-                    <div class="product-description">滑轨设计以长江为轨道，坐船游金陵的创意呈现</div>
-                </div>
-            </div>
-            
-            <div class="product-card">
-                <div class="product-header">梧桐叶咖啡拉花</div>
-                <div class="product-image">
-                    <div class="placeholder"><i class="fas fa-coffee"></i></div>
-                </div>
-                <div class="product-info">
-                    <div class="product-title">饮一杯南京秋意</div>
-                    <div class="product-description">精美梧桐叶造型咖啡艺术，配以南京文学茶点</div>
-                </div>
-            </div>
-        </div>
-        
-        <h2 class="category-title">数字收藏</h2>
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="product-header">电子书签系列</div>
-                <div class="product-image">
-                    <div class="placeholder"><i class="fas fa-mobile-alt"></i></div>
-                </div>
-                <div class="product-info">
-                    <div class="product-title">随行文学伴侣</div>
-                    <div class="product-description">适配手机、平板的多款电子书签，随时标记阅读</div>
-                </div>
-            </div>
-            
-            <div class="product-card">
-                <div class="product-header">文学地图云平台</div>
-                <div class="product-image">
-                    <div class="placeholder"><i class="fas fa-map-marked-alt"></i></div>
-                </div>
-                <div class="product-info">
-                    <div class="product-title">金陵文脉云端行</div>
-                    <div class="product-description">交互式地图，探索南京文学地标与作家足迹</div>
-                    <div class="quote">"南京这城市得细细琢磨品味"</div>
-                </div>
+            <div id="counter">
+                <div class="counter-label">当前展示作品</div>
+                <div class="counter-number">0</div>
+                <div class="counter-label">部文学作品</div>
             </div>
         </div>
     </div>
     
-    <div class="cta-container">
-        <p class="cta-text">探索更多南京文学地标与作家足迹，感受金陵城的历史文脉与文学魅力</p>
-        <a href="./html/product.html" class="cta-button">
-            探索南京文学地图
+    <!-- AI助手容器保持不变 -->
+    <div id="ai-assistant">
+        <div id="chat-container">
+            <div class="chat-header">
+                <h3>南京文学助手</h3>
+                <button id="close-chat">×</button>
+            </div>
+            <div id="chat-messages"></div>
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="输入关于南京现当代文学的问题...">
+                <button id="send-btn">发送</button>
+            </div>
+        </div>
+        <button id="chat-toggle">💬</button>
+    </div>
+    
+    
+    <div class="explore-btn-container">
+        <a href="./html/product.html" class="explore-btn">
+            文都云图
         </a>
     </div>
     
-    <div class="footer">
-        <p>南京文学主题文创产品集 © 2025 | 传承金陵文脉，创新文化表达</p>
-        <p>设计灵感源于朱自清、叶兆言、余光中等作家的南京文学作品</p>
-    </div>
+    <script src="./js/script.js"></script>
+    <script src="./js/ai_assistant.js"></script> 
     
     <script>
-        // 创建飘落的枫叶效果
-        function createMapleLeaves() {
-            const numLeaves = 15;
-            const body = document.body;
+        // 地图初始化代码
+        $(document).ready(function() {
+            const myChart = echarts.init(document.getElementById('mapContainer'));
             
-            for (let i = 0; i < numLeaves; i++) {
-                const leaf = document.createElement('div');
-                leaf.classList.add('maple-leaf');
+            // 显示加载动画
+            myChart.showLoading({
+                text: '正在加载南京地图数据...',
+                color: '#4a6cf7',
+                textColor: '#4a5568',
+                maskColor: 'rgba(255, 255, 255, 0.9)'
+            });
+            
+            // 使用本地地图数据
+            fetch('./data/nanjing.json')
+                .then(response => response.json())
+                .then(nanjingGeoJSON => {
+                    // 注册南京地图
+                    echarts.registerMap('nanjing', nanjingGeoJSON);
+                    
+                    // 配置地图选项
+                    const option = {
+                        title: {
+                            text: '南京文学地图',
+                            subtext: '作家笔下的人文南京',
+                            left: 'center',
+                            textStyle: { 
+                                color: '#2d3748', 
+                                fontSize: 24,
+                                fontWeight: 'bold'
+                            },
+                            subtextStyle: { 
+                                color: '#718096',
+                                fontSize: 16
+                            }
+                        },
+                        tooltip: {
+                            trigger: 'item',
+                            backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                            borderColor: '#e2e8f0',
+                            borderWidth: 1,
+                            padding: 15,
+                            borderRadius: 8,
+                            textStyle: {
+                                color: '#2d3748'
+                            },
+                            formatter: function(params) {
+                                if (params.componentType === 'series') {
+                                    return `<div style="font-weight:bold;margin-bottom:5px;">${params.name}</div>
+                                            <div>${params.data.excerpt || '南京文学地标'}</div>
+                                            <div style="margin-top:8px;color:#4a5568;">点击查看详情</div>`;
+                                }
+                                return params.name;
+                            }
+                        },
+                        geo: {
+                            map: 'nanjing',
+                            roam: true,
+                            zoom: 8,
+                            center: [118.8, 32.05],
+                            label: { 
+                                emphasis: { 
+                                    show: false 
+                                } 
+                            },
+                            itemStyle: {
+                                areaColor: '#e8f4ff',
+                                borderColor: '#297acc'
+                            },
+                            emphasis: {
+                                itemStyle: { 
+                                    areaColor: '#a4d0ff' 
+                                },
+                                label: { 
+                                    show: true, 
+                                    color: '#1a3d66' 
+                                }
+                            }
+                        },
+                        series: [{
+                            name: '文学地标',
+                            type: 'scatter',
+                            coordinateSystem: 'geo',
+                            symbol: 'pin',
+                            symbolSize: [40, 50],
+                            itemStyle: { 
+                                color: '#ff6b6b' 
+                            },
+                            data: [
+                                {name: "夫子庙", value: [118.79, 32.02], excerpt: "朱自清《桨声灯影里的秦淮河》创作地"},
+                                {name: "中山陵", value: [118.85, 32.06], excerpt: "叶兆言《南京传》中重要历史地标"},
+                                {name: "南京大学", value: [118.78, 32.06], excerpt: "众多作家任教或求学之地"},
+                                {name: "玄武湖", value: [118.80, 32.07], excerpt: "张恨水小说中的经典场景"},
+                                {name: "浦口火车站", value: [118.74, 32.15], excerpt: "朱自清《背影》发生地"}
+                            ],
+                            label: {
+                                show: true,
+                                formatter: '{b}',
+                                position: 'bottom',
+                                color: '#1a3d66',
+                                fontSize: 12
+                            },
+                            zlevel: 2
+                        }]
+                    };
+                    
+                    // 应用配置
+                    myChart.setOption(option);
+                    
+                    // 隐藏加载动画
+                    myChart.hideLoading();
+                    
+                    // 更新计数器
+                    $('.counter-number').text(option.series[0].data.length);
+                    
+                    // 地图点击事件
+                    myChart.on('click', function(params) {
+                        if (params.componentType === 'series') {
+                            const content = `
+                                <div class="location-detail">
+                                    <h3>${params.name}</h3>
+                                    <p>${params.data.excerpt}</p>
+                                    <div class="literary-works">
+                                        <h4>相关作品:</h4>
+                                        <ul>
+                                            <li>朱自清《桨声灯影里的秦淮河》</li>
+                                            <li>叶兆言《南京传》</li>
+                                            <li>张恨水《秦淮世家》</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            `;
+                            
+                            $('#infoPanel').html(content);
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('加载南京地图数据失败:', error);
+                    myChart.hideLoading();
+                    myChart.setOption({
+                        title: {
+                            text: '数据加载失败',
+                            subtext: '请检查网络连接或稍后再试',
+                            left: 'center',
+                            top: 'center'
+                        }
+                    });
+                });
+            
+            // 响应窗口大小变化
+            window.addEventListener('resize', function() {
+                myChart.resize();
+            });
+            
+            // 搜索按钮点击事件
+            $('#searchBtn').click(function() {
+                const query = $('#searchInput').val().trim();
+                if (!query) return;
                 
-                // 随机位置
-                const startX = Math.random() * 100;
-                const startY = Math.random() * 100;
+                // 模拟搜索效果 - 高亮相关区域
+                const area = query.includes('秦淮') ? '鼓楼区' : 
+                            query.includes('中山') ? '玄武区' : null;
                 
-                // 随机大小
-                const size = Math.random() * 20 + 15;
-                leaf.style.width = `${size}px`;
-                leaf.style.height = `${size}px`;
-                
-                // 随机颜色
-                const colors = ['#8b0000', '#a52a2a', '#d2691e', '#8b4513', '#b8860b'];
-                const colorIndex = Math.floor(Math.random() * colors.length);
-                leaf.style.backgroundColor = colors[colorIndex];
-                
-                // 随机位置
-                leaf.style.left = `${startX}%`;
-                leaf.style.top = `${startY}%`;
-                
-                // 随机动画延迟
-                leaf.style.animationDelay = `${Math.random() * 5}s`;
-                
-                // 随机动画时间
-                const duration = Math.random() * 10 + 15;
-                leaf.style.animationDuration = `${duration}s`;
-                
-                body.appendChild(leaf);
-            }
-        }
-        
-        // 页面加载完成后创建枫叶
-        window.addEventListener('load', createMapleLeaves);
+                if (area) {
+                    myChart.dispatchAction({
+                        type: 'highlight',
+                        name: area
+                    });
+                    
+                    // 更新信息面板
+                    const authors = {
+                        '叶兆言': '南京作家，代表作《南京传》',
+                        '朱自清': '现代散文家，《桨声灯影里的秦淮河》作者',
+                        '张恨水': '民国时期著名小说家，《秦淮世家》作者'
+                    };
+                    
+                    const authorInfo = authors[query] || `未找到${query}的详细信息`;
+                    
+                    $('#infoPanel').html(`
+                        <div class="author-info">
+                            <h3>${query}</h3>
+                            <p>${authorInfo}</p>
+                            <div class="related-locations">
+                                <h4>相关地点:</h4>
+                                <ul>
+                                    <li>夫子庙</li>
+                                    <li>中山陵</li>
+                                    <li>玄武湖</li>
+                                </ul>
+                            </div>
+                        </div>
+                    `);
+                }
+            });
+        });
     </script>
 </body>
 </html>

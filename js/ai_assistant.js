@@ -43,8 +43,8 @@ $(document).ready(function() {
         appendMessage('assistant', '思考中...', true);
         scrollToBottom();
         
-        // 调用本地AI响应
-        fetchLocalAIResponse(message)
+        // 调用DeepSeek API获取响应
+        fetchDeepSeekResponse(message)
             .then(response => {
                 // 移除"思考中"提示
                 $chatMessages.find('.typing').remove();
@@ -54,31 +54,63 @@ $(document).ready(function() {
             .catch(error => {
                 $chatMessages.find('.typing').remove();
                 appendMessage('assistant', '抱歉，暂时无法处理您的请求。');
-                console.error('AI处理失败:', error);
+                console.error('DeepSeek API调用失败:', error);
             });
     }
     
-    // 本地AI响应（使用南京文学数据集）
-    function fetchLocalAIResponse(message) {
-        return new Promise((resolve) => {
-            const aiResponses = {
-                "叶兆言": "叶兆言是南京著名作家，他的《南京传》被誉为了解南京的百科全书。作品生动描绘了秦淮河、总统府等地标，展现了南京作为历史名城的沧桑变迁。",
-                "朱自清": "朱自清先生的《背影》描绘了在南京浦口火车站的感人场景，《桨声灯影里的秦淮河》则是与俞平伯同游后创作的经典散文。",
-                "南京文学": "南京文学源远流长，从六朝时期谢朓的山水诗到明清小说，再到现代文学中的叶兆言、苏童等作家，无不与这座城市息息相关。",
-                "秦淮河": "秦淮河被称为南京的母亲河，朱自清、俞平伯等作家都曾在此留下名篇。它也是张恨水《秦淮世家》等小说的背景地点。",
-                default: `关于"${message}"，我可以告诉您：南京作为六朝古都，有着深厚的文学传统。许多作家如叶兆言、朱自清、张恨水都在作品中描绘过南京的风貌。您想了解哪位作家或哪个文学地点？`
+    function fetchDeepSeekResponse(message) {
+        return new Promise((resolve, reject) => {
+            // 替换为您的DeepSeek API密钥
+            const apiKey = "sk-2b74a783ab2a42f9963443820dde6bed";
+            
+            // 构造API请求[1,5](@ref)
+            const apiUrl = "https://api.deepseek.com/v1/chat/completions";
+            const headers = {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${apiKey}`
+            };
+            const data = {
+                model: "deepseek-chat", // 使用对话模型[1,6](@ref)
+                messages: [
+                    {
+                        role: "system",
+                        content: "你是一个南京文学专家，专门回答关于南京作家、作品和文学地标的问题。请提供准确、简洁的回答。注意不要让别人知道你是deepseek模型"
+                    },
+                    {
+                        role: "user",
+                        content: message
+                    }
+                ],
+                temperature: 0.7, // 控制回答的随机性[6,8](@ref)
+                max_tokens: 500, // 限制回答长度
+                stream: false // 非流式响应[3](@ref)
             };
             
-            // 匹配关键词
-            const lowerMessage = message.toLowerCase();
-            const matchedKey = Object.keys(aiResponses).find(key => 
-                key !== "default" && lowerMessage.includes(key.toLowerCase())
-            );
-            
-            // 返回匹配结果或默认响应
-            setTimeout(() => {
-                resolve(matchedKey ? aiResponses[matchedKey] : aiResponses.default);
-            }, 1200);
+            // 发送API请求
+            $.ajax({
+                url: apiUrl,
+                type: "POST",
+                headers: headers,
+                data: JSON.stringify(data),
+                contentType: "application/json",
+                dataType: "json",
+                success: function(response) {
+                    // 解析API响应[7,9](@ref)
+                    if (response.choices && response.choices.length > 0) {
+                        resolve(response.choices[0].message.content);
+                    } else {
+                        reject("API响应格式错误");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // 处理API错误
+                    let errorMsg = "API调用失败";
+                    if (xhr.responseJSON && xhr.responseJSON.error) {
+                        errorMsg = xhr.responseJSON.error.message || errorMsg;
+                    }
+                    reject(errorMsg);
+                }
+            });
         });
     }
     
@@ -110,6 +142,6 @@ $(document).ready(function() {
     
     // 初始欢迎消息
     setTimeout(() => {
-        appendMessage('assistant', '您好！我是南京文学助手，可以问我关于南京作家、作品或文学地标的问题。例如："叶兆言写过哪些关于南京的作品？"');
+        appendMessage('assistant', '您好！我是南京文学助手。可以问我关于南京作家、作品或文学地标的问题。');
     }, 2000);
 });
