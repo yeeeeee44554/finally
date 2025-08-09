@@ -240,7 +240,7 @@ $(document).ready(function() {
     // 加载南京地图数据
     function loadNanjingMap() {
         // 使用阿里云DataV提供的南京市GeoJSON
-        fetch('https://geo.datav.aliyun.com/areas_v3/bound/320100_full.json')
+        fetch('data/nanjing.json')
             .then(response => response.json())
             .then(nanjingGeoJSON => {
                 // 注册南京地图
