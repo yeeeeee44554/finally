@@ -132,6 +132,7 @@ const initialMarkers = Object.keys(nanjingCoords).map(name => ({
 }));
 
 // 主函数
+// 主函数
 $(document).ready(function() {
     let myChart;
     
@@ -152,150 +153,112 @@ $(document).ready(function() {
             maskColor: 'rgba(255, 255, 255, 0.9)'
         });
 
-        fetch('../data/nanjing.json')
-            .then(response => response.json())
-            .then(nanjingGeoJSON => {
-                // 注册南京地图
-                echarts.registerMap('nanjing', nanjingGeoJSON);
-                
-                // 配置地图选项
-                const option = {
-                    title: {
-                        text: '南京文学地图',
-                        subtext: '作家笔下的人文南京',
-                        left: 'center',
-                        textStyle: { 
-                            color: '#2d3748', 
-                            fontSize: 24,
-                            fontWeight: 'bold'
-                        },
-                        subtextStyle: { 
-                            color: '#718096',
-                            fontSize: 16
-                        }
+        // 配置地图选项
+        const option = {
+            title: {
+                text: '南京文学地图',
+                subtext: '作家笔下的人文南京',
+                left: 'center',
+                textStyle: { 
+                    color: '#2d3748', 
+                    fontSize: 24,
+                    fontWeight: 'bold'
+                },
+                subtextStyle: { 
+                    color: '#718096',
+                    fontSize: 16
+                }
+            },
+            tooltip: {
+                trigger: 'item',
+                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                borderColor: '#e2e8f0',
+                borderWidth: 1,
+                padding: 15,
+                borderRadius: 8,
+                textStyle: {
+                    color: '#2d3748'
+                },
+                formatter: function(params) {
+                    if (params.componentType === 'series') {
+                        const isAuthorPoint = params.data.id && params.data.id.startsWith('auth_');
+                        const text = isAuthorPoint 
+                            ? `<div style="margin-bottom:5px;color:#4a6cf7;">${params.data.author}作品地点</div>` 
+                            : '';
+                        
+                        return `<div style="font-weight:bold;margin-bottom:5px;">${params.name}</div>
+                                ${text}
+                                <div>${params.data.excerpt || '南京文学地标'}</div>
+                                <div style="margin-top:8px;color:#4a5568;">点击查看详情</div>`;
+                    }
+                    return params.name;
+                }
+            },
+            geo: {
+                map: 'china',
+                roam: true,
+                zoom: 6.5,
+                center: [118.8, 32.05],
+                label: { 
+                    emphasis: { 
+                        show: false 
+                    } 
+                },
+                itemStyle: {
+                    areaColor: '#e8f4ff',
+                    borderColor: '#297acc'
+                },
+                emphasis: {
+                    itemStyle: { 
+                        areaColor: '#a4d0ff' 
                     },
-                    tooltip: {
-                        trigger: 'item',
-                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                        borderColor: '#e2e8f0',
-                        borderWidth: 1,
-                        padding: 15,
-                        borderRadius: 8,
-                        textStyle: {
-                            color: '#2d3748'
-                        },
-                        formatter: function(params) {
-                            if (params.componentType === 'series') {
-                                const isAuthorPoint = params.data.id && params.data.id.startsWith('auth_');
-                                const text = isAuthorPoint 
-                                    ? `<div style="margin-bottom:5px;color:#4a6cf7;">${params.data.author}作品地点</div>` 
-                                    : '';
-                                
-                                return `<div style="font-weight:bold;margin-bottom:5px;">${params.name}</div>
-                                        ${text}
-                                        <div>${params.data.excerpt || '南京文学地标'}</div>
-                                        <div style="margin-top:8px;color:#4a5568;">点击查看详情</div>`;
-                            }
-                            return params.name;
-                        }
+                    label: { 
+                        show: true, 
+                        color: '#1a3d66' 
+                    }
+                },
+                regions: [{
+                    name: '南京',
+                    itemStyle: {
+                        areaColor: '#a4d0ff',
+                        borderColor: '#297acc'
                     },
-                    geo: {
-                        map: 'nanjing',
-                        roam: true,
-                        zoom: 8,
-                        center: [118.8, 32.05],
-                        label: { 
-                            emphasis: { 
-                                show: false 
-                            } 
-                        },
+                    emphasis: {
                         itemStyle: {
-                            areaColor: '#e8f4ff',
-                            borderColor: '#297acc'
-                        },
-                        emphasis: {
-                            itemStyle: { 
-                                areaColor: '#a4d0ff' 
-                            },
-                            label: { 
-                                show: true, 
-                                color: '#1a3d66' 
-                            }
+                            areaColor: '#4a9df7'
                         }
-                    },
-                    series: [{
-                        name: '文学地标',
-                        type: 'scatter',
-                        coordinateSystem: 'geo',
-                        symbol: 'circle',  // 使用圆形而不是图钉
-                        symbolSize: 12,    // 调整为更小的尺寸
-                        large: true,       // 启用优化渲染
-                        largeThreshold: 2000
-                    }]
-                };
-                
-                // 应用配置
-                myChart.setOption(option);
-                
-                // 隐藏加载动画
-                myChart.hideLoading();
-                
-                // 更新计数器
-                $('.counter-number').text(initialMarkers.length);
-            })
-            .catch(error => {
-                console.error('加载南京地图数据失败:', error);
-                myChart.hideLoading();
-                
-                // 创建备用坐标视图
-                const backupOption = {
-                    title: {
-                        text: '南京文学地标图',
-                        subtext: '使用坐标视图展示',
-                        left: 'center'
-                    },
-                    xAxis: {
-                        min: 118.5,
-                        max: 119.0,
-                      
-                    },
-                    yAxis: {
-                        min: 31.8,
-                        max: 32.2,
-                    },
-                    grid: {
-                        left: '8%',
-                        right: '5%',
-                        top: '15%',
-                        bottom: '15%'
-                    },
-                    series: [{
-                        type: 'scatter',
-                        symbol: 'pin',
-                        symbolSize: [40, 50],
-                        itemStyle: { 
-                            color: '#ff6b6b' 
-                        },
-                        data: initialMarkers.map(marker => ({
-                            ...marker,
-                            value: marker.value,
-                            name: marker.name
-                        })),
-                        label: {
-                            show: true,
-                            position: 'bottom',
-                            formatter: '{b}',
-                            color: '#1a3d66',
-                            fontSize: 12
-                        }
-                    }]
-                };
-                
-                myChart.setOption(backupOption);
-            });
+                    }
+                }]
+            },
+            series: [{
+                name: '文学地标',
+                type: 'scatter',
+                coordinateSystem: 'geo',
+                symbol: 'pin',
+                symbolSize: [40, 50],
+                itemStyle: { 
+                    color: '#ff6b6b' 
+                },
+                data: initialMarkers,
+                label: {
+                    show: true,
+                    formatter: '{b}',
+                    position: 'bottom',
+                    color: '#1a3d66',
+                    fontSize: 12
+                },
+                zlevel: 2
+            }]
+        };
         
-        // 响应窗口大小变化
-        window.addEventListener('resize', () => myChart.resize());
+        // 应用配置
+        myChart.setOption(option);
+        
+        // 隐藏加载动画
+        myChart.hideLoading();
+        
+        // 更新计数器
+        $('.counter-number').text(initialMarkers.length);
     }
 
     // 显示作家信息及作品
@@ -317,7 +280,7 @@ $(document).ready(function() {
             <div class="work-item" data-work-id="${work.id}">
                 <div class="work-title">${work.title}</div>
                 <div class="work-location">
-                    <i class="map-icon"></i>${work.location}
+                    <i class="fas fa-map-marker-alt"></i>${work.location}
                 </div>
                 <div class="work-excerpt">${work.excerpt}</div>
             </div>
@@ -358,19 +321,22 @@ $(document).ready(function() {
             author: author.name,
             value: work.coord,
             excerpt: `${work.title} - ${author.name}作品`,
+            symbol: 'pin',
             symbolSize: [45, 55],
-            itemStyle: { color: '#4a6cf7' }  // 作者标记点用蓝色
+            itemStyle: { color: '#4a6cf7' },
+            label: {
+                show: true,
+                formatter: '{b}',
+                position: 'bottom',
+                color: '#1a3d66',
+                fontSize: 12,
+                fontWeight: 'bold'
+            }
         }));
         
         myChart.setOption({
             series: [{
-                data: authorMarkers,
-                label: { 
-                    formatter: params => {
-                        return authorMarkers.find(m => m.value === params.value).name;
-                    },
-                    fontWeight: 'bold'
-                }
+                data: authorMarkers
             }]
         });
         
@@ -382,21 +348,24 @@ $(document).ready(function() {
     
     // 高亮显示特定地点
     function highlightLocation(work) {
-        myChart.dispatchAction({
-            type: 'highlight',
-            name: work.location
-        });
-        
         // 地图飞向该位置
-        myChart.dispatchAction({
-            type: 'geoRoam',
-            center: work.coord,
-            zoom: 10
+        myChart.setOption({
+            geo: {
+                center: work.coord,
+                zoom: 10
+            }
         });
         
         // 添加脉冲动画效果
         const targetMarker = initialMarkers.find(m => m.name === work.location);
         if (targetMarker) {
+            // 使用echarts的highlight效果
+            myChart.dispatchAction({
+                type: 'highlight',
+                name: targetMarker.name
+            });
+            
+            // 添加额外的动画效果
             myChart.dispatchAction({
                 type: 'downplay',
                 name: targetMarker.name
@@ -423,7 +392,7 @@ $(document).ready(function() {
         myChart.setOption({
             geo: {
                 center: [118.8, 32.05],
-                zoom: 8
+                zoom: 6.5
             },
             series: [{
                 data: initialMarkers
@@ -436,10 +405,22 @@ $(document).ready(function() {
             <h3>欢迎使用南京文学地图</h3>
             <p>在搜索框中输入作家姓名，查看他们在南京的创作足迹</p>
             <p>点击地图上的标记点，查看作品详情</p>
-            <p>已收录${Object.keys(authorsData).length}位作家，${
-                Object.values(authorsData).reduce((sum, author) => sum + author.works.length, 0)
-            }部南京相关作品</p>
+            <p>已收录${authorNames.length}位作家，${totalWorks}部南京相关作品</p>
+            <div class="tag-container">
+                <span class="tag">叶兆言</span>
+                <span class="tag">朱自清</span>
+                <span class="tag">张恨水</span>
+                <span class="tag">鲁迅</span>
+                <span class="tag">匡亚明</span>
+            </div>
         </div>`);
+        
+        // 为标签添加点击事件
+        $('.tag').click(function() {
+            const author = $(this).text();
+            $('#searchInput').val(author);
+            showAuthorWorks(author);
+        });
     }
     
     // 搜索功能
@@ -458,70 +439,77 @@ $(document).ready(function() {
         if (e.which === 13) $('#searchBtn').click();
     });
     
-    // 添加输入自动提示
-    const authorNames = Object.keys(authorsData);
+    // 添加输入自动提示（优化版本）
     $('#searchInput').on('input', function() {
-        const val = $(this).val().trim();
-        if (!val) return;
+        const val = $(this).val().trim().toLowerCase();
+        if (!val) {
+            $('.autocomplete').hide();
+            return;
+        }
         
-        const matches = authorNames.filter(name => 
-            name.includes(val) || authorsData[name].intro.includes(val)
-        ).slice(0, 5);
+        // 使用高效的前缀匹配
+        const startsWithMatches = authorNames.filter(name => 
+            name.toLowerCase().startsWith(val)
+        );
         
-        $('.autocomplete').remove();
-        if (matches.length === 0) return;
+        // 然后匹配包含但不以输入开头的
+        const includesMatches = authorNames.filter(name => 
+            !startsWithMatches.includes(name) && name.toLowerCase().includes(val)
+        );
         
-        const suggestions = matches.map(name => 
-            `<div class="suggestion" data-author="${name}">${name} - ${authorsData[name].intro.slice(0, 30)}...</div>`
-        ).join('');
+        const matches = [...startsWithMatches, ...includesMatches].slice(0, 5);
         
-        $('<div class="autocomplete">').html(suggestions).insertAfter($(this));
+        $('.autocomplete').empty();
+        if (matches.length === 0) {
+            $('.autocomplete').hide();
+            return;
+        }
+        
+        const suggestions = matches.map(name => {
+            const author = authorsData[name];
+            return `<div class="suggestion" data-author="${name}">
+                <i class="fas fa-user-pen"></i>
+                <div>
+                    <div class="author-name">${author.name}</div>
+                    <div class="author-intro">${author.intro}</div>
+                </div>
+            </div>`;
+        }).join('');
+        
+        $('.autocomplete').html(suggestions).show();
         
         $('.suggestion').click(function() {
             const author = $(this).data('author');
             $('#searchInput').val(author);
             showAuthorWorks(author);
-            $('.autocomplete').remove();
+            $('.autocomplete').hide();
         });
+    });
+    
+    // 点击文档其他区域关闭自动提示
+    $(document).click(function(e) {
+        if (!$(e.target).closest('.search-container').length) {
+            $('.autocomplete').hide();
+        }
     });
     
     // 点击地图显示信息
     myChart.on('click', params => {
         if (params.componentType === 'series' && params.seriesType === 'scatter') {
             const locationName = params.name;
-            const locationData = initialMarkers.find(m => m.name === locationName);
-            
-            if (!locationData) return;
-            
-            // 查找与此地点相关的作品
-            let relatedWorks = [];
-            for (const author in authorsData) {
-                const works = authorsData[author].works.filter(work => 
-                    work.location === locationName
-                );
-                if (works.length > 0) {
-                    relatedWorks.push({
-                        author,
-                        works
-                    });
-                }
-            }
+            const relatedWorks = locationToWorks[locationName] || [];
             
             if (relatedWorks.length > 0) {
-                let worksHtml = relatedWorks.map(authorWorks => {
-                    const author = authorsData[authorWorks.author];
-                    const worksList = authorWorks.works.map(work => `
+                let worksHtml = relatedWorks.map(item => {
+                    const work = item.work;
+                    const author = authorsData[item.author];
+                    return `
                         <div class="related-work">
                             <div class="work-title">${work.title}</div>
                             <div class="author-name">${author.name}</div>
                             <div class="work-excerpt">${work.excerpt}</div>
                         </div>
-                    `).join('');
-                    
-                    return `<div class="author-works">
-                        <h4>${author.name}</h4>
-                        ${worksList}
-                    </div>`;
+                    `;
                 }).join('');
                 
                 $('#infoPanel').html(`
@@ -535,8 +523,8 @@ $(document).ready(function() {
                 
                 $('#reset-location').click(resetToInitialView);
                 
-                // 更新计数器为相关作品数量
-                updateCounter(relatedWorks.reduce((sum, aw) => sum + aw.works.length, 0));
+                // 更新计数器
+                updateCounter(relatedWorks.length);
             } else {
                 $('#infoPanel').html(`
                     <div class="location-detail">
@@ -559,4 +547,7 @@ $(document).ready(function() {
     window.addEventListener('resize', () => {
         if (myChart) myChart.resize();
     });
+    
+    // 初始重置视图
+    resetToInitialView();
 });
