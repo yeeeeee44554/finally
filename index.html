@@ -79,6 +79,10 @@
                 <h3>南京文学助手</h3>
                 <button id="close-chat">×</button>
             </div>
+            <!-- 虚拟形象区域 -->
+            <div id="avatar-container">
+                <div id="avatar-animation"></div>
+            </div>
             <div id="chat-messages"></div>
             <div class="chat-input">
                 <input type="text" id="user-input" placeholder="输入关于南京现当代文学的问题...">
@@ -87,6 +91,7 @@
         </div>
         <button id="chat-toggle">💬</button>
     </div>
+
     
     
     <div class="explore-btn-container">
@@ -99,201 +104,265 @@
     <script src="./js/ai_assistant.js"></script> 
     
     <script>
-        // 地图初始化代码
-        $(document).ready(function() {
-            const myChart = echarts.init(document.getElementById('mapContainer'));
-            
-            // 显示加载动画
-            myChart.showLoading({
-                text: '正在加载南京地图数据...',
-                color: '#4a6cf7',
-                textColor: '#4a5568',
-                maskColor: 'rgba(255, 255, 255, 0.9)'
-            });
-            
-            // 使用本地地图数据
-            fetch('./data/nanjing.json')
-                .then(response => response.json())
-                .then(nanjingGeoJSON => {
-                    // 注册南京地图
-                    echarts.registerMap('nanjing', nanjingGeoJSON);
+    // 地图初始化代码
+    $(document).ready(function() {
+        const myChart = echarts.init(document.getElementById('mapContainer'));
+        
+        // 显示加载动画
+        myChart.showLoading({
+            text: '正在加载南京地图数据...',
+            color: '#4a6cf7',
+            textColor: '#4a5568',
+            maskColor: 'rgba(255, 255, 255, 0.9)'
+        });
+        
+        // 使用本地地图数据
+        fetch('./data/nanjing.json')
+            .then(response => response.json())
+            .then(nanjingGeoJSON => {
+                // 注册南京地图
+                echarts.registerMap('nanjing', nanjingGeoJSON);
+                
+                // 使用文档2提供的数据构建标记点
+                const allMarkers = Object.keys(nanjingCoords).map(locationName => {
+                    const works = locationToWorks[locationName] || [];
+                    const worksList = works.map(item => `${item.author}《${item.work.title}》`);
+                    const authors = [...new Set(works.map(item => item.author))];
                     
-                    // 配置地图选项
-                    const option = {
-                        title: {
-                            text: '南京文学地图',
-                            subtext: '作家笔下的人文南京',
-                            left: 'center',
-                            textStyle: { 
-                                color: '#2d3748', 
-                                fontSize: 24,
-                                fontWeight: 'bold'
-                            },
-                            subtextStyle: { 
-                                color: '#718096',
-                                fontSize: 16
-                            }
+                    return {
+                        name: locationName,
+                        value: nanjingCoords[locationName],
+                        excerpt: locationDescriptions[locationName] || '南京文学地标',
+                        works: worksList,
+                        authors: authors,
+                        symbol: 'pin',
+                        symbolSize: [40, 50],
+                        itemStyle: { 
+                            color: '#ff6b6b' 
                         },
-                        tooltip: {
-                            trigger: 'item',
-                            backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                            borderColor: '#e2e8f0',
-                            borderWidth: 1,
-                            padding: 15,
-                            borderRadius: 8,
-                            textStyle: {
-                                color: '#2d3748'
-                            },
-                            formatter: function(params) {
-                                if (params.componentType === 'series') {
-                                    return `<div style="font-weight:bold;margin-bottom:5px;">${params.name}</div>
-                                            <div>${params.data.excerpt || '南京文学地标'}</div>
-                                            <div style="margin-top:8px;color:#4a5568;">点击查看详情</div>`;
-                                }
-                                return params.name;
-                            }
-                        },
-                        geo: {
-                            map: 'nanjing',
-                            roam: true,
-                            zoom: 8,
-                            center: [118.8, 32.05],
-                            label: { 
-                                emphasis: { 
-                                    show: false 
-                                } 
-                            },
-                            itemStyle: {
-                                areaColor: '#e8f4ff',
-                                borderColor: '#297acc'
-                            },
-                            emphasis: {
-                                itemStyle: { 
-                                    areaColor: '#a4d0ff' 
-                                },
-                                label: { 
-                                    show: true, 
-                                    color: '#1a3d66' 
-                                }
-                            }
-                        },
-                        series: [{
-                            name: '文学地标',
-                            type: 'scatter',
-                            coordinateSystem: 'geo',
-                            symbol: 'pin',
-                            symbolSize: [40, 50],
-                            itemStyle: { 
-                                color: '#ff6b6b' 
-                            },
-                            data: [
-                                {name: "夫子庙", value: [118.79, 32.02], excerpt: "朱自清《桨声灯影里的秦淮河》创作地"},
-                                {name: "中山陵", value: [118.85, 32.06], excerpt: "叶兆言《南京传》中重要历史地标"},
-                                {name: "南京大学", value: [118.78, 32.06], excerpt: "众多作家任教或求学之地"},
-                                {name: "玄武湖", value: [118.80, 32.07], excerpt: "张恨水小说中的经典场景"},
-                                {name: "浦口火车站", value: [118.74, 32.15], excerpt: "朱自清《背影》发生地"}
-                            ],
-                            label: {
-                                show: true,
-                                formatter: '{b}',
-                                position: 'bottom',
-                                color: '#1a3d66',
-                                fontSize: 12
-                            },
-                            zlevel: 2
-                        }]
+                        label: {
+                            show: true,
+                            formatter: '{b}',
+                            position: 'bottom',
+                            color: '#1a3d66',
+                            fontSize: 12
+                        }
                     };
-                    
-                    // 应用配置
-                    myChart.setOption(option);
-                    
-                    // 隐藏加载动画
-                    myChart.hideLoading();
-                    
-                    // 更新计数器
-                    $('.counter-number').text(option.series[0].data.length);
-                    
-                    // 地图点击事件
-                    myChart.on('click', function(params) {
-                        if (params.componentType === 'series') {
-                            const content = `
-                                <div class="location-detail">
-                                    <h3>${params.name}</h3>
-                                    <p>${params.data.excerpt}</p>
-                                    <div class="literary-works">
-                                        <h4>相关作品:</h4>
-                                        <ul>
-                                            <li>朱自清《桨声灯影里的秦淮河》</li>
-                                            <li>叶兆言《南京传》</li>
-                                            <li>张恨水《秦淮世家》</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            `;
-                            
-                            $('#infoPanel').html(content);
-                        }
-                    });
-                })
-                .catch(error => {
-                    console.error('加载南京地图数据失败:', error);
-                    myChart.hideLoading();
-                    myChart.setOption({
-                        title: {
-                            text: '数据加载失败',
-                            subtext: '请检查网络连接或稍后再试',
-                            left: 'center',
-                            top: 'center'
-                        }
-                    });
                 });
-            
-            // 响应窗口大小变化
-            window.addEventListener('resize', function() {
-                myChart.resize();
+                
+                // 配置地图选项
+                const option = {
+                    title: {
+                        text: '南京文学地图',
+                        subtext: '作家笔下的人文南京',
+                        left: 'center',
+                        textStyle: { 
+                            color: '#2d3748', 
+                            fontSize: 24,
+                            fontWeight: 'bold'
+                        },
+                        subtextStyle: { 
+                            color: '#718096',
+                            fontSize: 16
+                        }
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                        borderColor: '#e2e8f0',
+                        borderWidth: 1,
+                        padding: 15,
+                        borderRadius: 8,
+                        textStyle: {
+                            color: '#2d3748'
+                        },
+                        formatter: function(params) {
+                            if (params.componentType === 'series') {
+                                return `<div style="font-weight:bold;margin-bottom:5px;">${params.name}</div>
+                                        <div>${params.data.excerpt || '南京文学地标'}</div>
+                                        <div style="margin-top:8px;color:#4a5568;">点击查看详情</div>`;
+                            }
+                            return params.name;
+                        }
+                    },
+                    geo: {
+                        map: 'nanjing',
+                        roam: true,
+                        zoom: 8,
+                        center: [118.8, 32.05],
+                        label: { 
+                            emphasis: { 
+                                show: false 
+                            } 
+                        },
+                        itemStyle: {
+                            areaColor: '#e8f4ff',
+                            borderColor: '#297acc'
+                        },
+                        emphasis: {
+                            itemStyle: { 
+                                areaColor: '#a4d0ff' 
+                            },
+                            label: { 
+                                show: true, 
+                                color: '#1a3d66' 
+                            }
+                        }
+                    },
+                    series: [{
+                        name: '文学地标',
+                        type: 'scatter',
+                        coordinateSystem: 'geo',
+                        symbol: 'pin',
+                        symbolSize: [40, 50],
+                        itemStyle: { 
+                            color: '#ff6b6b' 
+                        },
+                        data: allMarkers,
+                        label: {
+                            show: true,
+                            formatter: '{b}',
+                            position: 'bottom',
+                            color: '#1a3d66',
+                            fontSize: 12
+                        },
+                        zlevel: 2
+                    }]
+                };
+                
+                // 应用配置
+                myChart.setOption(option);
+                
+                // 隐藏加载动画
+                myChart.hideLoading();
+                
+                // 更新计数器
+                $('.counter-number').text(allMarkers.length);
+                
+                // 地图点击事件
+                myChart.on('click', function(params) {
+                    if (params.componentType === 'series') {
+                        const location = params.data;
+                        
+                        // 生成作品列表HTML
+                        let worksHtml = '';
+                        if (location.works && location.works.length > 0) {
+                            worksHtml = '<div class="literary-works"><h4>相关作品:</h4><ul>';
+                            location.works.forEach(work => {
+                                worksHtml += `<li>${work}</li>`;
+                            });
+                            worksHtml += '</ul></div>';
+                        }
+                        
+                        const content = `
+                            <div class="location-detail">
+                                <h3>${location.name}</h3>
+                                <p>${location.excerpt}</p>
+                                ${worksHtml}
+                            </div>
+                        `;
+                        
+                        $('#infoPanel').html(content);
+                        
+                        // 高亮当前选中区域
+                        myChart.dispatchAction({
+                            type: 'highlight',
+                            seriesIndex: 0,
+                            name: location.name
+                        });
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('加载南京地图数据失败:', error);
+                myChart.hideLoading();
+                myChart.setOption({
+                    title: {
+                        text: '数据加载失败',
+                        subtext: '请检查网络连接或稍后再试',
+                        left: 'center',
+                        top: 'center'
+                    }
+                });
             });
+        
+        // 响应窗口大小变化
+        window.addEventListener('resize', function() {
+            myChart.resize();
+        });
+        
+        // 搜索按钮点击事件
+        $('#searchBtn').click(function() {
+            const query = $('#searchInput').val().trim();
             
-            // 搜索按钮点击事件
-            $('#searchBtn').click(function() {
-                const query = $('#searchInput').val().trim();
-                if (!query) return;
+            // 先取消之前所有高亮
+            myChart.dispatchAction({ type: 'downplay' });
+            
+            // 过滤出包含该作者的地标点
+            const filteredMarkers = allMarkers.filter(marker => 
+                marker.authors && marker.authors.some(author => author.includes(query))
+            );
+            
+            if (filteredMarkers.length > 0) {
+                // 更新地图数据 - 只显示该作家相关的标记点
+                myChart.setOption({
+                    series: [{
+                        data: filteredMarkers
+                    }]
+                });
                 
-                // 模拟搜索效果 - 高亮相关区域
-                const area = query.includes('秦淮') ? '鼓楼区' : 
-                            query.includes('中山') ? '玄武区' : null;
+                // 更新计数器
+                $('.counter-number').text(filteredMarkers.length);
                 
-                if (area) {
+                // 高亮相关区域
+                filteredMarkers.forEach(marker => {
                     myChart.dispatchAction({
                         type: 'highlight',
-                        name: area
+                        seriesIndex: 0,
+                        name: marker.name
                     });
-                    
-                    // 更新信息面板
-                    const authors = {
-                        '叶兆言': '南京作家，代表作《南京传》',
-                        '朱自清': '现代散文家，《桨声灯影里的秦淮河》作者',
-                        '张恨水': '民国时期著名小说家，《秦淮世家》作者'
-                    };
-                    
-                    const authorInfo = authors[query] || `未找到${query}的详细信息`;
+                });
+                
+                // 查找作家信息
+                const matchedAuthor = Object.keys(authorsData).find(author => 
+                    author.includes(query) || query.includes(author)
+                );
+                
+                if (matchedAuthor) {
+                    const authorInfo = authorsData[matchedAuthor];
+                    // 构建作品列表
+                    let worksHtml = '';
+                    if (authorInfo.works && authorInfo.works.length > 0) {
+                        worksHtml = '<div class="literary-works"><h4>代表作品:</h4><ul>';
+                        authorInfo.works.forEach(work => {
+                            worksHtml += `<li>《${work.title}》 - ${work.location}</li>`;
+                        });
+                        worksHtml += '</ul></div>';
+                    }
                     
                     $('#infoPanel').html(`
                         <div class="author-info">
-                            <h3>${query}</h3>
-                            <p>${authorInfo}</p>
-                            <div class="related-locations">
-                                <h4>相关地点:</h4>
-                                <ul>
-                                    <li>夫子庙</li>
-                                    <li>中山陵</li>
-                                    <li>玄武湖</li>
-                                </ul>
-                            </div>
+                            <h3>${authorInfo.name}</h3>
+                            <p>${authorInfo.intro}</p>
+                            ${worksHtml}
                         </div>
                     `);
                 }
-            });
+            } else {
+                $('#infoPanel').html(`<div class="author-info">
+                    <h3>未找到相关结果</h3>
+                    <p>请尝试搜索作家姓名(如:叶兆言、朱自清)或地点名称(如:秦淮河、夫子庙)</p>
+                </div>`);
+                
+                myChart.setOption({
+                    series: [{
+                        data: allMarkers
+                    }]
+                });
+                $('.counter-number').text(allMarkers.length);
+            }
         });
-    </script>
+    });
+</script>
 </body>
 </html>
