@@ -2198,7 +2198,6 @@ authorsData['叶兆言'].works.push(
 
 
 
-
 const locationToWorks = {};
 Object.values(authorsData).forEach(author => {
     author.works.forEach(work => {
@@ -2243,16 +2242,19 @@ $(document).ready(function() {
             const works = locationToWorks[name] || [];
             const authors = [...new Set(works.map(item => item.author))];
             
+            // 确保works数组元素是对象格式
+            const normalizedWorks = works.map(item => ({
+                title: item.work.title,
+                excerpt: item.work.excerpt,
+                author: item.author
+            }));
+            
             return {
                 id: `loc_${name}`,
                 name: name,
                 value: nanjingCoords[name],
                 excerpt: locationDescriptions[name] || '南京文学地标',
-                works: works.map(item => ({
-                    title: item.work.title,
-                    excerpt: item.work.excerpt,
-                    author: item.author
-                })),
+                works: normalizedWorks,
                 authors: authors,
                 symbol: 'pin',
                 symbolSize: [40, 50],
@@ -2270,7 +2272,7 @@ $(document).ready(function() {
     
     const allMarkers = buildAllMarkers();
     
-    fetch('finally\data\nanjing.json')
+    fetch('./data/nanjing.json')
         .then(response => response.json())
         .then(nanjingGeoJSON => {
             // 注册南京地图
@@ -2376,6 +2378,8 @@ $(document).ready(function() {
             myChart.on('click', function(params) {
                 if (params.componentType === 'series') {
                     const location = params.data;
+                    
+                    // 修复: 显示地点信息
                     showLocationInfo(location);
                     
                     // 高亮当前选中区域
@@ -2601,40 +2605,20 @@ $(document).ready(function() {
         </div>`);
     }
     
-    // 显示地点信息
     function showLocationInfo(location) {
-        // 按作者分组展示作品
-        const worksByAuthor = {};
+        let worksHtml = '';
         if (location.works && location.works.length > 0) {
+            worksHtml = '<div class="literary-works"><h4>相关作品:</h4><ul>';
+            
             location.works.forEach(work => {
-                if (!worksByAuthor[work.author]) {
-                    worksByAuthor[work.author] = [];
-                }
-                worksByAuthor[work.author].push(work);
+                const title = work.title || "未知作品";
+                const author = work.author || "未知作者";
+                worksHtml += `<li>${author}《${title}》</li>`;
             });
-        }
-        
-        // 生成作者分组HTML
-        let authorsHtml = '';
-        if (Object.keys(worksByAuthor).length > 0) {
-            authorsHtml = '<div class="literary-works"><h4>相关作品:</h4>';
-            Object.keys(worksByAuthor).forEach(author => {
-                authorsHtml += `<div class="author-section">
-                    <h5>${author} 作品</h5>
-                    <ul>`;
-                
-                worksByAuthor[author].forEach(work => {
-                    authorsHtml += `<li>
-                        <div class="work-title">${work.title}</div>
-                        <div class="work-excerpt">${work.excerpt}</div>
-                    </li>`;
-                });
-                
-                authorsHtml += `</ul></div>`;
-            });
-            authorsHtml += '</div>';
+            
+            worksHtml += '</ul></div>';
         } else {
-            authorsHtml = '<p class="no-works">暂无作品信息</p>';
+            worksHtml = '<p class="no-works">暂无作品信息</p>';
         }
         
         $('#infoPanel').html(`
@@ -2645,11 +2629,10 @@ $(document).ready(function() {
                     <span>${location.works.length}部作品</span>
                     <span>${location.authors.length}位作家</span>
                 </div>
-                ${authorsHtml}
+                ${worksHtml}
             </div>
         `);
     }
-    
     // 显示匹配的作者作品
     function showAuthorWorks(author, markers) {
         let worksHtml = '<div class="literary-works"><h4>作品列表:</h4><ul>';
