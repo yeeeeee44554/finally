@@ -2391,19 +2391,7 @@ $(document).ready(function() {
                 }
             });
         })
-        .catch(error => {
-            console.error('加载南京地图数据失败:', error);
-            myChart.hideLoading();
-            myChart.setOption({
-                title: {
-                    text: '数据加载失败',
-                    subtext: '请检查网络连接或稍后再试',
-                    left: 'center',
-                    top: 'center'
-                }
-            });
-        });
-    
+       
     // 响应窗口大小变化
     window.addEventListener('resize', function() {
         myChart.resize();
