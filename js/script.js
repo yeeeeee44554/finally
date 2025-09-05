@@ -1,3 +1,30 @@
+function getAllMarkers() {
+    return Object.keys(nanjingCoords).map(locationName => {
+        const works = locationToWorks[locationName] || [];
+        const worksList = works.map(item => `${item.author}《${item.work.title}》`);
+        const authors = [...new Set(works.map(item => item.author))];
+        
+        return {
+            name: locationName,
+            value: nanjingCoords[locationName],
+            excerpt: locationDescriptions[locationName] || '南京文学地标',
+            works: worksList,
+            authors: authors,
+            symbol: 'pin',
+            symbolSize: [40, 50],
+            itemStyle: { 
+                color: '#ff6b6b' 
+            },
+            label: {
+                show: true,
+                formatter: '{b}',
+                position: 'bottom',
+                color: '#1a3d66',
+                fontSize: 12
+            }
+        };
+    });
+}
 // 南京主要地点坐标数据
 const nanjingCoords = {
     '秦淮河': [118.792, 32.0107],
@@ -2197,7 +2224,6 @@ authorsData['叶兆言'].works.push(
 );
 
 
-
 const locationToWorks = {};
 Object.values(authorsData).forEach(author => {
     author.works.forEach(work => {
@@ -2238,23 +2264,30 @@ $(document).ready(function() {
     });
     
     const buildAllMarkers = () => {
-        return Object.keys(nanjingCoords).map(name => {
-            const works = locationToWorks[name] || [];
-            const authors = [...new Set(works.map(item => item.author))];
-            
-            // 确保works数组元素是对象格式
-            const normalizedWorks = works.map(item => ({
-                title: item.work.title,
-                excerpt: item.work.excerpt,
-                author: item.author
-            }));
+        return Object.keys(nanjingCoords).map(locationName => {
+            // 收集所有与该地点相关的作品
+            const works = [];
+            Object.values(authorsData).forEach(author => {
+                author.works.forEach(work => {
+                    if (work.location === locationName) {
+                        works.push({
+                            title: work.title,
+                            author: author.name,
+                            excerpt: work.excerpt
+                        });
+                    }
+                });
+            });
+    
+            // 收集所有相关作家（去重）
+            const authors = [...new Set(works.map(work => work.author))];
             
             return {
-                id: `loc_${name}`,
-                name: name,
-                value: nanjingCoords[name],
-                excerpt: locationDescriptions[name] || '南京文学地标',
-                works: normalizedWorks,
+                id: `loc_${locationName}`,
+                name: locationName,
+                value: nanjingCoords[locationName],
+                excerpt: locationDescriptions[locationName] || '南京文学地标',
+                works: works,
                 authors: authors,
                 symbol: 'pin',
                 symbolSize: [40, 50],
@@ -2594,29 +2627,36 @@ $(document).ready(function() {
     }
     
     function showLocationInfo(location) {
+        console.log('Location data:', location); // 调试用
+        
         let worksHtml = '';
         if (location.works && location.works.length > 0) {
             worksHtml = '<div class="literary-works"><h4>相关作品:</h4><ul>';
             
             location.works.forEach(work => {
-                const title = work.title || "未知作品";
+                // 确保正确提取作品属性
+                const title = work.title || work.name || "未知作品";
                 const author = work.author || "未知作者";
-                worksHtml += `<li>${author}《${title}》</li>`;
+                const excerpt = work.excerpt || work.description || "暂无描述";
+                
+                worksHtml += `
+                    <li class="work-item">
+                        <div class="work-title">《${title}》</div>
+                        <div class="work-author">作者：${author}</div>
+                        <div class="work-excerpt">${excerpt}</div>
+                    </li>
+                `;
             });
             
             worksHtml += '</ul></div>';
         } else {
-            worksHtml = '<p class="no-works">暂无作品信息</p>';
+            worksHtml = '<p class="no-works">暂无相关作品信息</p>';
         }
         
         $('#infoPanel').html(`
-            <div class="location-detail">
-                <h3>${location.name}</h3>
-                <p class="location-excerpt">${location.excerpt}</p>
-                <div class="location-meta">
-                    <span>${location.works.length}部作品</span>
-                    <span>${location.authors.length}位作家</span>
-                </div>
+            <div class="location-info">
+                <h3>${location.name || "未知地点"}</h3>
+                <p class="location-description">${location.excerpt || location.description || "江苏省会，六朝古都，中国现代文学重要城市"}</p>
                 ${worksHtml}
             </div>
         `);
@@ -2705,3 +2745,4 @@ $(document).ready(function() {
         $('.counter-number').text(count);
     }
 });
+window.getNanjingMarkers = getAllMarkers;

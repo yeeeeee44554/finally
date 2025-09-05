@@ -106,7 +106,9 @@
     // 地图初始化代码
     $(document).ready(function() {
         const myChart = echarts.init(document.getElementById('mapContainer'));
-        
+    
+    // 使用全局函数获取标记点数据
+    const allMarkers = window.getNanjingMarkers();
         // 显示加载动画
         myChart.showLoading({
             text: '正在加载南京地图数据...',
