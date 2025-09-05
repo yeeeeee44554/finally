@@ -125,31 +125,8 @@
                 echarts.registerMap('nanjing', nanjingGeoJSON);
                 
                 // 使用文档2提供的数据构建标记点
-                const allMarkers = Object.keys(nanjingCoords).map(locationName => {
-                    const works = locationToWorks[locationName] || [];
-                    const worksList = works.map(item => `${item.author}《${item.work.title}》`);
-                    const authors = [...new Set(works.map(item => item.author))];
-                    
-                    return {
-                        name: locationName,
-                        value: nanjingCoords[locationName],
-                        excerpt: locationDescriptions[locationName] || '南京文学地标',
-                        works: worksList,
-                        authors: authors,
-                        symbol: 'pin',
-                        symbolSize: [40, 50],
-                        itemStyle: { 
-                            color: '#ff6b6b' 
-                        },
-                        label: {
-                            show: true,
-                            formatter: '{b}',
-                            position: 'bottom',
-                            color: '#1a3d66',
-                            fontSize: 12
-                        }
-                    };
-                });
+                
+                const allMarkers = window.getNanjingMarkers();
                 
                 // 配置地图选项
                 const option = {
