@@ -643,3 +643,21 @@ body {
         transform: translateY(0);
     }
 }
+.nanjing-description {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-left: 3px solid #4a6cf7;
+    border-radius: 0 4px 4px 0;
+}
+
+.desc-title {
+    font-weight: bold;
+    color: #4a6cf7;
+    margin-bottom: 5px;
+}
+
+.desc-content {
+    color: #4a5568;
+    line-height: 1.5;
+}

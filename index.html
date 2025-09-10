@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>文都云图：南京现当代文学地图数字导览与文创平台</title>
     <link rel="stylesheet" href="./css/style.css">
+    <!-- 在index.html的<head>部分添加 -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>" type="image/svg+xml">
     <link rel="stylesheet" href="./css/ai_assistant.css"> 
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;500&display=swap" rel="stylesheet">
     <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
@@ -863,51 +865,51 @@
                     
                     // 地图点击事件
                     myChart.on('click', function(params) {
-                        if (params.componentType === 'series') {
-                            const location = params.data;
-                            
-                            // 生成作品列表HTML
-                            let worksHtml = '';
-                            if (location.works && location.works.length > 0) {
-                                worksHtml = '<div class="literary-works"><h4>相关作品:</h4><ul>';
-                                location.works.forEach(work => {
-                                    worksHtml += `<li>${work}</li>`;
-                                });
-                                worksHtml += '</ul></div>';
-                            }
-                            
-                            const content = `
-                                <div class="location-detail">
-                                    <h3>${location.name}</h3>
-                                    <p>${location.excerpt}</p>
-                                    ${worksHtml}
-                                </div>
-                            `;
-                            
-                            $('#infoPanel').html(content);
-                            
-                            // 高亮当前选中区域
-                            myChart.dispatchAction({
-                                type: 'highlight',
-                                seriesIndex: 0,
-                                name: location.name
-                            });
-                        }
-                    });
-                })
-                .catch(error => {
-                    console.error('加载南京地图数据失败:', error);
-                    myChart.hideLoading();
-                    myChart.setOption({
-                        title: {
-                            text: '数据加载失败',
-                            subtext: '请检查网络连接或稍后再试',
-                            left: 'center',
-                            top: 'center'
-                        }
-                    });
-                });
+    if (params.componentType === 'series') {
+        const location = params.data;
+        
+        let worksHtml = '';
+        if (location.works && location.works.length > 0) {
+            worksHtml = '<div class="literary-works"><h4>相关作品:</h4><ul>';
             
+            location.works.forEach(work => {
+                const title = work.title || "未知作品";
+                const author = work.author || "未知作者";
+                const excerpt = work.excerpt || "暂无描述";
+                const nanjingDesc = work.nanjingDescription || "暂无南京相关描写";
+                const locationName = work.location || "未知地点";
+                
+                worksHtml += `
+                    <li class="work-item">
+                        <div class="work-header">
+                            <span class="work-title">《${title}》</span>
+                            <span class="work-location">- ${locationName}</span>
+                        </div>
+                        <div class="work-author">作者：${author}</div>
+                        <div class="work-excerpt">${excerpt}</div>
+                        <div class="nanjing-description">
+                            <div class="desc-title">南京描写：</div>
+                            <div class="desc-content">${nanjingDesc}</div>
+                        </div>
+                    </li>
+                `;
+            });
+            
+            worksHtml += '</ul></div>';
+        } else {
+            worksHtml = '<p class="no-works">暂无相关作品信息</p>';
+        }
+        
+        $('#infoPanel').html(`
+            <div class="location-info">
+                <h3>${location.name || "未知地点"}</h3>
+                <p class="location-description">${location.excerpt || "江苏省会，六朝古都，中国现代文学重要城市"}</p>
+                ${worksHtml}
+            </div>
+        `);
+    }
+});
+});
             // 响应窗口大小变化
             window.addEventListener('resize', function() {
                 myChart.resize();
@@ -915,8 +917,10 @@
             
             // 搜索按钮点击事件
             $('#searchBtn').click(function() {
-                const query = $('#searchInput').val().trim();
-                
+                const query = $('#searchInput').val().trim().toLowerCase();
+                const exactMatch = Object.keys(authorsData).find(author => 
+        author.toLowerCase() === query
+    );
                 // 先取消之前所有高亮
                 myChart.dispatchAction({ type: 'downplay' });
                 
@@ -947,30 +951,36 @@
                     
                     // 查找作家信息
                     const matchedAuthor = Object.keys(authorsData).find(author => 
-                        author.includes(query) || query.includes(author)
+            author.includes(query) || query.includes(author)
                     );
                     
-                    if (matchedAuthor) {
-                        const authorInfo = authorsData[matchedAuthor];
-                        // 构建作品列表
-                        let worksHtml = '';
-                        if (authorInfo.works && authorInfo.works.length > 0) {
-                            worksHtml = '<div class="literary-works"><h4>代表作品:</h4><ul>';
-                            authorInfo.works.forEach(work => {
-                                worksHtml += `<li>《${work.title}》 - ${work.location}</li>`;
-                            });
-                            worksHtml += '</ul></div>';
-                        }
-                        
-                        $('#infoPanel').html(`
-                            <div class="author-info">
-                                <h3>${authorInfo.name}</h3>
-                                <p>${authorInfo.intro}</p>
-                                ${worksHtml}
-                            </div>
-                        `);
-                    }
-                } else {
+                     if (matchedAuthor) {
+            const authorInfo = authorsData[matchedAuthor];
+            // 构建作品列表（完整代码）
+            let worksHtml = '';
+            if (authorInfo.works && authorInfo.works.length > 0) {
+                worksHtml = '<div class="literary-works"><h4>代表作品:</h4><ul>';
+                authorInfo.works.forEach(work => {
+                    // 确保显示作品描述
+                    worksHtml += `<li>
+                        <div class="work-title">《${work.title}》</div>
+                        <div class="work-location">地点: ${work.location}</div>
+                        <div class="work-excerpt">${work.excerpt}</div>
+                        <div class="nanjing-description">${work.nanjingDescription || '暂无南京相关描写'}</div>
+                    </li>`;
+                });
+                worksHtml += '</ul></div>';
+            }
+            
+            $('#infoPanel').html(`
+                <div class="author-info">
+                    <h3>${authorInfo.name}</h3>
+                    <p>${authorInfo.intro}</p>
+                    ${worksHtml}
+                </div>
+            `);
+        }
+    } else {
                     $('#infoPanel').html(`<div class="author-info">
                         <h3>未找到相关结果</h3>
                         <p>请尝试搜索作家姓名(如:叶兆言、朱自清)或地点名称(如:秦淮河、夫子庙)</p>
