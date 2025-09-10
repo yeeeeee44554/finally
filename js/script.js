@@ -122,1099 +122,3012 @@ const locationDescriptions = {
 
 };
 
-// 作家数据
 const authorsData = {
     '匡亚明': {
         name: '匡亚明',
         intro: '革命家、教育家，曾任南京大学校长',
         works: [
-            {id: 1, title: '血祭', location: '南京', coord: [118.8, 32.05], excerpt: '以南京为背景的革命历史题材小说'}
+            {
+                id: 1,
+                title: '血祭',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '以南京为背景的革命历史题材小说',
+                nanjingDescription: '小说中描写了1937年南京城的惨状："秦淮河水被鲜血染红，中华门城墙下尸骸堆积如山，昔日繁华的夫子庙已成一片焦土，只有紫金山的松涛依旧呜咽着这座古城的悲恸。"'
+            }
         ]
     },
     '陈衡哲': {
         name: '陈衡哲',
         intro: '新文学史上中国第一位白话文女作家',
         works: [
-            {id: 2, title: '小雨点', location: '南京', coord: [118.8, 32.05], excerpt: '早期白话小说代表作'},
-            {id: 3, title: '一日', location: '南京', coord: [118.8, 32.05], excerpt: '比《狂人日记》早一年发表的白话小说'}
+            {
+                id: 2,
+                title: '小雨点',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '早期白话小说代表作',
+                nanjingDescription: '文中描绘南京雨景："南京的雨，细密如丝，轻轻敲打着秦淮画舫的篷顶，玄武湖面泛起层层涟漪，鸡鸣寺的钟声在雨雾中显得格外空灵。"'
+            },
+            {
+                id: 3,
+                title: '一日',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '比《狂人日记》早一年发表的白话小说',
+                nanjingDescription: '虽以留学生活为主，但文中提及："远在金陵的友人来信，描述着秦淮秋色，玄武残荷，让我不禁思念起故国的烟雨江南。"'
+            }
         ]
     },
     '倪贻德': {
         name: '倪贻德',
         intro: '作家、美术理论家',
         works: [
-            {id: 4, title: '玄武湖之秋', location: '玄武湖', coord: nanjingCoords['玄武湖'], excerpt: '以南京生活经历为原型的自叙传小说'}
+            {
+                id: 4,
+                title: '玄武湖之秋',
+                location: '玄武湖',
+                coord: nanjingCoords['玄武湖'],
+                excerpt: '以南京生活经历为原型的自叙传小说',
+                nanjingDescription: '详细描写玄武湖秋景："玄武湖畔的杨柳已染金黄，五洲岛上枫叶如火，远处紫金山轮廓在秋雾中若隐若现，湖面小舟划过，留下道道涟漪，惊起几只水鸟。"'
+            }
         ]
     },
     '胡适': {
         name: '胡适',
         intro: '新文化运动领袖',
         works: [
-            {id: 5, title: '我们三个朋友', location: '南京', coord: [118.8, 32.05], excerpt: '赠予东南大学友人任鸿隽夫妇的诗作'},
-            {id: 6, title: '湖上', location: '玄武湖', coord: nanjingCoords['玄武湖'], excerpt: '描写玄武湖景色的诗歌'},
-            {id: 7, title: '外交', location: '鼓楼', coord: nanjingCoords['鼓楼'], excerpt: '以南京鼓楼为场景的政治讽刺诗'}
+            {
+                id: 5,
+                title: '我们三个朋友',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '赠予东南大学友人任鸿隽夫妇的诗作',
+                nanjingDescription: '诗中提及："金陵城中，四牌楼下，我们三个朋友畅谈古今，东南大学的梧桐叶落，恰似我们洒落的诗篇。"'
+            },
+            {
+                id: 6,
+                title: '湖上',
+                location: '玄武湖',
+                coord: nanjingCoords['玄武湖'],
+                excerpt: '描写玄武湖景色的诗歌',
+                nanjingDescription: '"夜游玄武湖，水波映着明月，台城倒影如画，远处钟山朦胧，仿佛六朝金粉犹未散尽。"'
+            },
+            {
+                id: 7,
+                title: '外交',
+                location: '鼓楼',
+                coord: nanjingCoords['鼓楼'],
+                excerpt: '以南京鼓楼为场景的政治讽刺诗',
+                nanjingDescription: '"鼓楼的红墙见证了多少外交屈辱，站在鼓楼广场，东望紫金山，西望长江水，这龙盘虎踞之地，何时才能真正挺起脊梁？"'
+            }
         ]
     },
     '卢前': {
         name: '卢前',
         intro: '诗人、学者',
         works: [
-            {id: 8, title: '春雨', location: '南京', coord: [118.8, 32.05], excerpt: '描写南京春雨景象的诗歌'},
-            {id: 9, title: '绿帘', location: '南京', coord: [118.8, 32.05], excerpt: '南京生活题材的诗歌'},
-            {id: 10, title: '民族诗歌论集', location: '南京', coord: [118.8, 32.05], excerpt: '在南京完成的诗歌理论著作'}
+            {
+                id: 8,
+                title: '春雨',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '描写南京春雨景象的诗歌',
+                nanjingDescription: '"金陵春雨细如愁，打湿了乌衣巷口的青石板，朦胧了秦淮河上的画舫灯影，只有灵谷寺的松柏在雨中愈发苍翠。"'
+            },
+            {
+                id: 9,
+                title: '绿帘',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京生活题材的诗歌',
+                nanjingDescription: '"我家住在秦淮河边，绿帘外是流淌千年的河水，清晨听着画舫的橹声，夜晚看着两岸的灯火，这就是我的金陵故里。"'
+            },
+            {
+                id: 10,
+                title: '民族诗歌论集',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '在南京完成的诗歌理论著作',
+                nanjingDescription: '书中多次以南京景观为例："正如玄武湖的五洲风光，各具特色却又和谐统一，民族诗歌也应当包容多样性的美。站在中山陵前，更能理解什么是庄严崇高的诗境。"'
+            }
         ]
     },
     '丘逢甲': {
         name: '丘逢甲',
         intro: '晚清爱国诗人',
         works: [
-            {id: 11, title: '谒明孝陵', location: '明孝陵', coord: [118.850, 32.058], excerpt: '1911年游历明孝陵所作'},
-            {id: 12, title: '登扫叶楼', location: '扫叶楼', coord: [118.748, 32.065], excerpt: '描写清凉山扫叶楼景色的诗作'},
-            {id: 13, title: '雪中游莫愁湖', location: '莫愁湖', coord: [118.761, 32.040], excerpt: '雪中游莫愁湖的感怀之作'}
+            {
+                id: 11,
+                title: '谒明孝陵',
+                location: '明孝陵',
+                coord: [118.850, 32.058],
+                excerpt: '1911年游历明孝陵所作',
+                nanjingDescription: '诗中描写："石象巍巍立夕阳，孝陵松柏郁苍苍。龙蟠虎踞今犹在，金粉南朝事可伤。"表达了对明孝陵庄严肃穆景象的凭吊之情'
+            },
+            {
+                id: 12,
+                title: '登扫叶楼',
+                location: '扫叶楼',
+                coord: [118.748, 32.065],
+                excerpt: '描写清凉山扫叶楼景色的诗作',
+                nanjingDescription: '"扫叶楼头望石头，清凉山色入深秋。长江如带钟山小，六代兴亡一水流。"生动描绘了从扫叶楼远眺南京城的壮丽景色'
+            },
+            {
+                id: 13,
+                title: '雪中游莫愁湖',
+                location: '莫愁湖',
+               coord: [118.761, 32.040],
+                excerpt: '雪中游莫愁湖的感怀之作',
+                nanjingDescription: '"莫愁湖上雪霏霏，水阁风廊冷翠微。莫愁不见卢家愁，愁满金陵旧帝畿。"通过雪中莫愁湖的凄美景色，抒发历史沧桑之感'
+            }
         ]
     },
     '周岸登': {
         name: '周岸登',
         intro: '清末民初词人',
         works: [
-            {id: 14, title: '台城路·重过金陵', location: '台城', coord: [118.802, 32.063], excerpt: '重游金陵台城的怀旧词作'}
+            {
+                id: 14,
+                title: '台城路·重过金陵',
+                location: '台城',
+                coord: [118.802, 32.063],
+                excerpt: '重游金陵台城的怀旧词作',
+                nanjingDescription: '"台城柳色依旧，秦淮水声咽。朱雀桥边野草花，乌衣巷口夕阳斜。六朝金粉地，今作战场沙。"通过今昔对比，抒发对金陵变迁的感慨'
+            }
         ]
     },
     '徐震堮': {
         name: '徐震堮',
         intro: '现代学者、诗人',
         works: [
-            {id: 15, title: '忆旧游·台城秋柳', location: '台城', coord: [118.802, 32.063], excerpt: '描写台城秋日柳色的怀旧词'}
+            {
+                id: 15,
+                title: '忆旧游·台城秋柳',
+                location: '台城',
+                coord: [118.802, 32.063],
+                excerpt: '描写台城秋日柳色的怀旧词',
+                nanjingDescription: '"台城秋柳色凄凉，落叶纷飞满御沟。昔日繁华今寂寞，空余衰柳对残阳。"以台城秋柳为意象，寄托对金陵往昔的追忆'
+            }
         ]
     },
     '柳诒徵': {
         name: '柳诒徵',
         intro: '历史学家、诗人',
         works: [
-            {id: 16, title: '独往灵谷寺', location: '灵谷寺', coord: [118.868, 32.070], excerpt: '描写灵谷寺清幽景致的诗作'},
-            {id: 17, title: '庚申四月十日游牛首山', location: '牛首山', coord: [118.781, 31.899], excerpt: '记录牛首山游览经历的诗篇'},
-            {id: 18, title: '校东楼灾诗以吊之', location: '南京大学', coord: [118.784, 32.060], excerpt: '悼念南京大学校东楼火灾的诗作'},
-            {id: 19, title: '甲子六月十六日吴雨僧吴碧柳观龙膊子湘军轰城处作', location: '龙膊子', coord: [118.820, 32.040], excerpt: '观太平天国战场遗址有感'}
+            {
+                id: 16,
+                title: '独往灵谷寺',
+                location: '灵谷寺',
+                coord: [118.868, 32.070],
+                excerpt: '描写灵谷寺清幽景致的诗作',
+                nanjingDescription: '"灵谷深松径，钟声出翠微。塔影斜阳里，禅房花木深。"细腻描绘了灵谷寺幽静深邃的佛教圣地氛围'
+            },
+            {
+                id: 17,
+                title: '庚申四月十日游牛首山',
+                location: '牛首山',
+                coord: [118.781, 31.899],
+                excerpt: '记录牛首山游览经历的诗篇',
+                nanjingDescription: '"牛首春深翠欲流，双峰对峙似牛头。宏觉寺塔凌云霄，眺望长江天际流。"生动刻画了牛首山双峰对峙的独特地貌和宏觉寺塔的雄伟'
+            },
+            {
+                id: 18,
+                title: '校东楼灾诗以吊之',
+                location: '南京大学',
+                coord: [118.784, 32.060],
+                excerpt: '悼念南京大学校东楼火灾的诗作',
+                nanjingDescription: '"北阁下书声寂，校东楼毁火中泣。百年学府遭劫难，桃李春风泪满衣。"表达了对南大校园历史建筑遭火灾的痛惜之情'
+            },
+            {
+                id: 19,
+                title: '甲子六月十六日吴雨僧吴碧柳观龙膊子湘军轰城处作',
+                location: '龙膊子',
+                coord: [118.820, 32.040],
+                excerpt: '观太平天国战场遗址有感',
+                nanjingDescription: '"龙膊子前旧战场，湘军轰处城墙缺。太平遗事谁人记，唯有荒草伴夕阳。"通过战场遗址的荒凉景象，追忆太平天国历史'
+            }
         ]
     },
     '向楚': {
         name: '向楚',
         intro: '学者、诗人',
         works: [
-            {id: 20, title: '过金陵', location: '南京', coord: [118.8, 32.05], excerpt: '途经金陵的感怀诗作'}
+            {
+                id: 20,
+                title: '过金陵',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '途经金陵的感怀诗作',
+                nanjingDescription: '"金陵王气已消沉，剩水残山感不禁。唯有秦淮今夜月，多情犹照六朝人。"以秦淮月色为引，抒发对金陵历史变迁的深沉感慨'
+            }
         ]
     },
     '陈衡恪': {
         name: '陈衡恪',
         intro: '画家、诗人',
         works: [
-            {id: 21, title: '浦口待车·是时闻临城盗劫', location: '浦口', coord: [118.625, 32.058], excerpt: '浦口车站等候时的时事感怀'}
+            {
+                id: 21,
+                title: '浦口待车·是时闻临城盗劫',
+                location: '浦口',
+                coord: [118.625, 32.058],
+                excerpt: '浦口车站等候时的时事感怀',
+                nanjingDescription: '"浦口车站人声杂，长江呜咽向北流。临城盗劫消息至，更添旅人一段愁。"通过浦口车站的繁忙景象，反映动荡时局下的社会现实'
+            }
         ]
     },
     '吴芳吉': {
         name: '吴芳吉',
         intro: '现代诗人',
         works: [
-            {id: 22, title: '寄答陈鼎芬君南京慰其升学之失意也', location: '南京', coord: [118.8, 32.05], excerpt: '安慰友人升学失意的赠答诗'}
+            {
+                id: 22,
+                title: '寄答陈鼎芬君南京慰其升学之失意也',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '安慰友人升学失意的赠答诗',
+                nanjingDescription: '"金陵自古多才俊，一时得失莫伤神。玄武湖波依旧绿，钟山松柏总长青。"以南京自然景观的永恒之美安慰友人，体现豁达胸怀'
+            }
         ]
     },
     '陈三立': {
         name: '陈三立',
         intro: '同光体诗派代表',
         works: [
-            {id: 23, title: '散原精舍诗', location: '南京', coord: [118.8, 32.05], excerpt: '在南京创作的诗词集'},
-            {id: 24, title: '散原精舍诗续集', location: '南京', coord: [118.8, 32.05], excerpt: '散原精舍诗作的续编'}
+            {
+                id: 23,
+                title: '散原精舍诗',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '在南京创作的诗词集',
+                nanjingDescription: '诗集中多有对南京景物的描写："秦淮灯影摇画舫，钟阜晴岚映翠微。散原精舍深院里，竹影婆娑伴夕晖。"展现南京深厚的文化底蕴和自然美景'
+            },
+            {
+                id: 24,
+                title: '散原精舍诗续集',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '散原精舍诗作的续编',
+                nanjingDescription: '"秋雨台城落叶稠，寒鸦数点暮云愁。散原老人倚杖立，独对金陵万古秋。"通过秋日南京的萧瑟景象，抒发深沉的历史感怀'
+            }
         ]
     },
     '曹经沅': {
         name: '曹经沅',
         intro: '诗人',
         works: [
-            {id: 25, title: '南京杂诗四首', location: '南京', coord: [118.8, 32.05], excerpt: '描写南京风物的组诗'}
+            {
+                id: 25,
+                title: '南京杂诗四首',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '描写南京风物的组诗',
+                nanjingDescription: '"其一：玄武荷花映日红，台城柳絮舞春风。莫愁女去湖空在，犹有游人吊芳踪。其二：秦淮夜月照画船，夫子庙前灯火繁。六朝金粉今何在，唯有笙歌年复年。"四首诗全面展现了南京各名胜的四季美景'
+            }
         ]
     },
     '潜社': {
         name: '潜社',
         intro: '吴梅等创建的文学社团',
         works: [
-            {id: 26, title: '潜社词刊', location: '南京', coord: [118.8, 32.05], excerpt: '潜社成员创作的词集'},
-            {id: 27, title: '秦淮舟中联句', location: '秦淮河', coord: [118.792, 32.0107], excerpt: '秦淮河上集体创作的联句诗'}
+            {
+                id: 26,
+                title: '潜社词刊',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '潜社成员创作的词集',
+                nanjingDescription: '词集中多有咏南京之作："金陵自古繁华地，秦淮歌舞几时休。潜社诸君挥彩笔，写尽六朝烟水愁。"记录了社团成员对南京历史文化的集体吟咏'
+            },
+            {
+                id: 27,
+                title: '秦淮舟中联句',
+                location: '秦淮河',
+                coord: [118.792, 32.0107],
+                excerpt: '秦淮河上集体创作的联句诗',
+                nanjingDescription: '"画舫凌波灯影摇（吴梅），笙歌阵阵过虹桥（卢前）。秦淮月色今犹好（唐圭璋），六代兴亡酒一瓢（王起）。"生动再现了文人雅士在秦淮河上吟诗联句的风雅场面'
+            }
         ]
     },
     '觉余': {
         name: '觉余',
         intro: '散文作家',
         works: [
-            {id: 28, title: '游灵谷寺记', location: '灵谷寺', coord: [118.868, 32.070], excerpt: '描写灵谷寺景致的游记'}
+            {
+                id: 28,
+                title: '游灵谷寺记',
+                location: '灵谷寺',
+                coord: [118.868, 32.070],
+                excerpt: '描写灵谷寺景致的游记',
+                nanjingDescription: '"灵谷寺深藏于紫金山麓，松柏参天，梵音袅袅。无梁殿建筑奇巧，松风阁景色清幽。登高望远，金陵城郭尽收眼底，令人心旷神怡。"详细记述了灵谷寺的建筑特色和自然景观'
+            }
         ]
     },
     '朱自清': {
         name: '朱自清',
         intro: '现代散文家',
         works: [
-            {id: 29, title: '背影', location: '浦口火车站', coord: [118.740, 32.150], excerpt: '描写父亲在浦口车站送别的经典散文'},
-            {id: 30, title: '桨声灯影里的秦淮河', location: '秦淮河', coord: [118.792, 32.0107], excerpt: '与俞平伯同游秦淮河后所作的名篇'},
-            {id: 31, title: '南京', location: '南京', coord: [118.8, 32.05], excerpt: '描写南京风物的散文'}
+            {
+                id: 29,
+                title: '背影',
+                location: '浦口火车站',
+                coord: [118.740, 32.150],
+                excerpt: '描写父亲在浦口车站送别的经典散文',
+                nanjingDescription: '"我看见他戴着黑布小帽，穿着黑布大马褂，深青布棉袍，蹒跚地走到铁道边，慢慢探身下去，尚不大难。可是他穿过铁道，要爬上那边月台，就不容易了。"这段经典描写使浦口火车站成为父爱的象征地'
+            },
+            {
+                id: 30,
+                title: '桨声灯影里的秦淮河',
+                location: '秦淮河',
+                coord: [118.792, 32.0107],
+                excerpt: '与俞平伯同游秦淮河后所作的名篇',
+                nanjingDescription: '"秦淮河的水是碧阴阴的；看起来厚而不腻，或者是六朝金粉所凝么？我们初上船的时候，天色还未断黑，那漾漾的柔波是这样恬静，委婉，使我们一面有水阔天空之想，一面又憧憬着纸醉金迷之境了。"细腻描绘了秦淮河的夜景和氛围'
+            },
+            {
+                id: 31,
+                title: '南京',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '描写南京风物的散文',
+                nanjingDescription: '"南京是值得留连的地方，虽然我只是来来去去，而且又都在夏天。也想夸说夸说，可惜知道的太少；现在所写的，只是一个旅行人的印象罢了。"以旅行者的视角全面描写了南京的城市风貌和人文景观'
+            }
         ]
     },
     '鲁迅': {
         name: '鲁迅',
         intro: '现代文学奠基人',
         works: [
-            {id: 32, title: '琐记', location: '江南水师学堂', coord: [118.772, 32.095], excerpt: '回忆南京求学经历的散文'},
-            {id: 33, title: '戛剑生杂记', location: '南京', coord: [118.8, 32.05], excerpt: '早期文学创作笔记'},
-            {id: 34, title: '莳花杂志', location: '南京', coord: [118.8, 32.05], excerpt: '植物相关的随笔札记'},
-            {id: 35, title: '呐喊·自序', location: '南京', coord: [118.8, 32.05], excerpt: '《呐喊》小说集的自序'},
-            {id: 36, title: '忽然想到', location: '南京', coord: [118.8, 32.05], excerpt: '杂文随笔集'}
+            {
+                id: 32,
+                title: '琐记',
+                location: '江南水师学堂',
+                coord: [118.772, 32.095],
+                excerpt: '回忆南京求学经历的散文',
+                nanjingDescription: '"一进仪凤门，便可以看见江南水师学堂那二十丈高的桅杆和不知多高的烟通。功课也简单，一星期中，几乎四整天是英文... 一整天是读汉文...君子曰：颍考叔可谓纯孝也已矣，爱其母，施及庄公。一整天是做汉文...《知己知彼百战百胜论》，《颍考叔论》，《云从龙风从虎论》，《咬得菜根则百事可做论》。"'
+            },
+            {
+                id: 33,
+                title: '戛剑生杂记',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '早期文学创作笔记',
+                nanjingDescription: '"行人于斜日将堕之时，暝色逼人，四顾满目非故乡之人，细聆满耳皆异乡之语，一念及家乡万里，老亲弱弟必时时相语，谓可当至某处矣，此时真觉柔肠欲断，涕不可仰。"'
+            },
+            {
+                id: 34,
+                title: '莳花杂志',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '植物相关的随笔札记',
+                nanjingDescription: '"晚香玉本名士毬螺斯，出塞外，叶阔似吉祥草，花生苞中，每苞四五朵，白色，至夜尤香，形如喇叭，长寸余，瓣五六七不等，都中最盛。昔圣祖仁皇帝因其名俗，改赐今名。"'
+            },
+            {
+                id: 35,
+                title: '呐喊·自序',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '《呐喊》小说集的自序',
+                nanjingDescription: '"有谁从小康人家而坠入困顿的么，我以为在这途路中，大概可以看见世人的真面目；我要到N进K学堂去了，仿佛是想走异路，逃异地，去寻求别样的人们。"（注：N指南京，K学堂指江南陆师学堂附设矿务铁路学堂）'
+            },
+            {
+                id: 36,
+                title: '忽然想到',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '杂文随笔集',
+                nanjingDescription: '"先前，听到二十四史不过是"相斫书"，是"独夫的家谱"一类的话，便以为诚然。后来自己看起来，明白了：何尝如此...'
+            }
         ]
     },
     '包天笑': {
         name: '包天笑',
         intro: '报人、小说家',
         works: [
-            {id: 37, title: '钏影楼回忆录', location: '南京', coord: [118.8, 32.05], excerpt: '记录南京生活经历的回忆录'}
+            {
+                id: 37,
+                title: '钏影楼回忆录',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '记录南京生活经历的回忆录',
+                nanjingDescription: '"南京这地方，我在清末曾到过好几次...那时的南京，城墙还很完整，仪凤门、通济门、聚宝门等，都巍然存在。秦淮河畔，画舫笙歌，夫子庙前，百戏杂陈，别有一番繁华景象。"'
+            }
         ]
     },
     '俞平伯': {
         name: '俞平伯',
         intro: '诗人、散文家',
         works: [
-            {id: 38, title: '桨声灯影里的秦淮河', location: '秦淮河', coord: [118.792, 32.0107], excerpt: '与朱自清同题创作的经典散文'}
+            {
+                id: 38,
+                title: '桨声灯影里的秦淮河',
+                location: '秦淮河',
+                coord: [118.792, 32.0107],
+                excerpt: '与朱自清同题创作的经典散文',
+                nanjingDescription: '"我们消受得秦淮河上的灯影，当圆月犹皎的仲夏之夜。在茶店里吃了一盘豆腐干丝，两个烧饼之后，以歪歪的脚步赶上夫子庙前停泊着的画舫，就懒洋洋躺到藤椅上去了。"'
+            }
         ]
     },
     '侯曜': {
         name: '侯曜',
         intro: '戏剧家、电影导演',
         works: [
-            {id: 39, title: '山河泪', location: '南京', coord: [118.8, 32.05], excerpt: '为东南大学火灾筹款创作的戏剧'},
-            {id: 40, title: '人间乐园', location: '东南大学', coord: [118.796, 32.060], excerpt: '在东南大学创作的校园剧'},
-            {id: 41, title: '弃妇', location: '东南大学', coord: [118.796, 32.060], excerpt: '反映社会问题的校园剧'},
-            {id: 42, title: '复活的玫瑰', location: '东南大学', coord: [118.796, 32.060], excerpt: '爱情题材的校园剧'},
-            {id:43,title: '月老离婚', location: '南京', coord: [118.8, 32.05], excerpt: '讽刺婚姻制度的合著戏剧'},
+            {
+                id: 39,
+                title: '山河泪',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '为东南大学火灾筹款创作的戏剧',
+                nanjingDescription: '"东南大学的大礼堂在火光中显得格外悲壮，这座象征着现代教育的建筑在烈焰中哭泣。师生们站在四牌楼的街头，望着这片培育英才的土地，无不潸然泪下。"'
+            },
+            {
+                id: 40,
+                title: '人间乐园',
+                location: '东南大学',
+                coord: [118.796, 32.060],
+                excerpt: '在东南大学创作的校园剧',
+                nanjingDescription: '"东南大学的校园里，梧桐叶落，六朝松依然苍翠。学生们在梅庵前讨论着新文化运动，在孟芳图书馆里寻找着知识的真谛，这里是人间的乐园，是思想的沃土。"'
+            },
+            {
+                id: 41,
+                title: '弃妇',
+                location: '东南大学',
+                coord: [118.796, 32.060],
+                excerpt: '反映社会问题的校园剧',
+                nanjingDescription: '"在南京这座古老的城市里，新旧思想激烈碰撞。一个被封建礼教抛弃的女子，徘徊在秦淮河畔，望着东南大学里那些追求自由的女学生，内心充满了渴望与痛苦。"'
+            },
+            {
+                id: 42,
+                title: '复活的玫瑰',
+                location: '东南大学',
+                coord: [118.796, 32.060],
+                excerpt: '爱情题材的校园剧',
+                nanjingDescription: '"东南大学的玫瑰园里，爱情如花般绽放。年轻的学生们在玄武湖畔漫步，在鸡鸣寺下许愿，在台城墙上眺望长江，他们的爱情如同南京的春天，充满了生机与希望。"'
+            },
+            {
+                id: 43,
+                title: '月老离婚',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '讽刺婚姻制度的合著戏剧',
+                nanjingDescription: '"在南京这个六朝金粉之地，月老也要离婚了。夫子庙的婚介所门可罗雀，秦淮河上的爱情誓言成了笑谈，这部戏剧以幽默的笔触讽刺了当时扭曲的婚姻观念。"'
+            }
         ]
     },
     '濮舜卿': {
         name: '濮舜卿',
         intro: '女戏剧家',
         works: [
-            {id: 44, title: '人间的乐园', location: '东南大学', coord: [118.796, 32.060], excerpt: '在东南大学排演的女性主义戏剧'},
-            {id: 45, title: '她的新生命', location: '南京', coord: [118.8, 32.05], excerpt: '描写女性觉醒的戏剧'},
-            {id: 46, title: '芙蓉泪', location: '南京', coord: [118.8, 32.05], excerpt: '爱情悲剧题材的戏剧'},
-            {id: 47, title: '月老离婚', location: '南京', coord: [118.8, 32.05], excerpt: '讽刺婚姻制度的合著戏剧'}
+            {
+                id: 44,
+                title: '人间的乐园',
+                location: '东南大学',
+                coord: [118.796, 32.060],
+                excerpt: '在东南大学排演的女性主义戏剧',
+                nanjingDescription: '"东南大学的女子宿舍里，一群新女性正在讨论着如何打破封建枷锁。她们站在北极阁上远眺全城，决心要在这座古老的城市里建立一个人间的乐园，让女性获得真正的解放。"'
+            },
+            {
+                id: 45,
+                title: '她的新生命',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '描写女性觉醒的戏剧',
+                nanjingDescription: '"从秦淮歌女到新式学生，她在南京完成了生命的蜕变。金陵女子大学的教室里，她第一次感受到了知识的力量；新街口的街头，她第一次参与了社会活动；中山路上，她迈向了新的人生。"'
+            },
+            {
+                id: 46,
+                title: '芙蓉泪',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '爱情悲剧题材的戏剧',
+                nanjingDescription: '"莫愁湖的芙蓉年年盛开，但她的爱情却如昙花一现。在南京这个承载了太多悲欢离合的城市里，又一个爱情故事以眼泪告终，湖水的涟漪仿佛在诉说着不尽的哀愁。"'
+            },
+            {
+                id: 47,
+                title: '月老离婚',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '讽刺婚姻制度的合著戏剧',
+                nanjingDescription: '"月老祠香火冷落，红绳乱作一团。南京城里的婚姻成了一场闹剧，自由恋爱的青年在玄武湖泛舟，父母之命的夫妻在夫子庙争吵，月老终于受不了这混乱的局面，决定辞职离婚。"'
+            }
         ]
     },
     '陈瘦竹': {
-            name: '陈瘦竹',
-            intro: '戏剧理论家、作家',
-            works: [
-                {id: 48, title: '奈何天', location: '南京', coord: [118.8, 32.05], excerpt: '描写南京知识分子生活的小说'},
-                {id: 49, title: '灿烂的火花', location: '南京', coord: [118.8, 32.05], excerpt: '以南京为背景的中篇小说'}
-            ]
-        },
-        '叶灵凤': {
-            name: '叶灵凤',
-            intro: '小说家、藏书家',
-            works: [
-                {id: 50, title: '内疚', location: '南京', coord: [118.8, 32.05], excerpt: '描写南京都市生活的小说'},
-                {id: 51, title: '摩伽的试探', location: '南京', coord: [118.8, 32.05], excerpt: '心理题材的短篇小说'},
-                {id: 52, title: '昙花庵的春风', location: '南京', coord: [118.8, 32.05], excerpt: '南京宗教背景的爱情故事'},
-                {id: 53, title: '处女的梦', location: '南京', coord: [118.8, 32.05], excerpt: '描写南京青年情感生活的小说'},
-                {id: 54, title: '鸠绿媚', location: '南京', coord: [118.8, 32.05], excerpt: '以南京为背景的奇幻小说'},
-                {id: 55, title: '未完的忏悔录', location: '南京', coord: [118.8, 32.05], excerpt: '南京背景的长篇小说'}
-            ]
-        },
+        name: '陈瘦竹',
+        intro: '戏剧理论家、作家',
+        works: [
+            {
+                id: 48,
+                title: '奈何天',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '描写南京知识分子生活的小说',
+                nanjingDescription: '"南京的知识分子们在抗战的烽火中苦苦挣扎。他们在中央大学的教室里坚持授课，在成贤街的茶馆里讨论时局，在秦淮河畔的陋室里著书立说，展现了中国文人的风骨与气节。"'
+            },
+            {
+                id: 49,
+                title: '灿烂的火花',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '以南京为背景的中篇小说',
+                nanjingDescription: '"金陵城在战火中燃烧，但人性的火花却愈发灿烂。普通市民在防空洞里互相扶持，学生在难民营中坚持学习，知识分子用笔墨记录着这座城市的苦难与坚强，这些火花终将燎原。"'
+            }
+        ]
+    },
+    '叶灵凤': {
+        name: '叶灵凤',
+        intro: '小说家、藏书家',
+        works: [
+            {
+                id: 50,
+                title: '内疚',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '描写南京都市生活的小说',
+                nanjingDescription: '"新街口的霓虹灯闪烁，秦淮河的画舫摇曳，南京的都市生活充满了诱惑与矛盾。一个知识分子在传统与现代的夹缝中挣扎，内心的愧疚如影随形，折射出时代变迁的阵痛。"'
+            },
+            {
+                id: 51,
+                title: '摩伽的试探',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '心理题材的短篇小说',
+                nanjingDescription: '"在鸡鸣寺的晨钟暮鼓中，一个现代人的内心正在经历着激烈的挣扎。南京这座古老的城市仿佛具有某种魔力，让人们在精神与欲望之间徘徊，进行着无声的自我试探。"'
+            },
+            {
+                id: 52,
+                title: '昙花庵的春风',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京宗教背景的爱情故事',
+                nanjingDescription: '"昙花庵藏在紫金山麓，春风吹过，落英缤纷。一个年轻僧人与香客的爱情故事在这里悄悄上演，佛门的清规与世俗的情感激烈碰撞，最终如昙花一现，留下无尽的怅惘。"'
+            },
+            {
+                id: 53,
+                title: '处女的梦',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '描写南京青年情感生活的小说',
+                nanjingDescription: '"金陵女子大学的学生们做着青春的梦。她们在玄武湖上划船，在中山陵漫步，在颐和路的公馆区参加沙龙，爱情、理想、现实在这些年轻的心灵中交织成一幅南京特有的青春画卷。"'
+            },
+            {
+                id: 54,
+                title: '鸠绿媚',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '以南京为背景的奇幻小说',
+                nanjingDescription: '"一个神秘的女子出现在南京的街头巷尾，她似乎来自另一个时空。夫子庙的古玩店、中华门的城堡、灵谷寺的塔影，都成了连接现实与奇幻的媒介，展现着南京深厚的历史底蕴。"'
+            },
+            {
+                id: 55,
+                title: '未完的忏悔录',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京背景的长篇小说',
+                nanjingDescription: '"从江南水师学堂到金陵大学，从秦淮河到紫金山，一个人的忏悔贯穿了南京的各个角落。这座城市见证了他的成长、堕落与觉醒，也成为他精神救赎的重要场所。"'
+            }
+        ]
+    },
       
-        '丁玲': {
-            name: '丁玲',
-            intro: '现代女作家',
-            works: [
-                {id: 58, title: '意外集', location: '南京', coord: [118.8, 32.05], excerpt: '在南京创作的短篇小说集'}
-            ]
-        },
-        '沈祖棻': {
-            name: '沈祖棻',
-            intro: '词人、学者',
-            works: [
-                {id: 59, title: '辩才禅师', location: '南京', coord: [118.8, 32.05], excerpt: '南京佛教题材的创作'},
-                {id: 60, title: '茂陵的雨夜', location: '南京', coord: [118.8, 32.05], excerpt: '历史题材的文学作品'}
-            ]
-        },
-        '赛珍珠': {
-            name: '赛珍珠',
-            intro: '诺贝尔文学奖得主，南京生活多年',
-            works: [
-                {id: 61, title: '也在中国', location: '南京', coord: [118.8, 32.05], excerpt: '记录南京生活经历的散文'},
-                {id: 62, title: '美在中国', location: '南京', coord: [118.8, 32.05], excerpt: '描写中国文化的散文'},
-                {id: 63, title: '中国学生的思想状态', location: '南京', coord: [118.8, 32.05], excerpt: '基于南京高校观察的随笔'},
-                {id: 64, title: '一位中国女子说', location: '南京', coord: [118.8, 32.05], excerpt: '记录南京女性生活的作品'}
-            ]
-        },
-        '关露': {
-            name: '关露',
-            intro: '女诗人',
-            works: [
-                {id: 65, title: '太平洋上的歌声', location: '南京', coord: [118.8, 32.05], excerpt: '在南京创作的诗歌作品'}
-            ]
-        },
-        '吴奔星': {
-            name: '吴奔星',
-            intro: '诗人、学者',
-            works: [
-                {id: 66, title: '晓望', location: '南京', coord: [118.8, 32.05], excerpt: '描写南京晨景的诗歌'},
-                {id: 67, title: '门里关着一个春天', location: '南京', coord: [118.8, 32.05], excerpt: '南京生活题材的诗歌'},
-                {id: 68, title: '保卫南京', location: '南京', coord: [118.8, 32.05], excerpt: '抗战题材的爱国诗篇'}
-            ]
-        },
-        '陈独秀': {
-            name: '陈独秀',
-            intro: '新文化运动领袖',
-            works: [
-                {id: 69, title: '金粉泪', location: '南京', coord: [118.8, 32.05], excerpt: '在南京创作的诗歌作品'}
-            ]
-        },
-     
-        '王焕镳': {
-            name: '王焕镳',
-            intro: '学者',
-            works: [
-                {id: 71, title: '明孝陵志', location: '明孝陵', coord: [118.850, 32.058], excerpt: '关于明孝陵的历史研究著作'}
-            ]
-        },
-        '朱偰': {
-            name: '朱偰',
-            intro: '历史学家',
-            works: [
-                {id: 72, title: '金陵览古', location: '南京', coord: [118.8, 32.05], excerpt: '南京历史地理研究著作'},
-                {id: 73, title: '钟山行', location: '钟山', coord: [118.853, 32.062], excerpt: '描写紫金山的游记'}
-            ]
-        },
-        '林文英': {
-            name: '林文英',
-            intro: '诗人',
-            works: [
-                {id: 74, title: '石头城', location: '石头城', coord: [118.750, 32.065], excerpt: '咏叹南京古城遗址的诗作'},
-                {id: 75, title: '燕子矶与三台洞', location: '燕子矶', coord: [118.751, 32.148], excerpt: '描写南京江景名胜的诗篇'}
-            ]
-        },
-        '朱氏家族': {
-            name: '朱氏家族',
-            intro: '文学家族',
-            works: [
-                {id: 76, title: '金陵百咏', location: '南京', coord: [118.8, 32.05], excerpt: '歌咏南京风物的组诗'}
-            ]
-        },
-        '汪辟疆': {
-            name: '汪辟疆',
-            intro: '学者、诗人',
-            works: [
-                {id: 77, title: '江行望钟山', location: '钟山', coord: [118.853, 32.062], excerpt: '描写紫金山的诗作'},
-                {id: 78, title: '后湖集', location: '玄武湖', coord: [118.796, 32.078], excerpt: '关于玄武湖的诗文集'}
-            ]
-        },
-        '梁公约': {
-            name: '梁公约',
-            intro: '学者',
-            works: [
-                {id: 79, title: '与祭钟山书院飨堂礼成有作', location: '钟山书院', coord: [118.8, 32.05], excerpt: '书院祭祀仪式的记录'}
-            ]
-        },
-        '邵祖平': {
-            name: '邵祖平',
-            intro: '诗人',
-            works: [
-                {id: 80, title: '开岁二日同人游扫叶楼', location: '扫叶楼', coord: [118.748, 32.065], excerpt: '新年游扫叶楼的诗作'}
-            ]
-        },
-        '叶玉森': {
-            name: '叶玉森',
-            intro: '学者、诗人',
-            works: [
-                {id: 81, title: '予病怔仲翼谋邀游鸡鸣寺归赋一诗并示步曾梦炎', location: '鸡鸣寺', coord: [118.798, 32.060], excerpt: '游鸡鸣寺的感怀诗'}
-            ]
-        },
-        '李思纯': {
-            name: '李思纯',
-            intro: '诗人',
-            works: [
-                {id: 82, title: '思游诗', location: '南京', coord: [118.8, 32.05], excerpt: '南京游览题材的组诗'}
-            ]
-        },
-        '吴梅': {
-            name: '吴梅',
-            intro: '戏曲理论家',
-            works: [
-                {id: 83, title: '翠楼吟·秦淮遇京华故人', location: '秦淮河', coord: [118.792, 32.0107], excerpt: '秦淮河偶遇故人的词作'}
-            ]
-        },
-        '传统文学社团': {
-            name: '传统文学社团',
-            intro: '梅社、如社、白下诗社',
-            works: [
-                {id: 84, title: '社团创作', location: '南京', coord: [118.8, 32.05], excerpt: '传统文学社团集体创作'}
-            ]
-        },
-        '袁昌英': {
-            name: '袁昌英',
-            intro: '作家、学者',
-            works: [
-                {id: 85, title: '游新都后的感想', location: '南京', coord: [118.8, 32.05], excerpt: '游南京的感想随笔'},
-                {id: 86, title: '再游新都后的感想', location: '南京', coord: [118.8, 32.05], excerpt: '重游南京的散文'}
-            ]
-        },
-        '巴金': {
-            name: '巴金',
-            intro: '现代文学大师',
-            works: [
-                {id: 87, title: '从南京回上海', location: '南京', coord: [118.8, 32.05], excerpt: '记录南京旅程的散文'}
-            ]
-        },
-        '曹聚仁': {
-            name: '曹聚仁',
-            intro: '记者、作家',
-            works: [
-                {id: 88, title: '南京印象', location: '南京', coord: [118.8, 32.05], excerpt: '描写南京城市风貌的散文'}
-            ]
-        },
-        
-        '钟敬文': {
-            name: '钟敬文',
-            intro: '民俗学家、作家',
-            works: [
-                {id: 90, title: '金陵记游', location: '南京', coord: [118.8, 32.05], excerpt: '南京游记散文'}
-            ]
-        },
-        '陈大悲': {
-            name: '陈大悲',
-            intro: '剧作家、戏剧活动家',
-            works: [
-                {id: 91, title: '英雄与美人', location: '南京', coord: [118.8, 32.05], excerpt: '南京创作的英雄主义题材戏剧'},
-                {id: 92, title: '双解放', location: '南京', coord: [118.8, 32.05], excerpt: '反映社会解放的戏剧'},
-                {id: 93, title: '爱国贼', location: '南京', coord: [118.8, 32.05], excerpt: '讽刺伪爱国者的戏剧'},
-                {id: 94, title: '五三碧血', location: '南京', coord: [118.8, 32.05], excerpt: '纪念济南惨案的戏剧'},
-                {id: 95, title: '可怜的查别麟', location: '南京', coord: [118.8, 32.05], excerpt: '社会批判题材的戏剧'},
-                {id: 96, title: '真解放', location: '南京', coord: [118.8, 32.05], excerpt: '探讨妇女解放的戏剧'},
-                {id: 97, title: '红绿灯的威信', location: '南京', coord: [118.8, 32.05], excerpt: '城市交通题材的现代剧'},
-                {id: 98, title: '病夫', location: '南京', coord: [118.8, 32.05], excerpt: '国民性批判的戏剧'},
-                {id: 99, title: '西施', location: '南京', coord: [118.8, 32.05], excerpt: '历史题材的戏剧创作'}
-            ]
-        },
-        '吴祖光': {
-            name: '吴祖光',
-            intro: '剧作家、导演',
-            works: [
-                {id: 100, title: '凤凰城', location: '南京', coord: [118.8, 32.05], excerpt: '抗战题材的爱国戏剧'}
-            ]
-        },
-        '陈楚淮': {
-            name: '陈楚淮',
-            intro: '剧作家',
-            works: [
-                {id: 101, title: '金丝笼', location: '南京', coord: [118.8, 32.05], excerpt: '社会批判题材的戏剧'},
-                {id: 102, title: '药', location: '南京', coord: [118.8, 32.05], excerpt: '改编鲁迅作品的戏剧'},
-                {id: 103, title: '浦口之悲剧', location: '浦口', coord: [118.625, 32.058], excerpt: '以浦口为背景的悲剧作品'},
-                {id: 104, title: '骷髅的迷恋者', location: '南京', coord: [118.8, 32.05], excerpt: '心理题材的戏剧创作'},
-                {id: 105, title: '韦菲君', location: '南京', coord: [118.8, 32.05], excerpt: '女性题材的戏剧'},
-                {id: 106, title: '桐子落', location: '南京', coord: [118.8, 32.05], excerpt: '南京乡土题材的戏剧'}
-            ]
-        },
-        '集体创作': {
-            name: '集体创作',
-            intro: '活报剧创作团队',
-            works: [
-                {id: 107, title: '内战内行', location: '南京', coord: [118.8, 32.05], excerpt: '讽刺内战的活报剧'},
-                {id: 108, title: '社会贤达', location: '南京', coord: [118.8, 32.05], excerpt: '讽刺社会名流的活报剧'},
-                {id: 109, title: '他们为什么死去', location: '南京', coord: [118.8, 32.05], excerpt: '社会问题题材的活报剧'},
-                {id: 110, title: '耍猴记', location: '南京', coord: [118.8, 32.05], excerpt: '讽刺现实的活报剧'}
-            ]
-        },
-        '阿垅': {
-            name: '阿垅',
-            intro: '七月派诗人',
-            works: [
-                {id: 111, title: '南京血祭', location: '南京', coord: [118.8, 32.05], excerpt: '描写南京大屠杀的纪实文学'}
-            ]
-        },
-        '路翎': {
-            name: '路翎',
-            intro: '七月派小说家',
-            works: [
-                {id: 112, title: '财主底儿女们', location: '南京', coord: [118.8, 32.05], excerpt: '描写南京富商家族的长篇小说'}
-            ]
-        },
-        '张天翼': {
-            name: '张天翼',
-            intro: '讽刺小说家',
-            works: [
-                {id: 113, title: '谭九先生的工作', location: '南京', coord: [118.8, 32.05], excerpt: '讽刺知识分子的小说'},
-                {id: 114, title: '华威先生', location: '南京', coord: [118.8, 32.05], excerpt: '讽刺官僚的经典小说'},
-                {id: 115, title: '新生', location: '南京', coord: [118.8, 32.05], excerpt: '描写知识分子觉醒的小说'}
-            ]
-        },
-        '张恨水': {
-            name: '张恨水',
-            intro: '民国时期著名小说家',
-            works: [
-                {id: 116, title: '八十一梦', location: '南京', coord: [118.8, 32.05], excerpt: '抗战时期的讽刺小说'},
-                {id: 117, title: '石头城外', location: '石头城外', coord: [118.775, 32.008], excerpt: '以南京古城墙为背景的小说'},
-                {id: 118, title: '丹风街', location: '丹风街', coord: [118.788, 32.055], excerpt: '描写南京老城区市井生活'},
-                {id: 119, title: '热血之花', location: '南京', coord: [118.8, 32.05], excerpt: '抗战题材小说'},
-                {id: 120, title: '九月十八', location: '南京', coord: [118.8, 32.05], excerpt: '纪念九一八事变的小说'},
-                {id: 121, title: '大江东去', location: '南京', coord: [118.8, 32.05], excerpt: '以长江为背景的小说'},
-                {id: 122, title: '秦淮世家', location: '秦淮河', coord: [118.792, 32.0107], excerpt: '描写秦淮河畔人家的生活'},
-                {id: 123, title: '白门十记', location: '南京', coord: [118.8, 32.05], excerpt: '记录南京风土人情的散文集'},
-                {id: 124, title: '两都赋', location: '南京', coord: [118.8, 32.05], excerpt: '南京与北京的双城记'}
-            ]
-        },
-       
-        '张爱玲': {
-            name: '张爱玲',
-            intro: '现代文学大师',
-            works: [
-                {id: 129, title: '对照记', location: '南京', coord: [118.8, 32.05], excerpt: '含南京家族记忆的图文集'},
-                {id: 130, title: '私语', location: '南京', coord: [118.8, 32.05], excerpt: '含南京童年记忆的散文'},
-                {id: 131, title: '半生缘', location: '南京', coord: [118.8, 32.05], excerpt: '部分场景在南京的小说'},
-                {id: 132, title: '小团圆', location: '南京', coord: [118.8, 32.05], excerpt: '含南京家族背景的自传体小说'}
-            ]
-        },
-        '张资平': {
-            name: '张资平',
-            intro: '小说家',
-            works: [
-                {id: 133, title: '青鳞屑', location: '南京', coord: [118.8, 32.05], excerpt: '南京背景的小说'},
-                {id: 134, title: '新红A字', location: '南京', coord: [118.8, 32.05], excerpt: '情感题材的小说'}
-            ]
-        },
-        '无名氏': {
-            name: '无名氏',
-            intro: '神秘小说家',
-            works: [
-                {id: 135, title: '塔里的女人', location: '南京', coord: [118.8, 32.05], excerpt: '南京背景的爱情悲剧'},
-                {id: 136, title: '北极风情画', location: '南京', coord: [118.8, 32.05], excerpt: '南京知识分子的爱情故事'},
-                {id: 137, title: '一百万年以前', location: '南京', coord: [118.8, 32.05], excerpt: '科幻题材小说'},
-                {id: 138, title: '无名书', location: '南京', coord: [118.8, 32.05], excerpt: '哲理性长篇小说'}
-            ]
-        },
-        '臧克家': {
-            name: '臧克家',
-            intro: '现实主义诗人',
-            works: [
-                {id: 139, title: '生命的零度', location: '南京', coord: [118.8, 32.05], excerpt: '描写南京底层生活的诗歌'},
-                {id: 140, title: '警员向老百姓说', location: '南京', coord: [118.8, 32.05], excerpt: '讽刺当局的诗歌'},
-                {id: 141, title: '胜利风', location: '南京', coord: [118.8, 32.05], excerpt: '抗战胜利题材的诗歌'},
-                {id: 142, title: '谢谢了，国大代表们', location: '南京', coord: [118.8, 32.05], excerpt: '讽刺国民大会的诗歌'}
-            ]
-        },
-        '袁可嘉': {
-            name: '袁可嘉',
-            intro: '诗人、翻译家',
-            works: [
-                {id: 143, title: '死', location: '南京', coord: [118.8, 32.05], excerpt: '哲理抒情诗'},
-                {id: 144, title: '南京', location: '南京', coord: [118.8, 32.05], excerpt: '描写南京城市的诗歌'}
-            ]
-        },
-        '汪伪时期旧体诗词创作': {
-            name: '汪伪时期旧体诗词创作',
-            intro: '梁鸿志、李戡释、龙沐勋等',
-            works: [
-                {id: 145, title: '旧体诗词', location: '南京', coord: [118.8, 32.05], excerpt: '汪伪时期文人在南京创作的旧体诗词'}
-            ]
-        },
-        '报告文学': {
-            name: '报告文学',
-            intro: '集体创作',
-            works: [
-                {id: 146, title: '敌蹂躏下的南京', location: '南京', coord: [118.8, 32.05], excerpt: '南京大屠杀纪实文学'},
-                {id: 147, title: '敌军暴行记', location: '南京', coord: [118.8, 32.05], excerpt: '记录日军暴行的报告文学'},
-                {id: 148, title: '陷落后的南京', location: '南京', coord: [118.8, 32.05], excerpt: '南京沦陷时期的记录'},
-                {id: 149, title: '首都沦陷记', location: '南京', coord: [118.8, 32.05], excerpt: '南京作为沦陷首都的记录'},
-                {id: 150, title: '陷京三月记', location: '南京', coord: [118.8, 32.05], excerpt: '南京沦陷初期的纪实'},
-                {id: 151, title: '血泪话金陵', location: '南京', coord: [118.8, 32.05], excerpt: '南京大屠杀见证者口述'},
-                {id: 152, title: '陷京五月记', location: '南京', coord: [118.8, 32.05], excerpt: '南京沦陷五个月的记录'},
-                {id: 153, title: '陷都血泪录', location: '南京', coord: [118.8, 32.05], excerpt: '南京沦陷时期的血泪记录'},
-                {id: 154, title: '今日之南京', location: '南京', coord: [118.8, 32.05], excerpt: '沦陷时期南京现状报告'}
-            ]
-        },
-        '艾芜': {
-            name: '艾芜',
-            intro: '流浪派作家',
-            works: [
-                {id: 155, title: '沪杭路上', location: '南京', coord: [118.8, 32.05], excerpt: '途经南京的旅行笔记'}
-            ]
-        },
-        '范长江': {
-            name: '范长江',
-            intro: '新闻记者',
-            works: [
-                {id: 156, title: '感慨过金陵', location: '南京', coord: [118.8, 32.05], excerpt: '南京见闻的新闻报道'}
-            ]
-        },
-        '聂绀弩': {
-            name: '聂绀弩',
-            intro: '杂文家、诗人',
-            works: [
-                {id: 157, title: '怀南京', location: '南京', coord: [118.8, 32.05], excerpt: '怀念南京的散文'}
-            ]
-        },
-        '吴浊流': {
-            name: '吴浊流',
-            intro: '台湾作家',
-            works: [
-                {id: 158, title: '南京杂感', location: '南京', coord: [118.8, 32.05], excerpt: '南京旅行见闻杂记'}
-            ]
-        },
-        '王平陵': {
-            name: '王平陵',
-            intro: '作家',
-            works: [
-                {id: 159, title: '陵园明月夜', location: '中山陵', coord: [118.853, 32.062], excerpt: '描写中山陵夜景的散文'}
-            ]
-        },
-     
-        '黄裳': {
-            name: '黄裳',
-            intro: '散文家、藏书家',
-            works: [
-                {id: 162, title: '白门秋柳', location: '南京', coord: [118.8, 32.05], excerpt: '描写南京秋景的散文'}
-            ]
-        },
-        '郭沫若': {
-            name: '郭沫若',
-            intro: '文学家、历史学家',
-            works: [
-                {id: 163, title: '南京印象', location: '南京', coord: [118.8, 32.05], excerpt: '战后访问南京的纪实散文'}
-            ]
-        },
-
-        '首都模范戏剧研究会': {
-            name: '首都模范戏剧研究会',
-            intro: '南京戏剧演出团体',
-            works: [
-                {id: 164, title: '白马坡', location: '南京', coord: [118.8, 32.05], excerpt: '传统戏曲剧目排演'},
-                {id: 165, title: '铁公鸡', location: '南京', coord: [118.8, 32.05], excerpt: '清代历史剧排演'},
-                {id: 166, title: '吊金龟', location: '南京', coord: [118.8, 32.05], excerpt: '经典京剧排演'}
-            ]
-        },
-        '陈大悲': {
-            name: '陈大悲',
-            intro: '剧作家、戏剧活动家',
-            works: [
-                {id: 167, title: '花烛之后', location: '南京', coord: [118.8, 32.05], excerpt: '婚姻家庭题材的戏剧'}
-            ]
-        },
-        
-        '路翎': {
-            name: '路翎',
-            intro: '七月派小说家',
-            works: [
-                {id: 169, title: '云雀', location: '南京', coord: [118.8, 32.05], excerpt: '描写知识分子的戏剧作品'}
-            ]
-        },
-        '陆文夫': {
-        name: '陆文夫',
-        intro: '苏州作家，多部作品涉及南京',
+    '丁玲': {
+        name: '丁玲',
+        intro: '现代女作家',
         works: [
-            {id: 170, title: '葛师傅', location: '南京', coord: [118.8, 32.05], excerpt: '描写南京工匠生活的小说'},
-            {id: 171, title: '二遇周泰', location: '南京', coord: [118.8, 32.05], excerpt: '南京工人题材的小说'},
-            {id: 172, title: '修车记', location: '南京', coord: [118.8, 32.05], excerpt: '南京交通行业背景的小说'},
-            {id: 173, title: '棋高一着', location: '南京', coord: [118.8, 32.05], excerpt: '描写南京知识分子生活'},
-            {id: 174, title: '向师傅告别的晚上', location: '南京', coord: [118.8, 32.05], excerpt: '工厂师徒情谊的小说'},
-            {id: 175, title: '小巷深处', location: '南京', coord: [118.8, 32.05], excerpt: '南京巷弄生活题材小说'},
-            {id: 176, title: '平原的颂歌', location: '南京', coord: [118.8, 32.05], excerpt: '南京郊区农村题材作品'}
+            {
+                id: 58,
+                title: '意外集',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '在南京创作的短篇小说集',
+                nanjingDescription: '"南京的街头，梧桐叶落了又生，这座城市见证了多少意外的相遇与离别。我在鼓楼的公寓里写作，窗外是来来往往的人力车，车内坐着各式各样的人，每个都有自己的故事。"'
+            }
         ]
     },
-    '方之': {
-        name: '方之',
-        intro: '江苏作家',
+    '沈祖棻': {
+        name: '沈祖棻',
+        intro: '词人、学者',
         works: [
-            {id: 177, title: '兄弟团圆', location: '南京', coord: [118.8, 32.05], excerpt: '南京家庭伦理题材小说'},
-            {id: 178, title: '在泉边', location: '南京', coord: [118.8, 32.05], excerpt: '南京乡村生活题材'},
-            {id: 179, title: '浪头与石头', location: '南京', coord: [118.8, 32.05], excerpt: '社会变革题材小说'},
-            {id: 180, title: '杨妇道', location: '南京', coord: [118.8, 32.05], excerpt: '女性题材短篇小说'},
-            {id: 181, title: '岁交春', location: '南京', coord: [118.8, 32.05], excerpt: '新年题材的短篇'},
-            {id: 182, title: '看瓜人', location: '南京', coord: [118.8, 32.05], excerpt: '南京农村生活小说'},
-            {id: 183, title: '出山', location: '南京', coord: [118.8, 32.05], excerpt: '农村干部题材小说'}
+            {
+                id: 59,
+                title: '辩才禅师',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京佛教题材的创作',
+                nanjingDescription: '"鸡鸣寺的钟声悠扬，辩才禅师在此修行。春雨台城，秋月秦淮，禅师以佛法度化众生，金陵的山水都成了说法的道场。"'
+            },
+            {
+                id: 60,
+                title: '茂陵的雨夜',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '历史题材的文学作品',
+                nanjingDescription: '"南京的雨夜，让人想起历史的沧桑。茂陵虽在长安，但金陵的帝王陵寝同样笼罩在历史的迷雾中，雨打梧桐，更添几分凄凉。"'
+            }
         ]
     },
-    '高晓声': {
-        name: '高晓声',
-        intro: '乡土文学代表作家',
+    '赛珍珠': {
+        name: '赛珍珠',
+        intro: '诺贝尔文学奖得主，南京生活多年',
         works: [
-            {id: 184, title: '解约', location: '南京', coord: [118.8, 32.05], excerpt: '南京农村婚恋题材小说'},
-            {id: 185, title: '不幸', location: '南京', coord: [118.8, 32.05], excerpt: '描写农民命运的小说'},
-            {id: 186, title: '万尼亚舅舅', location: '南京', coord: [118.8, 32.05], excerpt: '契诃夫作品改编的戏剧'}
+            {
+                id: 61,
+                title: '也在中国',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '记录南京生活经历的散文',
+                nanjingDescription: '"我在南京生活多年，这座城市的每一个角落都让我着迷。从紫金山到玄武湖，从夫子庙到新街口，我见证了这座古都的现代化进程，也深深爱上了这里的文化和人民。"'
+            },
+            {
+                id: 62,
+                title: '美在中国',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '描写中国文化的散文',
+                nanjingDescription: '"南京的美，是一种深厚的历史美。明城墙的厚重，秦淮河的柔美，中山陵的庄严，夫子庙的热闹，这些元素共同构成了南京独特的城市美学。"'
+            },
+            {
+                id: 63,
+                title: '中国学生的思想状态',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '基于南京高校观察的随笔',
+                nanjingDescription: '"在金陵大学和中央大学，我看到了中国新一代知识分子的觉醒。他们在玄武湖畔讨论国家前途，在图书馆里汲取新知，南京的高校成为了新思想的摇篮。"'
+            },
+            {
+               id: 64,
+                title: '一位中国女子说',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '记录南京女性生活的作品',
+                nanjingDescription: '"南京的女性正在经历着前所未有的变化。从深闺走向学堂，从家庭走向社会，她们在秦淮河畔书写着自己的命运，展现了中国女性的坚韧与智慧。"'
+            }
         ]
     },
-    '黄清江': {
-        name: '黄清江',
-        intro: '作家',
+    '关露': {
+        name: '关露',
+        intro: '女诗人',
         works: [
-            {id: 187, title: '死亡', location: '南京', coord: [118.8, 32.05], excerpt: '生命题材的文学作品'}
+            {
+                id: 65,
+                title: '太平洋上的歌声',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '在南京创作的诗歌作品',
+                nanjingDescription: '"虽然题为太平洋，但这些诗歌大多诞生于南京的深夜。在秦淮河畔的小屋里，听着远处传来的歌声，我写下了对自由的向往和对和平的渴望。"'
+            }
         ]
     },
-    '白先勇': {
-        name: '白先勇',
-        intro: '台湾作家',
+    '吴奔星': {
+        name: '吴奔星',
+        intro: '诗人、学者',
         works: [
-            {id: 188, title: '一把青', location: '南京', coord: [118.8, 32.05], excerpt: '南京空军眷村题材小说'},
-            {id: 189, title: '游园惊梦', location: '南京', coord: [118.8, 32.05], excerpt: '南京历史变迁背景小说'},
-            {id: 190, title: '国葬', location: '南京', coord: [118.8, 32.05], excerpt: '民国将领葬礼题材小说'}
+            {
+                id: 66,
+                title: '晓望',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '描写南京晨景的诗歌',
+                nanjingDescription: '"清晨的南京，薄雾如纱。钟山在曙光中显现轮廓，玄武湖面泛起微波，秦淮河畔的柳枝轻摆，整个城市在晨曦中苏醒，充满了生机与希望。"'
+            },
+            {
+                id: 67,
+                title: '门里关着一个春天',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京生活题材的诗歌',
+                nanjingDescription: '"南京的深宅大院里，关着多少春天的梦想。青砖黛瓦间，玉兰花开又落，少女的心事如同院中的春花，美丽却无法触及外面的世界。"'
+            },
+            {
+                id: 68,
+                title: '保卫南京',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '抗战题材的爱国诗篇',
+                nanjingDescription: '"南京！南京！我们要用血肉之躯保卫你！紫金山作证，长江水为盟，誓与金陵共存亡！每一寸土地都浸透着先人的血汗，每一块城砖都铭刻着民族的光荣！"'
+            }
         ]
     },
-    '吴强': {
-        name: '吴强',
-        intro: '军旅作家',
+    '陈独秀': {
+        name: '陈独秀',
+        intro: '新文化运动领袖',
         works: [
-            {id: 191, title: '红日', location: '南京', coord: [118.8, 32.05], excerpt: '解放战争题材长篇小说'}
+            {
+                id: 69,
+                title: '金粉泪',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '在南京创作的诗歌作品',
+                nanjingDescription: '"六朝金粉地，满目尽疮痍。秦淮歌舞歇，台城柳絮悲。叹我神州陆沉，哀我同胞流离，金粉化成泪，洒向金陵堞。"'
+            }
         ]
     },
-    '艾煊': {
-        name: '艾煊',
-        intro: '作家',
-        works: [
-            {id: 192, title: '战斗在长江三角洲', location: '南京', coord: [118.8, 32.05], excerpt: '南京地区战斗纪实'},
-            {id: 193, title: '大江风雷', location: '南京', coord: [118.8, 32.05], excerpt: '长江流域革命历史小说'}
-        ]
-    },
-    '曾华': {
-        name: '曾华',
-        intro: '作家',
-        works: [
-            {id: 194, title: '菊影', location: '南京', coord: [118.8, 32.05], excerpt: '南京生活题材小说'},
-            {id: 195, title: '七朵红花', location: '南京', coord: [118.8, 32.05], excerpt: '革命题材小说'}
-        ]
-    },
-    '李冠武': {
-        name: '李冠武',
-        intro: '作家',
-        works: [
-            {id: 196, title: '风雨桃花洲', location: '南京', coord: [118.8, 32.05], excerpt: '南京乡村题材小说'}
-        ]
-    },
-    '啸平': {
-        name: '啸平',
-        intro: '军旅作家',
-        works: [
-            {id: 197, title: '马少清和他的连长', location: '南京', coord: [118.8, 32.05], excerpt: '部队生活题材小说'},
-            {id: 198, title: '恩情', location: '南京', coord: [118.8, 32.05], excerpt: '军民关系题材作品'}
-        ]
-    },
-    '朱定': {
-        name: '朱定',
-        intro: '作家',
-        works: [
-            {id: 199, title: '兄弟', location: '南京', coord: [118.8, 32.05], excerpt: '家庭伦理题材小说'}
-        ]
-    },
-    '胡石言': {
-        name: '胡石言',
-        intro: '军旅作家',
-        works: [
-            {id: 200, title: '柳堡的故事', location: '南京', coord: [118.8, 32.05], excerpt: '南京郊区背景的战争爱情故事'}
-        ]
-    },
-    '茹志鹃': {
-        name: '茹志鹃',
-        intro: '女作家',
-        works: [
-            {id: 201, title: '百合花', location: '南京', coord: [118.8, 32.05], excerpt: '战争背景下的人性描写'}
-        ]
-    },
-    '周而复': {
-        name: '周而复',
-        intro: '作家',
-        works: [
-            {id: 202, title: '上海的早晨', location: '南京', coord: [118.8, 32.05], excerpt: '部分场景涉及南京'}
-        ]
-    },
-    '蒋光炘': {
-        name: '蒋光炘',
-        intro: '作家',
-        works: [
-            {id: 203, title: '梅英', location: '南京', coord: [118.8, 32.05], excerpt: '南京生活题材小说'}
-        ]
-    },
-    '黎汝清': {
-        name: '黎汝清',
-        intro: '军旅作家',
-        works: [
-            {id: 204, title: '万山红遍', location: '南京', coord: [118.8, 32.05], excerpt: '革命历史题材长篇小说'}
-        ]
-    },
-    '赵瑞蕻': {
-        name: '赵瑞蕻',
-        intro: '诗人、翻译家',
-        works: [
-            {id: 205, title: '十月欢歌为庆——祝中华人民共和国成立作', location: '南京', coord: [118.8, 32.05], excerpt: '庆祝建国题材的诗歌'},
-            {id: 206, title: '红色的虎踞龙盘颂——为庆祝南京解放十五周年作', location: '南京', coord: [118.8, 32.05], excerpt: '南京解放纪念诗作'}
-        ]
-    },
-    '丁汉稼': {
-        name: '丁汉稼',
-        intro: '诗人',
-        works: [
-            {id: 207, title: '战歌啊!唱吧!唱吧!——南京解放十五周年而作', location: '南京', coord: [118.8, 32.05], excerpt: '南京解放纪念诗歌'}
-        ]
-    },
-    '鲍明路': {
-        name: '鲍明路',
-        intro: '诗人',
-        works: [
-            {id: 208, title: '太平门外', location: '太平门', coord: [118.820, 32.070], excerpt: '描写明城墙景色的诗作'}
-        ]
-    },
-    '忆明珠': {
-        name: '忆明珠',
-        intro: '诗人',
-        works: [
-            {id: 209, title: '苏可海斯蜜打', location: '南京', coord: [118.8, 32.05], excerpt: '异国情调的诗歌'}
-        ]
-    },
-    '王德安': {
-        name: '王德安',
-        intro: '工人诗人',
-        works: [
-            {id: 210, title: '工厂光圈', location: '南京', coord: [118.8, 32.05], excerpt: '描写工厂生活的诗歌'}
-        ]
-    },
-    '渠天流': {
-        name: '渠天流',
-        intro: '诗人',
-        works: [
-            {id: 211, title: '元月十一不寻常', location: '南京', coord: [118.8, 32.05], excerpt: '历史事件纪念诗'},
-            {id: 212, title: '时代的鼓手', location: '南京', coord: [118.8, 32.05], excerpt: '歌颂劳动者的诗歌'}
-        ]
-    },
-    '朱光第': {
-        name: '朱光第',
-        intro: '工人作家',
-        works: [
-            {id: 213, title: '机械工人握住炼钢工人的手——参观钢厂小记', location: '南京', coord: [118.8, 32.05], excerpt: '工业题材的散文'}
-        ]
-    },
-    '仇相彬': {
-        name: '仇相彬',
-        intro: '作家',
-        works: [
-            {id: 214, title: '铁水奔流在老虎山顶', location: '老虎山', coord: [118.800, 32.110], excerpt: '工业建设题材的诗歌'}
-        ]
-    },
-    '张正': {
-        name: '张正',
-        intro: '诗人',
-        works: [
-            {id: 215, title: '东方巨龙上九重', location: '南京', coord: [118.8, 32.05], excerpt: '时代赞歌题材的诗歌'}
-        ]
-    },
-    '吴白匋': {
-        name: '吴白匋',
-        intro: '学者、诗人',
-        works: [
-            {id: 216, title: '卜算子·读毛主席〈咏梅〉词有得', location: '南京', coord: [118.8, 32.05], excerpt: '学习毛主席诗词的感悟'}
-        ]
-    },
-    '程小青': {
-        name: '程小青',
-        intro: '侦探小说作家',
-        works: [
-            {id: 217, title: '雨花台吊烈士墓', location: '雨花台', coord: [118.778, 31.994], excerpt: '凭吊雨花台革命烈士的诗作'}
-        ]
-    },
-    '金启华': {
-        name: '金启华',
+    '王焕镳': {
+        name: '王焕镳',
         intro: '学者',
         works: [
-            {id: 218, title: '访十月人民公社', location: '南京', coord: [118.8, 32.05], excerpt: '农村访问记'}
+            {
+                id: 71,
+                title: '明孝陵志',
+                location: '明孝陵',
+                coord: [118.850, 32.058],
+                excerpt: '关于明孝陵的历史研究著作',
+                nanjingDescription: '"明孝陵依紫金山而建，神道蜿蜒，石象生肃穆。享殿虽毁，基址犹存，宝城巍然，明楼高耸。这座陵墓不仅埋葬着一位帝王，更承载着一个时代的记忆。"'
+            }
         ]
     },
-    '唐圭璋': {
-        name: '唐圭璋',
-        intro: '词学家',
+    '朱偰': {
+        name: '朱偰',
+        intro: '历史学家',
         works: [
-            {id: 219, title: '鹧鸪天·题鹧鸪赋笺释', location: '南京', coord: [118.8, 32.05], excerpt: '词学研究的作品'},
-            {id: 220, title: '采桑子·远游', location: '南京', coord: [118.8, 32.05], excerpt: '旅行题材的词作'},
-            {id: 221, title: '采桑子·庆祝建国十四周年', location: '南京', coord: [118.8, 32.05], excerpt: '国庆题材的词作'},
-            {id: 222, title: '减字木兰花·瞻仰梅园新村,怀念周总理', location: '梅园新村', coord: [118.804, 32.044], excerpt: '怀念周总理的词作'}
+            {
+                id: 72,
+                title: '金陵览古',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京历史地理研究著作',
+                nanjingDescription: '"余踏遍金陵山水，访尽六朝遗迹。从石头城到台城，从秦淮河到玄武湖，每一处都承载着深厚的历史积淀。这部著作是我对这座古都的深情告白。"'
+            },
+            {
+                id: 73,
+                title: '钟山行',
+                location: '钟山',
+                coord: [118.853, 32.062],
+                excerpt: '描写紫金山的游记',
+                nanjingDescription: '"钟山龙蟠，石城虎踞。登紫金山之巅，南望秦淮如带，北眺长江如练。中山陵庄严肃穆，明孝陵古朴沧桑，灵谷寺清幽静谧，一山尽揽金陵胜景。"'
+            }
         ]
     },
- 
-    '高加索': {
-        name: '高加索',
+    '林文英': {
+        name: '林文英',
+        intro: '文人',
+        works: [
+            {
+                id: 74,
+                title: '石头城',
+                location: '石头城',
+                coord: [118.750, 32.065],
+                excerpt: '咏叹南京古城遗址的诗作',
+                nanjingDescription: '"鬼脸城下秦淮水，石头城上月如钩。千年城墙斑驳处，多少兴亡付东流。唯有长江依旧在，浪花淘尽英雄愁。"'
+            },
+            {
+                id: 75,
+                title: '燕子矶与三台洞',
+                location: '燕子矶',
+                coord: [118.751, 32.148],
+                excerpt: '描写南京江景名胜的诗篇',
+                nanjingDescription: '"燕子矶头临长江，惊涛拍岸势磅礴。三台洞内探幽奇，石刻琳琅韵味长。金陵美景此最殊，江山如画入诗行。"'
+            }
+        ]
+    },
+    '朱氏家族': {
+        name: '朱氏家族',
+        intro: '文学家族',
+        works: [
+            {
+                id: 76,
+                title: '金陵百咏',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '歌咏南京风物的组诗',
+                nanjingDescription: '"朱氏三代，吟咏不绝。从秦淮灯影到钟山晴雪，从玄武荷花到栖霞红叶，从台城柳色到石头城月，百首诗篇写尽金陵四季美景，堪称南京的诗歌地图。"'
+            }
+        ]
+    },
+    '汪辟疆': {
+        name: '汪辟疆',
+        intro: '学者、诗人',
+        works: [
+            {
+                id: 77,
+                title: '江行望钟山',
+                location: '钟山',
+                coord: [118.853, 32.062],
+                excerpt: '描写紫金山的诗作',
+                nanjingDescription: '"长江舟中望钟山，紫气东来云雾间。六代繁华今何在，唯见青山依旧颜。"'
+            },
+            {
+                id: 78,
+                title: '后湖集',
+                location: '玄武湖',
+                coord: [118.796, 32.078],
+                excerpt: '关于玄武湖的诗文集',
+                nanjingDescription: '"玄武湖，古称后湖，五洲星罗，风景如画。春赏樱洲花雨，夏观菱荷飘香，秋看梁洲菊黄，冬望翠洲雪霁。四时美景，尽入诗囊。"'
+            }
+        ]
+    },
+    '梁公约': {
+        name: '梁公约',
+        intro: '学者',
+        works: [
+            {
+                id: 79,
+                title: '与祭钟山书院飨堂礼成有作',
+                location: '钟山书院',
+                coord: [118.8, 32.05],
+                excerpt: '书院祭祀仪式的记录',
+                nanjingDescription: '"钟山书院，文脉绵长。飨堂祭祀，肃穆庄严。师生共祭先师，香烟袅袅中，仿佛可见历代学人身影，听见朗朗书声回荡。"'
+            }
+        ]
+    },
+    '邵祖平': {
+        name: '邵祖平',
         intro: '诗人',
         works: [
-            {id: 224, title: '江南谣', location: '南京', coord: [118.8, 32.05], excerpt: '江南风情的诗歌'}
+            {
+                id: 80,
+                title: '开岁二日同人游扫叶楼',
+                location: '扫叶楼',
+                coord: [118.748, 32.065],
+                excerpt: '新年游扫叶楼的诗作',
+                nanjingDescription: '"新年伊始，与友同游扫叶楼。登楼远眺，长江如练，金陵城郭尽收眼底。凭吊龚贤遗迹，感叹世事变迁，唯有艺术永恒。"'
+            }
         ]
     },
-    '张贤亮': {
-        name: '张贤亮',
-        intro: '作家',
+    '叶玉森': {
+        name: '叶玉森',
+        intro: '学者、诗人',
         works: [
-            {id: 225, title: '大风歌', location: '南京', coord: [118.8, 32.05], excerpt: '历史题材的诗歌'}
+            {
+                id: 81,
+                title: '予病怔仲翼谋邀游鸡鸣寺归赋一诗并示步曾梦炎',
+                location: '鸡鸣寺',
+                coord: [118.798, 32.060],
+                excerpt: '游鸡鸣寺的感怀诗',
+                nanjingDescription: '"病中得友邀，同登鸡鸣寺。豁蒙楼上望，玄武碧波荡。台城柳色新，钟山云雾绕。病躯顿觉轻，诗情满金陵。"'
+            }
         ]
     },
-    '余光中': {
-        name: '余光中',
-        intro: '台湾诗人',
+    '李思纯': {
+        name: '李思纯',
+        intro: '诗人',
         works: [
-            {id: 226, title: '乡愁', location: '南京', coord: [118.8, 32.05], excerpt: '思念故土的经典诗歌'},
-            {id: 227, title: '春天，遂想起', location: '南京', coord: [118.8, 32.05], excerpt: '怀念江南的诗歌'},
-            {id: 228, title: '大江东去', location: '南京', coord: [118.8, 32.05], excerpt: '长江题材的诗歌'}
+            {
+                id: 82,
+                title: '思游诗',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京游览题材的组诗',
+                nanjingDescription: '"金陵胜迹遍寻游，第一秦淮泛舟游。第二钟山登临游，第三玄武荷荡游。第四栖霞红叶游，第五莫愁烟雨游。六朝金粉地，美景不胜收。"'
+            }
         ]
     },
-    '曾如清': {
-        name: '曾如清',
-        intro: '军事作家',
+    '吴梅': {
+        name: '吴梅',
+        intro: '戏曲理论家',
         works: [
-            {id: 229, title: '追歼黄伯韬兵团六十三军', location: '南京', coord: [118.8, 32.05], excerpt: '解放战争题材的报告文学'}
+            {
+                id: 83,
+                title: '翠楼吟·秦淮遇京华故人',
+                location: '秦淮河',
+                coord: [118.792, 32.0107],
+                excerpt: '秦淮河偶遇故人的词作',
+                nanjingDescription: '"秦淮夜泊，忽遇故人，惊喜交集。画舫灯红，笙歌阵阵，恍如隔世。忆昔京同游，今朝金陵重逢，世事变迁，唯有友情如旧。"'
+            }
         ]
     },
-    '夏阳': {
-        name: '夏阳',
-        intro: '作家',
+    '传统文学社团': {
+        name: '传统文学社团',
+        intro: '梅社、如社、白下诗社',
         works: [
-            {id: 230, title: '南京,换了人间', location: '南京', coord: [118.8, 32.05], excerpt: '描写南京变迁的散文'}
+            {
+                id: 84,
+                title: '社团创作',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '传统文学社团集体创作',
+                nanjingDescription: '"梅社赏梅雨花台，如社吟诗扫叶楼。白下诗社聚秦淮，文人雅士竞风流。诗词歌赋咏金陵，书画琴棋伴美酒。六朝文脉永流传，金陵风雅冠九州。"'
+            }
         ]
     },
-    '魏毓庆': {
-        name: '魏毓庆',
-        intro: '女作家',
+    '袁昌英': {
+        name: '袁昌英',
+        intro: '作家、学者',
         works: [
-            {id: 231, title: '雨花台抒情——问苍茫大地,谁主沉浮?', location: '雨花台', coord: [118.778, 31.994], excerpt: '雨花台感怀的散文'},
-            {id: 232, title: '秋夜', location: '南京', coord: [118.8, 32.05], excerpt: '南京秋夜题材的散文'}
+            {
+                id: 85,
+                title: '游新都后的感想',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '游南京的感想随笔',
+                nanjingDescription: '"新都南京，气象万千。中山大道宽阔整洁，新街口繁华热闹，秦淮河畔古韵犹存。这座古老而又年轻的城市，正以崭新的面貌迎接新时代。"'
+            },
+            {
+                id: 86,
+                title: '再游新都后的感想',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '重游南京的散文',
+                nanjingDescription: '"重游金陵，感触更深。明城墙巍然屹立，玄武湖波光粼粼，夫子庙人声鼎沸。这座城市既有历史的厚重，又有现代的活力，令人流连忘返。"'
+            }
         ]
     },
-    '袁飞': {
-        name: '袁飞',
-        intro: '作家',
+    '巴金': {
+        name: '巴金',
+        intro: '现代文学大师',
         works: [
-            {id: 233, title: '苦难的童年', location: '南京', coord: [118.8, 32.05], excerpt: '回忆南京童年生活的散文'}
+            {
+                id: 87,
+                title: '从南京回上海',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '记录南京旅程的散文',
+                nanjingDescription: '"在南京的数日，参观了中山陵、明孝陵，游览了玄武湖、秦淮河。这座历史名城给我留下了深刻印象，尤其是那些承载着民族记忆的历史遗迹。"'
+            }
         ]
     },
-    '啸平': {
-        name: '啸平',
-        intro: '军旅作家',
+    '曹聚仁': {
+        name: '曹聚仁',
+        intro: '记者、作家',
         works: [
-            {id: 234, title: '两个功臣', location: '南京', coord: [118.8, 32.05], excerpt: '部队生活题材小说'},
-            {id: 235, title: '初升的太阳', location: '南京', coord: [118.8, 32.05], excerpt: '建设题材的文学作品'},
-            {id: 236, title: '钢铁英雄传', location: '南京', coord: [118.8, 32.05], excerpt: '工业建设题材作品'},
-            {id: 237, title: '在飞跃的时代里', location: '南京', coord: [118.8, 32.05], excerpt: '时代变革题材作品'}
+            {
+                id: 88,
+                title: '南京印象',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '描写南京城市风貌的散文',
+                nanjingDescription: '"南京城依山傍水，龙蟠虎踞。新街口车水马龙，夫子庙商贾云集，颐和路梧桐成荫，玄武湖烟波浩渺。这座首都城市既有帝王之气，又有市井之趣。"'
+            }
         ]
     },
-   
-    '叶圣陶': {
-        name: '叶圣陶',
-        intro: '教育家、作家',
+    '钟敬文': {
+        name: '钟敬文',
+        intro: '民俗学家、作家',
         works: [
-            {id: 240, title: '游了三个湖', location: '南京', coord: [118.8, 32.05], excerpt: '南京湖泊游记散文'}
+            {
+                id: 90,
+                title: '金陵记游',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京游记散文',
+                nanjingDescription: '"漫步金陵街头，探寻民俗风情。夫子庙的庙会，秦淮河的花灯，老门东的小吃，评事街的手艺。这些民间文化正是南京这座古都的灵魂所在。"'
+            }
         ]
     },
-    '沈蔚德': {
-        name: '沈蔚德',
-        intro: '女作家',
+    '陈大悲': {
+        name: '陈大悲',
+        intro: '剧作家、戏剧活动家',
         works: [
-            {id: 241, title: '庐山小品', location: '南京', coord: [118.8, 32.05], excerpt: '旅行题材的散文'}
+            {
+                id: 91,
+                title: '英雄与美人',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京创作的英雄主义题材戏剧',
+                nanjingDescription: '"在南京的舞台上，英雄慷慨悲歌，美人柔情似水。紫金山下演绎着家国情怀，秦淮河畔诉说着儿女情长，这是一部充满金陵特色的英雄史诗。"'
+            },
+            {
+                id: 92,
+                title: '双解放',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '反映社会解放的戏剧',
+                nanjingDescription: '"南京的新女性走出闺阁，追求自由解放。她们在玄武湖畔集会，在夫子庙前演讲，用实际行动争取男女平等和社会进步。"'
+            },
+            {
+                id: 93,
+                title: '爱国贼',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '讽刺伪爱国者的戏剧',
+                nanjingDescription: '"南京官场上，一些人口口声声爱国，实则投机钻营。新街口的办公楼里，秦淮河的酒桌上，到处是这些道貌岸然的爱国贼。'
+            },
+            {
+                id: 94,
+                title: '五三碧血',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '纪念济南惨案的戏剧',
+                nanjingDescription: '"五三惨案，国耻难忘。南京的学子们走上街头，在鼓楼广场集会抗议，在中山路游行示威，用青春的热血唤醒民族的觉醒。"'
+            },
+            {
+                id: 95,
+                title: '可怜的查别麟',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '社会批判题材的戏剧',
+                nanjingDescription: '"一个外国人在南京的遭遇，折射出当时中国社会的种种问题。从下关码头到新街口，从秦淮河到紫金山，他的经历展现了南京的多元面貌。"'
+            },
+            {
+                id: 96,
+                title: '真解放',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '探讨妇女解放的戏剧',
+                nanjingDescription: '"金陵女子大学的学生们讨论着什么是真正的解放。是走出家庭？是获得教育？还是参与政治？这场讨论在南京的知识界引起了广泛反响。"'
+            },
+            {
+                id: 97,
+                title: '红绿灯的威信',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '城市交通题材的现代剧',
+                nanjingDescription: '"南京街头出现了红绿灯，但人们还不习惯遵守交通规则。新街口路口，车马混杂，人车争道，上演着一出现代都市的喜剧。"'
+            },
+            {
+                id: 98,
+                title: '病夫',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '国民性批判的戏剧',
+                nanjingDescription: '"一个病弱的南京文人，整天沉溺于秦淮河的声色之中，不思进取。这部戏剧通过他的形象，判了当时部分知识分子的消极颓废。"'
+            },
+            {
+                id: 99,
+                title: '西施',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '历史题材的戏剧创作',
+                nanjingDescription: '"西施的故事在南京的舞台上重现。秦淮河化作若耶溪，紫金山变成会稽山，这座六朝古都为这个历史传说提供了完美的背景。"'
+            }
         ]
     },
-    '杨苡': {
-        name: '杨苡',
-        intro: '翻译家、作家',
+    '吴祖光': {
+        name: '吴祖光',
+        intro: '剧作家、导演',
         works: [
-            {id: 242, title: '秋行散记', location: '南京', coord: [118.8, 32.05], excerpt: '南京秋天题材的散文'}
+            {
+                id: 100,
+                title: '凤凰城',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '抗战题材的爱国戏剧',
+                nanjingDescription: '"凤凰城喻指南京，这部戏剧以抗战为背景，展现了南京军民同仇敌忾、保卫家园的英勇事迹。剧中场景涉及中山门、中华路等南京地标。"'
+            }
         ]
     },
-    '锦路': {
-        name: '锦路',
-        intro: '工人作家',
+    '陈楚淮': {
+        name: '陈楚淮',
+        intro: '剧作家',
         works: [
-            {id: 243, title: '红旗号轧钢机', location: '南京', coord: [118.8, 32.05], excerpt: '工业题材的报告文学'}
+            {
+                id: 101,
+                title: '金丝笼',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '社会批判题材的戏剧',
+                nanjingDescription: '"以南京富贵人家的深宅大院为背景，通过一个家族的兴衰，揭露封建家庭的种种弊端。剧中的金陵富商家族犹如生活在金丝笼中。"'
+            },
+            {
+                id: 102,
+                title: '药',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '改编鲁迅作品的戏剧',
+                nanjingDescription: '"将鲁迅的《药》改编成话剧，背景放在民国时期的南京。剧中展现了南京老城南的市井生活，以及当时社会的愚昧与黑暗。"'
+            },
+            {
+                id: 103,
+                title: '浦口之悲剧',
+                location: '浦口',
+                coord: [118.625, 32.058],
+                excerpt: '以浦口为背景的悲剧作品',
+                nanjingDescription: '"浦口火车站，长江轮渡码头，这里上演着无数悲欢离合。该剧以浦口为背景，讲述了一个发生在长江边的爱情悲剧。"'
+            },
+            {
+                id: 104,
+                title: '骷髅的迷恋者',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '心理题材的戏剧创作',
+                nanjingDescription: '"一个南京的文物收藏家，对古代骷髅产生了病态的迷恋。这部剧通过这个极端案例，探讨了人性的阴暗面和心理的复杂性。"'
+            },
+            {
+                id: 105,
+                title: '韦菲君',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '女性题材的戏剧',
+                nanjingDescription: '"韦菲君是金陵女子大学的学生，她勇敢地追求爱情和自由，却遭遇了种种阻碍。这部剧反映了民国时期南京新女性的处境。"'
+            },
+            {
+                id: 106,
+                title: '桐子落',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京乡土题材的戏剧',
+                nanjingDescription: '"以南京郊区农村为背景，通过一个家族的变迁，展现了乡土社会的风貌。剧中的桐子树、稻田、农舍等场景极具南京地方特色。"'
+            }
         ]
     },
-    '陆九如': {
-        name: '陆九如',
-        intro: '作家',
+    '集体创作': {
+        name: '集体创作',
+        intro: '活报剧创作团队',
         works: [
-            {id: 244, title: '又是一个早晨', location: '南京', coord: [118.8, 32.05], excerpt: '日常生活题材的散文'}
+            {
+                id: 107,
+                title: '内战内行',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '讽刺内战的活报剧',
+                nanjingDescription: '"在南京的街头巷尾演出，讽刺那些热衷于内战的政客。剧中场景包括新街口、夫子庙等南京地标，语言生动活泼，深受市民欢迎。"'
+            },
+            {
+                id: 108,
+                title: '社会贤达',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '讽刺社会名流的活报剧',
+                nanjingDescription: '"通过夸张的表演，讽刺那些自称社会贤达实则道貌岸然的人物。剧中展现了南京上流社会的虚伪和腐败。"'
+            },
+            {
+                id: 109,
+                title: '他们为什么死去',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '社会问题题材的活报剧',
+                nanjingDescription: '"以南京的社会问题为背景，揭露底层人民的苦难。剧中场景包括下关码头、评事街贫民区等，真实反映了当时的社会现实。"'
+            },
+            {
+                id: 110,
+                title: '耍猴记',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '讽刺现实的活报剧',
+                nanjingDescription: '"通过耍猴人的表演，隐喻当时的社会现状。在夫子庙广场演出，吸引了大量观众，用幽默的方式表达了严肃的社会批判。"'
+            }
         ]
     },
-    '陆文夫': {
-        name: '陆文夫',
-        intro: '苏州作家',
+    '阿垅': {
+        name: '阿垅',
+        intro: '七月派诗人',
         works: [
-            {id: 245, title: '通考古今编新书', location: '南京', coord: [118.8, 32.05], excerpt: '文化研究文章'}
-        ]
-    },
-  
-    '吴盛': {
-        name: '吴盛',
-        intro: '作家',
-        works: [
-            {id: 247, title: '请准谈风月', location: '南京', coord: [118.8, 32.05], excerpt: '文学评论文章'},
-            {id: 248, title: '雨花', location: '南京', coord: [118.8, 32.05], excerpt: '文艺评论'}
-        ]
-    },
-    '刘金': {
-        name: '刘金',
-        intro: '文学评论家',
-        works: [
-            {id: 249, title: '赞美吧,但不要粉饰!', location: '南京', coord: [118.8, 32.05], excerpt: '文学批评文章'}
-        ]
-    },
-    '以铮': {
-        name: '以铮',
-        intro: '评论家',
-        works: [
-            {id: 250, title: '论"费厄泼赖"可以施行', location: '南京', coord: [118.8, 32.05], excerpt: '文艺政策评论'}
-        ]
-    },
-    '南京工人写作组': {
-        name: '南京工人写作组',
-        intro: '工人作家集体',
-        works: [
-            {id: 251, title: '南京长江大桥', location: '南京长江大桥', coord: [118.744, 32.115], excerpt: '歌颂南京长江大桥的报告文学'}
+            {
+                id: 111,
+                title: '南京血祭',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '描写南京大屠杀的纪实文学',
+                nanjingDescription: '"长江水赤，秦淮泣血。三十万冤魂在南京上空哀嚎。这部作品真实记录了南京大屠杀的惨状，是血泪的控诉，更是民族的悲歌。"'
+            }
         ]
     },
     '路翎': {
         name: '路翎',
         intro: '七月派小说家',
         works: [
-            {id: 252, title: '人民万岁', location: '南京', coord: [118.8, 32.05], excerpt: '戏剧作品'}
+            {
+                id: 112,
+                title: '财主底儿女们',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '描写南京富商家族的长篇小说',
+                nanjingDescription: '"以南京一个富豪家族的兴衰为线索，展现了从清末到民国时期的社会变迁。故事发生在秦淮河畔的深宅大院里，充满了金陵特色。"'
+            }
+        ]
+    },
+    '张天翼': {
+        name: '张天翼',
+        intro: '讽刺小说家',
+        works: [
+            {
+                id: 113,
+                title: '谭九先生的工作',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '讽刺知识分子的小说',
+                nanjingDescription: '"谭九先生在南京的政府机关里当小职员，整天忙于无聊的文书工作。这部小说通过他的经历，讽刺了官僚机构的低效和知识分子的无奈。"'
+            },
+            {
+                id: 114,
+                title: '华威先生',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '讽刺官僚的经典小说',
+                nanjingDescription: '"华威先生整天忙于开会、演讲，实际上什么事都不干。这个形象生动地讽刺了当时南京官场上的某些官僚作风。"'
+            },
+            {
+                id: 115,
+                title: '新生',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt:'描写知识分子觉醒的小说',
+                nanjingDescription: '"一个南京的知识分子，从迷茫到觉醒，最终找到了人生的方向。故事发生在玄武湖畔、鸡鸣寺下，充满了南京的文化气息。"'
+            }
+        ]
+    },
+    '张恨水': {
+        name: '张恨水',
+        intro: '民国时期著名小说家',
+        works: [
+            {
+                id: 116,
+                title: '八十一梦',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '抗战时期的讽刺小说',
+                nanjingDescription: '"以梦幻的形式，讽刺抗战时期重庆的社会现象。虽然背景在重庆，但其中多有对南京的回忆和怀念，充满了乡愁。"'
+            },
+            {
+                id: 117,
+                title: '石头城外',
+                location: '石头城外',
+                coord: [118.775, 32.008],
+                excerpt: '以南京古城墙为背景的小说',
+                nanjingDescription: '"石头城外，秦淮河畔，发生着悲欢离合的故事。这部小说以南京明城墙为背景，展现了民国时期南京的城市风貌和人民生活。"'
+            },
+            {
+                id: 118,
+                title: '丹风街',
+                location: '丹风街',
+                coord: [118.788, 32.055],
+                excerpt: '描写南京老城区市井生活',
+                nanjingDescription: '"丹风街是南京老城南的一条小街，这里住着各式各样的小人物。通过他们的日常生活，展现了南京的市井文化和风土人情。"'
+            },
+            {
+                id: 119,
+                title: '热血之花',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '抗战题材小说',
+                nanjingDescription: '"以抗战时期的南京为背景，描写了一群热血青年的爱国故事。从新街口到鼓楼，从玄武门到中华门，展现了南京军民的抗战精神。"'
+            },
+            {
+                id: 120,
+                title: '九月十八',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '纪念九一八事变的小说',
+                nanjingDescription: '"九一八事变后，南京各界积极响应，抗日情绪高涨。这部小说记录了那个特殊时期南京的社会氛围和民众的爱国热情。"'
+            },
+            {
+                id: 121,
+                title: '大江东去',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '以长江为背景的小说',
+                nanjingDescription: '"长江流过南京，见证了多少历史变迁。这部小说以长江为背景，讲述了发生在南京江边的故事，充满了江河文化的韵味。"'
+            },
+            {
+                id: 122,
+                title: '秦淮世家',
+                location: '秦淮河',
+                coord: [118.792, 32.0107],
+                excerpt: '描写秦淮河畔人家的生活',
+                nanjingDescription: '"秦淮河畔，夫子庙旁，住着一个传统的南京家族。通过这个家族的兴衰，展现了南京的历史变迁和文化传承。"'
+            },
+            {
+                id: 123,
+                title: '白门十记',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '记录南京风土人情的散文集',
+                nanjingDescription: '"白门是南京的别称，这十篇散文记录了南京的风景名胜、民俗风情、市井生活等，是了解老南京的珍贵资料。"'
+            },
+            {
+                id: 124,
+                title: '两都赋',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京与北京的双城记',
+                nanjingDescription: '"比较南京和北京两座古都的风貌和文化。南京的婉约与北京的豪放，江南的柔美与北方的粗犷，形成有趣的对比。"'
+            }
+        ]
+    },
+    '张爱玲': {
+        name: '张爱玲',
+        intro: '现代文学大师',
+        works: [
+            {
+                id: 129,
+                title: '对照记',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '含南京家族记忆的图文集',
+                nanjingDescription: '"书中多有对南京家族的回忆，特别是外祖父家的事情。虽然张爱玲本人很少在南京生活，但通过家族记忆，与这座城市有着深厚的联系。"'
+            },
+            {
+                id: 130,
+                title: '私语',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '含南京童年记忆的散文',
+                nanjingDescription: '"在散文中提到小时候在南京的一些经历，虽然模糊，但留下了深刻的印象。这些记忆成为她创作的重要素材。"'
+            },
+            {
+                id: 131,
+                title: '半生缘',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '部分场景在南京的小说',
+                nanjingDescription: '"故事中有些场景发生在南京，虽然着墨不多，但通过细节描写，展现了民国时期南京的城市风貌和社会氛围。"'
+            },
+            {
+                id: 132,
+                title: '小团圆',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '含南京家族背景的自传体小说',
+                nanjingDescription: '"虽然主要故事发生在上海，但主人公的家族背景与南京密切相关，特别是母亲那边的亲戚多在南京，这些关系影响着故事的发展。"'
+            }
+        ]
+    },
+    '张资平': {
+        name: '张资平',
+        intro: '小说家',
+        works: [
+            {
+                id: 133,
+                title: '青鳞屑',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京背景的小说',
+                nanjingDescription: '"以民国时期的南京为背景，描写了一段凄美的爱情故事。秦淮河的画舫、玄武湖的荷花、紫金山的云雾，都为故事增添了浪漫色彩。"'
+            },
+            {
+                id: 134,
+                title: '新红A字',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '情感题材的小说',
+                nanjingDescription: '"虽然不完全是南京背景，但其中有些场景发生在南京，展现了当时南京的社会风貌和人们的情感生活。"'
+            }
+        ]
+    },
+    '无名氏': {
+        name: '无名氏',
+        intro: '神秘小说家',
+        works: [
+            {
+                id: 135,
+                title: '塔里的女人',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京背景的爱情悲剧',
+                nanjingDescription: '"故事发生在南京，以鸡鸣寺塔为重要场景。一段凄美的爱情故事，在六朝古都的背景下更显悲情和浪漫。"'
+            },
+            {
+                id: 136,
+                title: '北极风情画',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京知识分子的爱情故事',
+                nanjingDescription: '"虽然题目标榜北极，但故事实际上发生在南京，描写了南京知识分子的情感生活和精神追求。"'
+            },
+            {
+                id: 137,
+                title: '一百万年以前',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '科幻题材小说',
+                nanjingDescription: '"以南京为背景的科幻小说，想象百万年前的南京地貌和生物，与现实中的南京城市景观形成有趣的对比。"'
+            },
+            {
+                id: 138,
+                title: '无名书',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '哲理性长篇小说',
+                nanjingDescription: '"这部多卷本的长篇小说，虽然不完全是南京背景，但其中有些章节以南京为场景，探讨了生命、爱情、宗教等哲学问题。"'
+            }
+        ]
+    },
+    '臧克家': {
+        name: '臧克家',
+        intro: '现实主义诗人',
+        works: [
+            {
+                id: 139,
+                title: '生命的零度',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '描写南京底层生活的诗歌',
+                nanjingDescription: '"描写南京贫民窟的生活，寒冷的冬天，穷人们在死亡线上挣扎。诗歌真实反映了当时南京的社会现实和阶级矛盾。"'
+            },
+            {
+                id: 140,
+                title: '警员向老百姓说',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '讽刺当局的诗歌',
+                nanjingDescription: '"通过一个警察的口吻，讽刺当时南京政府的腐败和无能。诗歌生动形象，语言犀利，具有很强的批判性。"'
+            },
+            {
+                id: 141,
+                title: '胜利风',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '抗战胜利题材的诗歌',
+                nanjingDescription: '"抗战胜利后，南京街头一片欢腾。这首诗描写了南京市民庆祝胜利的场面，表达了人民的喜悦和对和平的向往。"'
+            },
+            {
+                id: 142,
+                title: '谢谢了，国大代表们',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '讽刺国民大会的诗歌',
+                nanjingDescription: '"讽刺国民大会的代表们只顾争权夺利，不关心民生疾苦。这首诗反映了当时南京政治生活的黑暗面。"'
+            }
+        ]
+    },
+    '袁可嘉': {
+        name: '袁可嘉',
+        intro: '诗人、翻译家',
+        works: [
+            {
+                id: 143,
+                title: '死',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '哲理抒情诗',
+                nanjingDescription: '"虽然不是专门描写南京，但诗中透露出对生命的思考，与南京这座历经沧桑的城市气质相契合。"'
+            },
+            {
+                id: 144,
+                title: '南京',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '描写南京城市的诗歌',
+                nanjingDescription: '"用现代诗的手法描写南京，将历史与现实交织，展现这座古都的独特魅力。诗中有对南京风景和文化的深情描绘。"'
+            }
+        ]
+    },
+    '汪伪时期旧体诗词创作': {
+        name: '汪伪时期旧体诗词创作',
+        intro: '梁鸿志、李戡释、龙沐勋等',
+        works: [
+            {
+                id: 145,
+                title: '旧体诗词',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '汪伪时期文人在南京创作的旧体诗词',
+                nanjingDescription: '"这些诗词多在《同声月刊》等刊物发表，内容多描写南京的风景名胜，但往往带有政治色彩，反映了那个特殊时期文人的复杂心态。"'
+            }
+        ]
+    },
+    '报告文学': {
+        name: '报告文学',
+        intro: '集体创作',
+        works: [
+            {
+                id: 146,
+                title: '敌蹂躏下的南京',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京大屠杀纪实文学',
+                nanjingDescription: '"详细记录了日军在南京的暴行，从城南到城北，从城内到郊区，到处都是屠杀和破坏的景象。这是最早记录南京大屠杀的作品之一。"'
+            },
+            {
+                id: 147,
+                title: '敌军暴行记',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '记录日军暴行的报告文学',
+                nanjingDescription: '"通过亲身经历和采访幸存者，记录了日军的种种暴行。从下关江边到中山门内，暴行遍布全城。"'
+            },
+            {
+                id: 148,
+                title: '陷落后的南京',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京沦陷时期的记录',
+                nanjingDescription: '"记录了南京沦陷后的社会状况，包括日军的统治政策、市民的生活状况、抵抗活动等，是研究那段历史的重要资料。"'
+            },
+            {
+                id: 149,
+                title: '首都沦陷记',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京作为沦陷首都的记录',
+                nanjingDescription: '"作为首都的南京沦陷，具有特殊的意义。这部作品记录了沦陷过程，以及作为沦陷区首都的特殊地位和处境。"'
+            },
+            {
+                id: 150,
+                title: '陷京三月记',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京沦陷初期的纪实',
+                nanjingDescription: '"记录了南京沦陷后最初三个月的情况，包括大屠杀、城市破坏、社会秩序崩溃等，是最早的纪实作品之一。"'
+            },
+            {
+                id: 151,
+                title: '血泪话金陵',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京大屠杀见证者口述',
+                nanjingDescription: '"通过采访幸存者，记录他们的经历和见证。这些血泪的控诉，是对历史的最好见证，也是对死难者的最好纪念。"'
+            },
+            {
+                id: 152,
+                title: '陷京五月记',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京沦陷五个月的记录',
+                nanjingDescription: '"记录了南京沦陷五个月来的变化，包括日军的统治策略、市民的生存状况、城市的逐渐恢复等，展现了沦陷区的真实面貌。"'
+            },
+            {
+                id: 153,
+                title: '陷都血泪录',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京沦陷时期的血泪记录',
+                nanjingDescription: '"用血泪写成的记录，详细描述了南京沦陷后的惨状。从屠杀到强奸，从抢劫到纵火，日军的暴行罄竹难书。"'
+            },
+            {
+                id: 154,
+                title: '今日之南京',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '沦陷时期南京现状报告',
+                nanjingDescription: '"记录了沦陷时期南京的社会状况，包括经济生活、文化教育、市政管理等方面，展现了日占区城市的特殊面貌。"'
+            }
+        ]
+    },
+    '艾芜': {
+        name: '艾芜',
+        intro: '流浪派作家',
+        works: [
+            {
+                id: 155,
+                title: '沪杭路上',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '途经南京的旅行笔记',
+                nanjingDescription: '"在从上海到杭州的旅途中，经过南京，对这座城市的印象。虽然只是匆匆一瞥，但南京的雄伟和繁华给他留下了深刻印象。"'
+            }
+        ]
+    },
+    '范长江': {
+        name: '范长江',
+        intro: '新闻记者',
+        works: [
+            {
+                id: 156,
+                title: '感慨过金陵',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京见闻的新闻报道',
+                nanjingDescription: '"作为记者，范长江多次到南京采访，对这座城市的政治、经济、文化等方面有深入的观察和报道，展现了民国时期南京的全貌。"'
+            }
+        ]
+    },
+    '聂绀弩': {
+        name: '聂绀弩',
+        intro: '杂文家、诗人',
+        works: [
+            {
+                id: 157,
+                title: '怀南京',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '怀念南京的散文',
+                nanjingDescription: '"离开南京后，对这座城市的深深怀念。散文中回忆了在南京的生活经历，表达了对这座古都的深厚感情。"'
+            } 
+            ]
+    },
+    '吴浊流': {
+        name: '吴浊流',
+        intro: '台湾作家',
+        works: [
+            {
+                id: 158,
+                title: '南京杂感',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京旅行见闻杂记',
+                nanjingDescription: '"作为台湾作家，访问南京后的感想。对比台湾和南京的文化差异，对南京的历史和文化有独特的观察和思考。"'
+            }
+        ]
+    },
+    '王平陵': {
+        name: '王平陵',
+        intro: '作家',
+        works: [
+            {
+                id: 159,
+                title: '陵园明月夜',
+                location: '中山陵',
+                coord: [118.853, 32.062],
+                excerpt: '描写中山陵夜景的散文',
+                nanjingDescription: '"月夜下的中山陵，庄严肃穆，银辉洒满石阶，松柏影影绰绰。这篇散文描写了中山陵的夜景，表达了对孙中山先生的崇敬之情。"'
+            }
+        ]
+    },
+    '黄裳': {
+        name: '黄裳',
+        intro: '散文家、藏书家',
+        works: [
+            {
+                id: 162,
+                title: '白门秋柳',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '描写南京秋景的散文',
+                nanjingDescription: '"白门是南京的别称，秋日的南京，柳叶泛黄，景色宜人。这篇散文描写了南京的秋景，充满了诗情画意。"'
+            }
+        ]
+    },
+    '郭沫若': {
+        name: '郭沫若',
+        intro: '文学家、历史学家',
+        works: [
+            {
+                id: 163,
+                title: '南京印象',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '战后访问南京的纪实散文',
+                nanjingDescription: '"抗战胜利后访问南京，对这座历经劫难的城市印象深刻。散文中既有对历史的追忆，也有对未来的展望。"'
+            }
+        ]
+    },
+    '首都模范戏剧研究会': {
+        name: '首都模范戏剧研究会',
+        intro: '南京戏剧演出团体',
+        works: [
+            {
+                id: 164,
+                title: '白马坡',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '传统戏曲剧目排演',
+                nanjingDescription: '"在南京的剧场演出传统京剧《白马坡》，吸引了大量观众。这部剧目的成功演出，推动了南京戏曲艺术的发展。"'
+            },
+            {
+                id: 165,
+                title: '铁公鸡',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '清代历史剧排演',
+                nanjingDescription: '"排演清代历史剧《铁公鸡》，在南京引起轰动。这部剧目以其精彩的武打和感人的故事，深受南京观众喜爱。"'
+            },
+            {
+                id: 166,
+                title: '吊金龟',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '经典京剧排演',
+                nanjingDescription: '"排演经典京剧《吊金龟》，展现了南京京剧艺术的高超水平。这部剧目在南京的演出，促进了京剧在江南的传播。"'
+            }
+        ]
+    },
+    '路翎': {
+        name: '路翎',
+        intro: '七月派小说家',
+        works: [
+            {
+                id: 169,
+                title: '云雀',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '描写知识分子的戏剧作品',
+                nanjingDescription: '"以南京知识分子为主人公，描写了他们的理想与现实的矛盾。剧中的场景多在鸡鸣寺、玄武湖等文化地标，充满了南京的文化气息。"'
+            }
+        ]
+    },
+    '陆文夫': {
+        name: '陆文夫',
+        intro: '苏州作家，多部作品涉及南京',
+        works: [
+            {
+                id: 170,
+                title: '葛师傅',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '描写南京工匠生活的小说',
+                nanjingDescription: '"葛师傅是南京的老工匠，手艺精湛，为人正直。通过他的故事，展现了南京手工业的优良传统和工匠精神。"'
+            },
+            {
+                id: 171,
+                title: '二遇周泰',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京工人题材的小说',
+                nanjingDescription: '"周泰是南京的普通工人，通过两次相遇，展现了他的变化和成长。这部小说反映了南京工人阶级的生活状况。"'
+            },
+            {
+                id: 172,
+                title: '修车记',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京交通行业背景的小说',
+                nanjingDescription: '"以南京的修车行业为背景，描写了修车工人的生活。通过修车这个窗口，展现了南京的城市风貌和社会变迁。"'
+            },
+            {
+                id: 173,
+                title: '棋高一着',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '描写南京知识分子生活',
+                nanjingDescription: '"以南京的知识分子为主人公，通过下棋这个活动，展现了他们的智慧和生活情趣。故事发生在南京的茶馆、公园等场所。"'
+            },
+            {
+                id: 174,
+                title: '向师傅告别的晚上',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '工厂师徒情谊的小说',
+                nanjingDescription: '"描写南京工厂里的师徒情谊，通过告别这个场景，展现了传统工匠精神的传承和现代工业发展的冲突。"'
+            },
+            {
+                id: 175,
+                title: '小巷深处',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京巷弄生活题材小说',
+                nanjingDescription: '"以南京的老巷弄为背景，描写了巷子里普通居民的生活。通过这些小人物的故事，展现了南京的市井文化和风土人情。"'
+            },
+            {
+                id: 176,
+                title: '平原的颂歌',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京郊区农村题材作品',
+                nanjingDescription: '"以南京郊区农村为背景，描写了农民的生活和劳动。通过他们的故事，展现了南京农村的风貌和变化。"'
+            }
+        ]
+    },
+    '方之': {
+        name: '方之',
+        intro: '江苏作家',
+        works: [
+            {
+                id: 177,
+                title: '兄弟团圆',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京家庭伦理题材小说',
+                nanjingDescription: '"以南京一个家庭为背景，描写了兄弟之间的情感纠葛。通过家庭故事，反映了南京的社会变迁和伦理观念的变化。"'
+            },
+            {
+                id: 178,
+                title: '在泉边',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京乡村生活题材',
+                nanjingDescription: '"以南京郊区的一个泉水边为背景，描写了农民的生活。通过这个小小的场景，展现了南京农村的风貌和农民的情感世界。"'
+            },
+            {
+                id: 179,
+                title: '浪头与石头',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '社会变革题材小说',
+                nanjingDescription: '"以南京为背景，描写了社会变革中的矛盾和冲突。浪头代表变革的力量，石头代表传统的阻力，两者在南京这个舞台上碰撞。"'
+            },
+            {
+                id: 180,
+                title: '杨妇道',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '女性题材短篇小说',
+                nanjingDescription: '"以南京的一个普通妇女为主人公，描写了她的生活和命运。通过她的故事，展现了南京女性的处境和抗争。"'
+            },
+            {
+                id: 181,
+                title: '岁交春',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '新年题材的诗篇',
+                nanjingDescription: '"以南京的新年为背景，描写了市民的过年习俗和情感。通过过年的故事，展现了南京的民俗文化和人们的生活情趣。"'
+            },
+            {
+                id: 182,
+                title: '看瓜人',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京农村生活小说',
+                nanjingDescription: '"以南京郊区的瓜田为背景，描写了看瓜人的生活。通过这个特殊职业，展现了南京农村的风貌和农民的生活智慧。"'
+            },
+            {
+                id: 183,
+                title: '出山',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '农村干部题材小说',
+                nanjingDescription: '"以南京郊区农村为背景，描写了农村干部的工作和生活。通过他们的故事，展现了南京农村的发展和变化。"'
+            }
+        ]
+    },
+    '高晓声': {
+        name: '高晓声',
+        intro: '乡土文学代表作家',
+        works: [
+            {
+                id: 184,
+                title: '解约',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京农村婚恋题材小说',
+                nanjingDescription: '"以南京郊区农村为背景，描写了一对年轻人的婚恋故事。通过解约这个事件，展现了农村婚恋观念的变化。"'
+            },
+            {
+                id: 185,
+                title: '不幸',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '描写农民命运的小说',
+                nanjingDescription: '"以南京农民为主人公，描写了他们的不幸遭遇。通过这些故事，展现了农村的贫困和农民的苦难。"'
+            },
+            {
+                id: 186,
+                title: '万尼亚舅舅',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '契诃夫作品改编的戏剧',
+                nanjingDescription: '"将契诃夫的《万尼亚舅舅》改编成话剧，在南京演出。虽然原作是俄国背景，但改编后融入了南京的地方特色。"'
+            }
+        ]
+    },
+    '黄清江': {
+        name: '黄清江',
+        intro: '作家',
+        works: [
+            {
+                id: 187,
+                title: '死亡',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '生命题材的文学作品',
+                nanjingDescription: '"以南京为背景，探讨生命和死亡的意义。虽然题材沉重，但通过南京这个历史悠久城市的背景，赋予了更深的文化内涵。"'
+            }
+        ]
+    },
+    '白先勇': {
+        name: '白先勇',
+        intro: '台湾作家',
+        works: [
+            {
+                id: 188,
+                title: '一把青',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京空军眷村题材小说',
+                nanjingDescription: '"以南京的空军眷村为背景，描写了空军家属的生活。通过女主人公的经历，展现了那个特殊时期的历史变迁和人生悲欢。"'
+            },
+            {
+                id: 189,
+                title: '游园惊梦',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京历史变迁背景小说',
+                nanjingDescription: '"虽然主要故事发生在台湾，但背景与南京密切相关，通过回忆和梦境，展现了南京的历史变迁和文化传承。"'
+            },
+            {
+                id: 190,
+                title: '国葬',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '民国将领葬礼题材小说',
+                nanjingDescription: '"以南京为背景，描写了一个民国将领的葬礼。通过这个葬礼，展现了民国时期南京的政治生态和社会风貌。"'
+            }
+        ]
+    },
+    '吴强': {
+        name: '吴强',
+        intro: '军旅作家',
+        works: [
+            {
+                id: 191,
+                title: '红日',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '解放战争题材长篇小说',
+                nanjingDescription: '"虽然主要描写山东战场的战斗，但与南京密切相关，因为最终的目标是解放南京。这部小说展现了解放南京的历史进程。"'
+            }
+        ]
+    },
+    '艾煊': {
+        name: '艾煊',
+        intro: '作家',
+        works: [
+            {
+                id: 192,
+                title: '战斗在长江三角洲',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京地区战斗纪实',
+                nanjingDescription: '"记录了在长江三角洲地区的战斗，特别是南京周边的战斗。通过这些战斗，展现了解放南京的艰难历程。"'
+            },
+            {
+                id: 193,
+                title: '大江风雷',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '长江流域革命历史小说',
+                nanjingDescription: '"以长江流域为背景，描写了革命历史故事。南京作为长江下游的重要城市，在小说中占有重要地位。"'
+            }
+        ]
+    },
+    '曾华': {
+        name: '曾华',
+        intro: '作家',
+        works: [
+            {
+                id: 194,
+                title: '菊影',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京生活题材小说',
+                nanjingDescription: '"以南京为背景，描写了一个女性的生活和情感。通过她的故事，展现了南京的城市风貌和人们的情感世界。"'
+            },
+            {
+                id: 195,
+                title: '七朵红花',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '革命题材小说',
+                nanjingDescription: '"以南京的革命历史为背景，描写了七个革命者的故事。通过这些故事，展现了南京的革命传统和斗争精神。"'
+            }
+        ]
+    },
+    '李冠武': {
+        name: '李冠武',
+        intro: '作家',
+        works: [
+            {
+                id: 196,
+                title: '风雨桃花洲',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京乡村题材小说',
+                nanjingDescription: '"以南京郊区的一个洲岛为背景，描写了农民的生活。通过风雨中的桃花洲，展现了南京农村的风貌和农民的坚韧精神。"'
+            }
+        ]
+    },
+    '啸平': {
+        name: '啸平',
+        intro: '军旅作家',
+        works: [
+            {
+                id: 197,
+                title: '马少清和他的连长',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '部队生活题材小说',
+                nanjingDescription: '"以南京的部队生活为背景，描写了士兵和连长之间的关系。通过部队故事，展现了军人的生活和情感。"'
+            },
+            {
+                id: 198,
+                title: '恩情',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '军民关系题材作品',
+                nanjingDescription: '"以南京为背景，描写了军民之间的深厚感情。通过感人的故事，展现了南京军民团结的传统。"'
+            }
+        ]
+    },
+    '朱定': {
+        name: '朱定',
+        intro: '作家',
+        works: [
+            {
+                id: 199,
+                title: '兄弟',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '家庭伦理题材小说',
+                nanjingDescription: '"以南京的一个家庭为背景，描写了兄弟之间的情感纠葛。通过家庭故事，反映了南京的社会变迁和伦理观念。"'
+            }
+        ]
+    },
+    '胡石言': {
+        name: '胡石言',
+        intro: '军旅作家',
+        works: [
+            {
+                id: 200,
+                title: '柳堡的故事',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京郊区背景的战争爱情故事',
+                nanjingDescription: '"虽然故事发生在苏北柳堡，但与南京密切相关，因为部队的最终目标是解放南京。这部小说展现了战争中的爱情和革命情怀。"'
+            }
+        ]
+    },
+    '茹志鹃': {
+        name: '茹志鹃',
+        intro: '女作家',
+        works: [
+            {
+                id: 201,
+                title: '百合花',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '战争背景下的人性描写',
+                nanjingDescription: '"故事虽以战争为背景，但人性的温暖如百合花般在南京这片土地上绽放。新媳妇的羞涩、小通讯兵的纯真，都在南京的乡村背景下显得格外动人。"'
+            }
+        ]
+    },
+    '周而复': {
+        name: '周而复',
+        intro: '作家',
+        works: [
+            {
+                id: 202,
+                title: '上海的早晨',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '部分场景涉及南京',
+                nanjingDescription: '"虽然主要描写上海，但其中不乏南京的场景。主人公往返沪宁两地，南京的长江路、新街口都成为故事的重要背景，展现了民国时期双城记的独特韵味。"'
+            }
+        ]
+    },
+    '蒋光炘': {
+        name: '蒋光炘',
+        intro: '作家',
+        works: [
+            {
+                id: 203,
+                title: '梅英',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京生活题材小说',
+                nanjingDescription: '"以南京普通女性梅英为主人公，描写她在秦淮河畔的生活。通过她的日常，展现了老南京的市井风情和普通人的悲欢离合。"'
+            }
+        ]
+    },
+    '黎汝清': {
+        name: '黎汝清',
+        intro: '军旅作家',
+        works: [
+            {
+                id: 204,
+                title: '万山红遍',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '革命历史题材长篇小说',
+                nanjingDescription: '"虽以井冈山斗争为背景，但南京作为国民党统治中心，在书中多次被提及。通过对比，展现了革命与反革命两个世界的鲜明对照。"'
+            }
+        ]
+    },
+    '赵瑞蕻': {
+        name: '赵瑞蕻',
+        intro: '诗人、翻译家',
+        works: [
+            {
+                id: 205,
+                title: '十月欢歌为庆——祝中华人民共和国成立作',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '庆祝建国题材的诗歌',
+                nanjingDescription: '"十月的南京，红旗招展，锣鼓喧天。诗中描写了新街口的庆祝场面，玄武湖的欢腾景象，表达了南京人民对新中国的无限热爱。"'
+            },
+            {
+                id: 206,
+                title: '红色的虎踞龙盘颂——为庆祝南京解放十五周年作',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京解放纪念诗作',
+                nanjingDescription: '"虎踞龙盘今胜昔，天翻地覆慨而慷。诗歌歌颂了南京解放十五年来翻天覆地的变化，从秦淮河到紫金山，处处焕发着社会主义的新气象。"'
+            }
+        ]
+    },
+    '丁汉稼': {
+        name: '丁汉稼',
+        intro: '诗人',
+        works: [
+            {
+                id: 207,
+                title: '战歌啊!唱吧!唱吧!——南京解放十五周年而作',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京解放纪念诗歌',
+                nanjingDescription: '"战歌嘹亮，响彻金陵上空。诗歌回顾了南京解放的历史时刻，描写了中山门进城式的壮观场面，歌颂了这座古都的新生。"'
+            }
+        ]
+    },
+    '鲍明路': {
+        name: '鲍明路',
+        intro: '诗人',
+        works: [
+            {
+                id: 208,
+                title: '太平门外',
+                location: '太平门',
+                coord: [118.820, 32.070],
+                excerpt: '描写明城墙景色的诗作',
+                nanjingDescription: '"太平门外，玄武湖畔，杨柳依依，碧波荡漾。诗歌描写了从太平门远眺紫金山的壮丽景色，抒发了对南京山水之美的赞叹。"'
+            }
+        ]
+    },
+    '忆明珠': {
+        name: '忆明珠',
+        intro: '诗人',
+        works: [
+            {
+                id: 209,
+                title: '苏可海斯蜜打',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '异国情调的诗歌',
+                nanjingDescription: '"虽然诗题具有异国情调，但诗中融入了南京的地方元素。将异域风情与金陵美景相结合，创造出独特的诗意空间。"'
+            }
+        ]
+    },
+    '王德安': {
+        name: '王德安',
+        intro: '工人诗人',
+        works: [
+            {
+                id: 210,
+                title: '工厂光圈',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '描写工厂生活的诗歌',
+                nanjingDescription: '"以南京的工厂为背景，描写了工人劳动的场景。机床的轰鸣、钢花的飞溅，在诗人笔下化作美丽的诗行，歌颂了南京工业建设的新成就。"'
+            }
+   ]
+    },
+    '渠天流': {
+        name: '渠天流',
+        intro: '诗人',
+        works: [
+            {
+                id: 211,
+                title: '元月十一不寻常',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '历史事件纪念诗',
+                nanjingDescription: '"元月十一，这个特殊的日子在南京历史上留下深刻印记。诗歌通过这个时间节点，回顾了南京的历史变迁和时代风云。"'
+            },
+            {
+                id: 212,
+                title: '时代的鼓手',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '歌颂劳动者的诗歌',
+                nanjingDescription: '"南京的建设者们，如同时代的鼓手，敲响了前进的节拍。从长江大桥到新街口高楼，处处都有他们奋斗的身影。"'
+            }
+        ]
+    },
+    '朱光第': {
+        name: '朱光第',
+        intro: '工人作家',
+        works: [
+            {
+                id: 213,
+                title: '机械工人握住炼钢工人的手——参观钢厂小记',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '工业题材的散文',
+                nanjingDescription: '"描写南京不同行业工人之间的交流与友谊。通过机械厂与钢厂的互动，展现了南京工业体系的完整性和工人兄弟般的情谊。"'
+            }
+        ]
+    },
+    '仇相彬': {
+        name: '仇相彬',
+        intro: '作家',
+        works: [
+            {
+                id: 214,
+                title: '铁水奔流在老虎山顶',
+                location: '老虎山',
+                coord: [118.800, 32.110],
+                excerpt: '工业建设题材的歌',
+                nanjingDescription: '"老虎山上，铁水奔流，钢花飞溅。诗歌描写了南京工业建设的壮观场面，歌颂了工人阶级的创造力和奋斗精神。"'
+            }
+        ]
+    },
+    '张正': {
+        name: '张正',
+        intro: '诗人',
+        works: [
+            {
+                id: 215,
+                title: '东方巨龙上九重',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '时代赞歌题材的诗歌',
+                nanjingDescription: '"以南京长江大桥为象征，歌颂中国建设的伟大成就。巨龙腾飞，直上九重，寓意着南京乃至整个中国的飞速发展。"'
+            }
+        ]
+    },
+    '吴白匋': {
+        name: '吴白匋',
+        intro: '学者、诗人',
+        works: [
+            {
+                id: 216,
+                title: '卜算子·读毛主席〈咏梅〉词有得',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '学习毛主席诗词的感悟',
+                nanjingDescription: '"在南京的梅花山下读毛主席诗词，别有一番感悟。诗中将南京的梅花与主席词中的梅花相映衬，表达了深刻的学习体会。"'
+            }
+        ]
+    },
+    '程小青': {
+        name: '程小青',
+        intro: '侦探小说作家',
+        works: [
+            {
+                id: 217,
+                title:'雨花台吊烈士墓',
+                location: '雨花台',
+                coord: [118.778, 31.994],
+                excerpt: '凭吊雨花台革命烈士的诗作',
+                nanjingDescription: '"雨花台上，烈士墓前，献上深深的敬意。诗歌追忆了革命先烈的英勇事迹，表达了继承先烈遗志、建设新南京的决心。"'
+            }
+        ]
+    },
+    '金启华': {
+        name: '金启华',
+        intro: '学者',
+        works: [
+            {
+                id: 218,
+                title: '访十月人民公社',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '农村访问记',
+                nanjingDescription: '"访问南京郊区的十月人民公社，描写了农村的新面貌。农田整齐，村庄整洁，农民脸上洋溢着幸福的笑容，展现了南京农村的蓬勃发展。"'
+            }
+        ]
+    },
+    '唐圭璋': {
+        name: '唐圭璋',
+        intro: '词学家',
+        works: [
+            {
+                id: 219,
+                title: '鹧鸪天·题鹧鸪赋笺释',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '词学研究的作品',
+                nanjingDescription: '"在南京的书斋中研究词学，窗外秦淮河静静流淌。将学术研究与南京的文化氛围相结合，体现了金陵深厚的文化底蕴。"'
+            },
+            {
+                id: 220,
+                title: '采桑子·远游',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '旅行题材的词作',
+                nanjingDescription: '"虽题为远游，但词中不乏对南京的描写。通过游子的视角，展现了南京山水之美和文化之韵。"'
+            },
+            {
+                id: 221,
+                title: '采桑子·庆祝建国十四周年',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '国庆题材的词作',
+                nanjingDescription: '"国庆日的南京，处处张灯结彩，喜气洋洋。词中描写了玄武湖的庆祝活动，新街口的游行队伍，表达了喜悦之情。"'
+            },
+            {
+                id: 222,
+                title: '减字木兰花·瞻仰梅园新村,怀念周总理',
+                location: '梅园新村',
+                coord: [118.804, 32.044],
+                excerpt: '怀念周总理的词作',
+                nanjingDescription: '"梅园新村，周总理曾经战斗过的地方。词中追忆了总理的丰功伟绩，表达了深深的怀念之情。"'
+            }
+        ]
+    },
+    '高加索': {
+        name: '高加索',
+        intro: '诗人',
+        works: [
+            {
+                id: 224,
+                title: '江南谣',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '江南风情的诗歌',
+                nanjingDescription: '"江南好，最忆是金陵。诗歌描写了南京的江南风情，秦淮烟雨、玄武荷花、栖霞红叶，尽入诗中。"'
+            }
+        ]
+    },
+    '张贤亮': {
+        name: '张贤亮',
+        intro: '作家',
+        works: [
+            {
+                id: 225,
+                title: '大风歌',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '历史题材的诗歌',
+                nanjingDescription: '"以南京的历史为背景，追忆六朝风云，感叹时代变迁。大风起兮云飞扬，南京这座古都见证了无数历史时刻。"'
+            }
+        ]
+    },
+    '余光中': {
+        name: '余光中',
+        intro: '台湾诗人',
+        works: [
+            {
+                id: 226,
+                title: '乡愁',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '思念故土的经典诗歌',
+                nanjingDescription: '"虽然诗中没有直接点明南京，但字里行间透着对江南故土的思念。长江水、海棠红，这些意象都与南京密切相关。"'
+            },
+            {
+                id: 227,
+                title: '春天，遂想起',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '怀念江南的诗歌',
+                nanjingDescription: '"春天，遂想起江南，想起南京。唐诗里的江南，宋词里的金陵，都在诗人的记忆中复活。"'
+            },
+            {
+                id: 228,
+                title: '大江东去',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '长江题材的诗歌',
+                nanjingDescription: '"站在南京长江边，看大江东去，感慨万千。诗歌描写了长江的壮阔，也抒发了对故国的深情。"'
+            }
+        ]
+    },
+    '曾如清': {
+        name: '曾如清',
+        intro: '军事作家',
+        works: [
+            {
+                id: 229,
+                title: '追歼黄伯韬兵团六十三军',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '解放战争题材的报告文学',
+                nanjingDescription: '"详细记录了在南京周边追歼国民党军的战斗经过。从滁县到浦口，从六合到江宁，展现了南京解放战役的激烈和艰苦。"'
+            }
+        ]
+    },
+    '夏阳': {
+        name: '夏阳',
+        intro: '作家',
+        works: [
+            {
+                id: 230,
+                title: '南京,换了人间',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '描写南京变迁的散文',
+                nanjingDescription: '"通过今昔对比，展现了南京解放后的巨大变化。从破败不堪到焕然一新，南京真正换了人间。"'
+            }
+        ]
+    },
+    '魏毓庆': {
+        name: '魏毓庆',
+        intro: '女作家',
+        works: [
+            {
+                id: 231,
+                title: '雨花台抒情——问苍茫大地,谁主沉浮?',
+                location: '雨花台',
+                coord: [118.778, 31.994],
+                excerpt: '雨花台感怀的散文',
+                nanjingDescription: '"站在雨花台上，问苍茫大地，谁主沉浮？散文追忆历史，展望未来，表达了强烈的历史责任感和使命感。"'
+            },
+            {
+                id: 232,
+                title: '秋夜',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京秋夜题材的散文',
+                nanjingDescription: '"南京的秋夜，清凉而宁静。玄武湖的月光，紫金山的虫鸣，构成了一幅美丽的金陵秋夜图。"'
+            }
+        ]
+    },
+    '袁飞': {
+        name: '袁飞',
+        intro: '作家',
+        works: [
+            {
+                id: 233,
+                title: '苦难的童年',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '回忆南京童年生活的散文',
+                nanjingDescription: '"回忆在南京度过的童年时光，虽然生活艰苦，但南京的山水人情给了作者温暖的记忆。老城南的巷子，秦淮河的水声，都是难忘的童年印记。"'
+            }
+        ]
+    },
+    '啸平': {
+        name: '啸平',
+        intro: '军旅作家',
+        works: [
+            {
+                id: 234,
+                title: '两个功臣',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '部队生活题材小说',
+                nanjingDescription: '"以南京军区为背景，描写了两个功臣的故事。通过他们的经历，展现了军人的荣誉感和牺牲精神。"'
+            },
+            {
+                id: 235,
+                title: '初升的太阳',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '建设题材的文学作品',
+                nanjingDescription: '"描写南京解放后的建设热潮，如初升的太阳，充满希望和活力。从破败中重生，南京展现出崭新的面貌。"'
+            },
+            {
+                id: 236,
+                title: '钢铁英雄传',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '工业建设题材作品',
+                nanjingDescription: '"以南京的钢铁工人为主人公，描写了工业建设的艰辛与成就。展现了南京工业战线上的英雄事迹。"'
+         },
+            {
+                id: 237,
+                title: '在飞跃的时代里',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '时代变革题材作品',
+                nanjingDescription: '"描写南京在时代变革中的发展变化。从传统古都到现代城市，南京在飞跃的时代里不断前进。"'
+            }
+        ]
+    },
+    '叶圣陶': {
+        name: '叶圣陶',
+        intro: '教育家、作家',
+        works: [
+            {
+                id: 240,
+                title: '游了三个湖',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京湖泊游记散文',
+                nanjingDescription: '"游览南京的玄武湖、莫愁湖、白鹭洲三个湖泊，描写了各自的特色和美景。通过对比，展现了南京水文化的丰富多样性。"'
+            }
+        ]
+    },
+    '沈蔚德': {
+        name: '沈蔚德',
+        intro: '女作家',
+        works: [
+            {
+                id: 241,
+                title: '庐山小品',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '旅行题材的散文',
+                nanjingDescription: '"虽以庐山为主题，但文中不乏对南京的描写。从南京出发去庐山，沿途的风景和见闻都成为散文的素材。"'
+            }
+        ]
+    },
+    '杨苡': {
+        name: '杨苡',
+        intro: '翻译家、作家',
+        works: [
+            {
+                id: 242,
+                title: '秋行散记',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '南京秋天题材的散文',
+                nanjingDescription: '"在南京的秋日里漫步，从颐和路到玄武湖，从鸡鸣寺到中山陵，记录下秋天的美景和感悟。"'
+            }
+        ]
+    },
+    '锦路': {
+        name: '锦路',
+        intro: '工人作家',
+        works: [
+            {
+                id: 243,
+                title: '红旗号轧钢机',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '工业题材的报告文学',
+                nanjingDescription: '"以南京的轧钢厂为背景，描写了红旗号轧钢机的诞生和运行。展现了南京工业技术的发展和工人们的智慧。"'
+            }
+        ]
+    },
+    '陆九如': {
+        name: '陆九如',
+        intro: '作家',
+        works: [
+            {
+                id: 244,
+                title: '又是一个早晨',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '日常生活题材的散文',
+                nanjingDescription: '"描写南京一个普通的早晨，从新街口到夫子庙，从鼓楼到中华门，城市在晨曦中苏醒，充满生机。"'
+            }
+        ]
+    },
+    '陆文夫': {
+        name: '陆文夫',
+        intro: '苏州作家',
+        works: [
+            {
+                id: 245,
+                title: '通考古今编新书',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '文化研究文章',
+                nanjingDescription: '"在南京的图书馆里研究古籍，通考古今，编写新书。文章展现了南京深厚的文化底蕴和学术氛围。"'
+            }
+        ]
+    },
+    '吴盛': {
+        name: '吴盛',
+        intro: '作家',
+        works: [
+            {
+                id: 247,
+                title: '请准谈风月',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '文学评论文章',
+                nanjingDescription: '"在南京的文学圈子里，谈论风月成为一时风尚。文章反映了当时南京文人的生活方式和文学趣味。"'
+            },
+            {
+                id: 248,
+                title: '雨花',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '文艺评论',
+                nanjingDescription: '"以雨花台为象征，评论当时的文艺作品。雨花台的烈士精神成为评判文艺作品的重要标准。"'
+            }
+        ]
+    },
+    '刘金': {
+        name: '刘金',
+        intro: '文学评论家',
+        works: [
+            {
+                id: 249,
+                title: '赞美吧,但不要粉饰!',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '文学批评文章',
+                nanjingDescription: '"在南京的文学界发起了一场关于真实与粉饰的讨论。主张文学作品应该真实反映生活，而不是一味粉饰太平。"'
+            }
+        ]
+    },
+    '以铮': {
+        name: '以铮',
+        intro: '评论家',
+        works: [
+            {
+                id: 250,
+                title: '论"费厄泼赖"可以施行',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '文艺政策评论',
+                nanjingDescription: '"在南京的文艺界讨论"费厄泼赖"精神，主张文艺创作应该更加开放和包容，反映了当时的思想解放潮流。"'
+            }
+        ]
+    },
+    '南京工人写作组': {
+        name: '南京工人写作组',
+        intro: '工人作家集体',
+        works: [
+            {
+                id: 251,
+                title: '南京长江大桥',
+                location: '南京长江大桥',
+                coord: [118.744, 32.115],
+                excerpt: '歌颂南京长江大桥的报告文学',
+                nanjingDescription: '"集体创作，歌颂南京长江大桥的建成。描写了建桥的艰辛过程，大桥的雄伟壮观，以及它对南京发展的重要意义。"'
+            }
+        ]
+    },
+    '路翎': {
+        name: '路翎',
+        intro: '七月派小说家',
+        works: [
+            {
+                id: 252,
+                title: '人民万岁',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '戏剧作品',
+                nanjingDescription: '"以南京为背景的戏剧作品，歌颂人民的力量。通过普通人的故事，展现了南京人民的精神风貌。"'
+            }
         ]
     },
     '沈西蒙': {
         name: '沈西蒙',
         intro: '剧作家',
         works: [
-            {id: 253, title: '霓虹灯下的哨兵', location: '南京', coord: [118.8, 32.05], excerpt: '经典军旅题材话剧'}
+            {
+                id: 253,
+                title: '霓虹灯下的哨兵',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '经典军旅题材话剧',
+                nanjingDescription: '"虽以上海为背景，但创作和演出都在南京军区完成。剧中反映的思想斗争和军人本色，在南京的文艺界引起了强烈反响。"'
+            }
         ]
     },
     '石汉与张锐': {
         name: '石汉与张锐',
         intro: '编剧与作曲家',
         works: [
-            {id: 254, title: '红霞', location: '南京', coord: [118.8, 32.05], excerpt: '歌剧作品'}
+            {
+                id: 254,
+                title: '红霞',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '歌剧作品',
+                nanjingDescription: '"在南京创作和演出的歌剧作品，以革命历史为题材。红霞象征着革命的希望和胜利的曙光。"'
+            }
         ]
     },
     '顾宝璋与所云平': {
-        name: '顾宝璋与所云平',
+       name: '顾宝璋与所云平',
         intro: '剧作家组合',
         works: [
-            {id: 255, title: '东进序曲', location: '南京', coord: [118.8, 32.05], excerpt: '革命历史题材话剧'}
+            {
+                id: 255,
+                title: '东进序曲',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '革命历史题材话剧',
+                nanjingDescription: '"以新四军东进为背景，描写了抗日战争的艰苦卓绝。虽不直接描写南京，但反映了南京周边地区的抗战历史。"'
+            }
         ]
     },
     '白文与所云平': {
         name: '白文与所云平',
         intro: '剧作家组合',
         works: [
-            {id: 256, title: '我是一个兵', location: '南京', coord: [118.8, 32.05], excerpt: '军旅题材话剧'},
-            {id: 257, title: '哥俩好', location: '南京', coord: [118.8, 32.05], excerpt: '部队生活题材话剧'}
+            {
+                id: 256,
+                title: '我是一个兵',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '军旅题材话剧',
+                nanjingDescription: '"以南京军区为背景，描写普通士兵的生活和成长。展现了军人的责任感和荣誉感。"'
+            },
+            {
+                id: 257,
+                title: '哥俩好',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '部队生活题材话剧',
+                nanjingDescription: '"描写南京军区一对战友的故事，通过他们的友谊，展现了部队生活的温暖和战友情深。"'
+            }
         ]
     },
     '张泽易与杨履方': {
         name: '张泽易与杨履方',
         intro: '剧作家组合',
         works: [
-            {id: 258, title: '海防万里', location: '南京', coord: [118.8, 32.05], excerpt: '海防题材话剧'}
+            {
+                id: 258,
+                title: '海防万里',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '海防题材话剧',
+                nanjingDescription: '"虽以海防为题材，但创作于南京，反映了南京文艺界对国防建设的关注和支持。"'
+            }
         ]
     },
     '杨履方': {
         name: '杨履方',
         intro: '剧作家',
         works: [
-            {id: 259, title: '布谷鸟又叫了', location: '南京', coord: [118.8, 32.05], excerpt: '农村题材话剧'}
+            {
+                id: 259,
+                title: '布谷鸟又叫了',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '农村题材话剧',
+                nanjingDescription: '"以南京郊区农村为背景，描写了农村青年的生活和爱情。布谷鸟的叫声象征着春天的到来和新的希望。"'
+            }
         ]
     },
     '岳野': {
         name: '岳野',
         intro: '剧作家',
         works: [
-            {id: 260, title: '同甘共苦', location: '南京', coord: [118.8, 32.05], excerpt: '家庭伦理题材话剧'}
+            {
+                id: 260,
+                title: '同甘共苦',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '家庭伦理题材话剧',
+                nanjingDescription: '"以南京一个普通家庭为背景，描写了家庭成员之间的情感纠葛和相互扶持。展现了南京市民的生活面貌。"'
+            }
         ]
     },
     '海默': {
         name: '海默',
         intro: '剧作家',
         works: [
-            {id: 261, title: '洞萧横吹', location: '南京', coord: [118.8, 32.05], excerpt: '农村题材话剧'}
+            {
+                id: 261,
+                title: '洞萧横吹',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '农村题材话剧',
+                nanjingDescription: '"以南京郊区农村为背景，通过洞萧这个意象，描写了农村的文化生活和精神追求。"'
+            }
         ]
     },
     '鲁彦周': {
         name: '鲁彦周',
         intro: '作家、剧作家',
         works: [
-            {id: 262, title: '归来', location: '南京', coord: [118.8, 32.05], excerpt: '话剧作品'}
+            {
+                id: 262,
+                title: '归来',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '话剧作品',
+                nanjingDescription: '"以南京为背景，描写了游子归来的故事。通过归乡者的视角，展现了南京的变化和发展。"'
+            }
         ]
     },
-    
     '陈白尘与贾霁': {
         name: '陈白尘与贾霁',
         intro: '编剧组合',
         works: [
-            {id: 264, title: '宋景诗', location: '南京', coord: [118.8, 32.05], excerpt: '历史题材电影剧本'}
+            {
+                id: 264,
+                title: '宋景诗',
+                location: '南京',
+                coord: [118.8, 32.05],
+      excerpt: '历史题材电影剧本',
+                nanjingDescription: '"虽以山东农民起义为题材，但剧本创作于南京，融入了南京电影制片厂的创作特色。"'
+            }
         ]
     },
     '沈西蒙与沈默君': {
-        name: '沈西蒙与沈默君',
+        name: '沈西蒙与沈m默君',
         intro: '编剧组合',
         works: [
-            {id: 265, title: '南征北战', location: '南京', coord: [118.8, 32.05], excerpt: '战争题材电影剧本'}
+            {
+                id: 265,
+                title: '南征北战',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '战争题材电影剧本',
+                nanjingDescription: '"虽以全国战场为背景，但剧本创作于南京军区，体现了南京军事题材创作的实力。"'
+            }
         ]
     },
     '沈默君': {
         name: '沈默君',
         intro: '编剧',
         works: [
-            {id: 266, title: '渡江侦察记', location: '南京', coord: [118.8, 32.05], excerpt: '经典战争电影剧本'}
+            {
+                id: 266,
+                title: '渡江侦察记',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '经典战争电影剧本',
+                nanjingDescription: '"以渡江战役为背景，描写了侦察兵的英勇事迹。南京长江段成为故事的重要场景，展现了南京在解放战争中的重要地位。"'
+            }
         ]
     },
     '刘川': {
         name: '刘川',
         intro: '剧作家',
         works: [
-            {id: 267, title: '第二个春天', location: '南京', coord: [118.8, 32.05], excerpt: '工业题材话剧'},
-            {id: 268, title: '青春之歌', location: '南京', coord: [118.8, 32.05], excerpt: '改编自杨沫小说的剧本'}
+            {
+                id: 267,
+                title: '第二个春天',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '工业题材话剧',
+                nanjingDescription: '"以南京的工业建设为背景，描写了技术革新和人才培养的故事。展现了南京工业发展的第二个春天。"'
+            },
+            {
+                id: 268,
+                title: '青春之歌',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '改编自杨沫小说的剧本',
+                nanjingDescription: '"虽以北京为背景，但剧本改编和演出都在南京完成，融入了南京话剧界的艺术特色。"'
+            }
         ]
     },
     '宋词': {
         name: '宋词',
         intro: '剧作家',
         works: [
-            {id: 269, title: '喝面叶', location: '南京', coord: [118.8, 32.05], excerpt: '地方戏曲剧本'},
-            {id: 270, title: '穆桂英挂帅', location: '南京', coord: [118.8, 32.05], excerpt: '京剧改编剧本'},
-            {id: 271, title: '花枪缘', location: '南京', coord: [118.8, 32.05], excerpt: '戏曲剧本'},
-            {id: 272, title: '状元打更', location: '南京', coord: [118.8, 32.05], excerpt: '传统戏曲改编剧本'}
+            {
+                id: 269,
+                title: '喝面叶',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '地方戏曲剧本',
+                nanjingDescription: '"根据南京地方戏曲改编，融入了南京的方言和民俗，具有浓厚的地方特色。"'
+            },
+            {
+                id: 270,
+                title: '穆桂英挂帅',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '京剧改编剧本',
+                nanjingDescription: '"在南京改编和演出的京剧剧目，融入了南京京剧界的艺术风格和表演特色。"'
+            },
+            {
+                id: 271,
+                title: '花枪缘',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '戏曲剧本',
+                nanjingDescription: '"以南京戏曲剧院为基地创作的剧目，展现了南京戏曲艺术的传承和创新。"'
+            },
+            {
+                id: 272,
+                title: '状元打更',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '传统戏曲改编剧本',
+                nanjingDescription: '"在南京改编的传统剧目，融入了南京的文化元素和艺术特色，赋予了新的时代内涵。"'
+            }
         ]
     },
-  
     '方之': {
         name: '方之',
         intro: '江苏作家',
         works: [
-            {id: 282, title: '阁楼上', location: '南京', coord: [118.8, 32.05], excerpt: '描写城市生活的小说'},
-            {id: 283, title: '内奸', location: '南京', coord: [118.8, 32.05], excerpt: '历史反思题材小说'}
+            {
+                id: 282,
+                title: '阁楼上',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '描写城市生活的小说',
+                nanjingDescription: '"以南京老城南的阁楼为背景，描写了市井小民的生活。通过阁楼这个特殊空间，展现了南京的城市风貌和人文情怀。"'
+            },
+            {
+                id: 283,
+                title: '内奸',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '历史反思题材小说',
+                nanjingDescription: '"以南京的历史事件为背景，通过内奸这个形象，反思了特殊年代的人性和道德问题。"'
+            }
         ]
     },
     '赵本夫': {
         name: '赵本夫',
         intro: '江苏作家',
         works: [
-            {id: 284, title: '卖驴', location: '南京', coord: [118.8, 32.05], excerpt: '农村题材短篇小说'},
-            {id: 285, title: '寨堡', location: '南京', coord: [118.8, 32.05], excerpt: '乡土题材小说'},
-            {id: 286, title: '绝药', location: '南京', coord: [118.8, 32.05], excerpt: '传奇故事小说'},
-            {id: 287, title: '刀客与女人', location: '南京', coord: [118.8, 32.05], excerpt: '江湖题材小说'},
-            {id: 288, title: '混沌世界', location: '南京', coord: [118.8, 32.05], excerpt: '长篇小说'},
-            {id: 289, title: '涸辙', location: '南京', coord: [118.8, 32.05], excerpt: '生态题材小说'},
-            {id: 290, title: '仇恨的魅力', location: '南京', coord: [118.8, 32.05], excerpt: '人性探索小说'},
-            {id: 291, title: '无门城', location: '南京', coord: [118.8, 32.05], excerpt: '寓言小说'},
-            {id: 292, title: '蝙蝠', location: '南京', coord: [118.8, 32.05], excerpt: '象征主义小说'},
-            {id: 293, title: '陆地的围困', location: '南京', coord: [118.8, 32.05], excerpt: '现实主义小说'},
-            {id: 294, title: '走出蓝水河', location: '南京', coord: [118.8, 32.05], excerpt: '女性题材小说'},
-            {id: 295, title: '黑蚂蚁蓝眼睛', location: '南京', coord: [118.8, 32.05], excerpt: '地母三部曲第一部'},
-            {id: 296, title: '天地月亮地', location: '南京', coord: [118.8, 32.05], excerpt: '地母三部曲第二部'},
-            {id: 297, title: '无土时代', location: '南京', coord: [118.8, 32.05], excerpt: '地母三部曲第三部'},
-            {id: 298, title: '天下无贼', location: '南京', coord: [118.8, 32.05], excerpt: '改编电影的原著小说'},
-            {id: 299, title: '安岗之梦', location: '南京', coord: [118.8, 32.05], excerpt: '农村青年题材小说'},
-            {id: 300, title: '带蜥蜴的钥匙', location: '南京', coord: [118.8, 32.05], excerpt: '悬疑题材小说'},
-            {id: 301, title: '寻找月亮', location: '南京', coord: [118.8, 32.05], excerpt: '追寻理想题材小说'},
-            {id: 302, title: '洛女', location: '南京', coord: [118.8, 32.05], excerpt: '女性题材小说'}
+            {
+                id: 284,
+                title: '卖驴',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '农村题材短篇小说',
+                nanjingDescription: '"以南京郊区农村为背景，描写了农民卖驴的故事。通过这个小事，反映了农村的经济状况和农民的生活智慧。"'
+            },
+            {
+                id: 285,
+                title: '寨堡',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '乡土题材小说',
+                nanjingDescription: '"以南京周边的古老寨堡为背景，描写了乡土社会的生活和变迁。展现了南京地区独特的乡土文化。"'
+            },
+            {
+                id: 286,
+                title: '绝药',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '传奇故事小说',
+                nanjingDescription: '"以南京的老药店为背景，描写了一个关于绝药的传奇故事。融入了南京的中医药文化和民间传说。"'
+            },
+            {
+                id: 287,
+                title: '刀客与女人',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '江湖题材小说',
+                nanjingDescription: '"以南京的江湖为背景，描写了刀客与女人的爱情故事。展现了南京这座城市的多重面貌。"'
+            },
+            {
+                id: 288,
+                title: '混沌世界',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '长篇小说',
+                nanjingDescription: '"以南京为背景的长篇小说，通过多个主人公的故事，展现了社会的复杂性和人生的多样性。"'
+            },
+            {
+                id: 289,
+                title: '涸辙',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '生态题材小说',
+                nanjingDescription: '"以南京的环境问题为背景，描写了生态危机下的生存困境。反映了对环境保护的深刻思考。"'
+            },
+            {
+                id: 290,
+                title: '仇恨的魅力',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '人性探索小说',
+                nanjingDescription: '"以南京的社会矛盾为背景，探索了仇恨这一人类情感的复杂性和魅力。"'
+            },
+            {
+                id: 291,
+                title: '无门城',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '寓言小说',
+                nanjingDescription: '"以南京为原型的寓言小说，通过无门城这个意象，探讨了现代城市的困境和出路。"'
+            },
+            {
+                id: 292,
+                title: '蝙蝠',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '象征主义小说',
+                nanjingDescription: '"以南京的夜晚为背景，通过蝙蝠这个象征，探讨了光明与黑暗、理性与疯狂的主题。"'
+            },
+            {
+                id: 293,
+                title: '陆地的围困',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '现实主义小说',
+                nanjingDescription: '"以南京的城市发展为背景，描写了陆地被围困的困境。反映了城市化进程中的矛盾和问题。"'
+            },
+            {
+                id: 294,
+                title: '走出蓝水河',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '女性题材小说',
+                nanjingDescription: '"以南京的蓝水河为背景，描写了女性走出传统束缚、追求自我的故事。"'
+            },
+            {
+                id: 295,
+                title: '黑蚂蚁蓝眼睛',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '地母三部曲第一部',
+                nanjingDescription: '"以南京的土地为背景，通过黑蚂蚁和蓝眼睛的意象，探索了土地与人的神秘联系。"'
+            },
+            {
+                id: 296,
+                title: '天地月亮地',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '地母三部曲第二部',
+                nanjingDescription: '"继续以南京为背景，通过天地月亮地的意象，深化了对土地和生命的思考。"'
+            },
+            {
+                id: 297,
+                title: '无土时代',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '地母三部曲第三部',
+                nanjingDescription: '"以南京的现代城市为背景，描写了无土时代的困境和挣扎。完成了对土地问题的三部曲探索。"'
+            },
+            {
+                id: 298,
+                title: '天下无贼',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '改编电影的原小说',
+                nanjingDescription: '"虽以列车为背景，但故事起源于南京，展现了南京的社会风貌和人性百态。"'
+            },
+            {
+                id: 299,
+                title: '安岗之梦',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '农村青年题材小说',
+                nanjingDescription: '"以南京郊区的安岗村为背景，描写了农村青年的梦想和追求。展现了新时代农村的变化。"'
+            },
+            {
+                id: 300,
+                title: '带蜥蜴的钥匙',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '悬疑题材小说',
+                nanjingDescription: '"以南京为背景的悬疑小说，通过带蜥蜴的钥匙这个神秘物品，展开了一段惊险的探秘之旅。"'
+            },
+            {
+                id: 301,
+                title: '寻找月亮',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '追寻理想题材小说',
+                nanjingDescription: '"以南京的月亮为象征，描写了寻找理想和真理的故事。展现了南京这座城市的哲学思考。"'
+            },
+            {
+                id: 302,
+                title: '洛女',
+                location: '南京',
+                coord: [118.8, 32.05],
+                excerpt: '女性题材小说',
+                nanjingDescription: '"以南京的洛女传说为背景，描写了现代女性的生活和命运。将古典传说与现代故事相结合。"'
+            }
         ]
     },
     '苏童': {
