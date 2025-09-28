@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文都云图：南京现当代文学地图数字导览与文创平台</title>
+
+    <!-- ① 图标库（CDN） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css">
+
+    <!-- 原有样式表 -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/ai_assistant.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;500&display=swap" rel="stylesheet">
+
+    <!-- 新增交互样式（内嵌，避免再建文件） -->
+    <style>
+    /* 收藏/分享/评论 小工具栏 */
+    .interaction-bar{display:flex;align-items:center;gap:1rem;margin-top:1rem;font-size:14px;}
+    .interaction-bar button{background:none;border:1px solid var(--primary-color);color:var(--primary-color);padding:4px 10px;border-radius:4px;cursor:pointer;transition:.2s;}
+    .interaction-bar button:hover{background:var(--primary-color);color:#fff;}
+    .interaction-bar .liked{background:#ff6b6b!important;color:#fff!important;border-color:#ff6b6b;}
+    /* 评论区 */
+    .comment-box{margin-top:.8rem;}
+    .comment-box textarea{width:100%;resize:vertical;min-height:60px;padding:6px;border:1px solid #ddd;border-radius:4px;font-size:13px;}
+    .comment-box button{margin-top:6px;}
+    .comment-list{max-height:200px;overflow-y:auto;margin-top:8px;font-size:13px;}
+    .comment-list li{border-bottom:1px dashed #eee;padding:4px 0;display:flex;justify-content:space-between;}
+    .comment-list li span{flex:1;}
+    .comment-list li small{color:#999;white-space:nowrap;margin-left:8px;}
+    </style>
+</head>
+<body>
+<!-- --------------- 原 body 内容不动 --------------- -->
+<div class="header"><h1>探索作家笔下的人文南京</h1></div>
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="请输入作家姓名(如:叶兆言、朱自清...)">
+    <button id="searchBtn">搜索</button>
+</div>
+<div class="container">
+    <div id="mapContainer"></div>
+    <div class="sidebar">
+        <div id="infoPanel"><!-- 动态详情将插入这里 --></div>
+        <div id="counter"><span class="counter-label">当前展示</span><span class="counter-number">0</span><span class="counter-label">个相关地标</span></div>
+    </div>
+</div>
+<!-- AI 助手容器 -->
+<div id="ai-assistant">...</div>
+<div class="explore-btn-container"><a href="./html/product.html" class="explore-btn">文创产品</a></div>
+<!-- --------------- 原脚本不动 --------------- -->
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="./js/ai_assistant.js"></script>
+
+<!-- ② 新增交互脚本（收藏/分享/评论） -->
+<script>
+/* ====== 收藏/分享/评论 模块 ====== */
+const STORAGE_KEY = 'nanjingLit_favorites';      // 收藏
+const COMMENT_KEY   = 'nanjingLit_comments';     // 评论
+
+/* 工具函数 */
+const $storage = {
+    get(k){ return JSON.parse(localStorage.getItem(k)||'[]') },
+    set(k,v){ localStorage.setItem(k,JSON.stringify(v)) }
+};
+
+/* 生成唯一 ID */
+const uuid = ()=>Date.now().toString(36)+Math.random().toString(36).slice(2);
+
+/* 渲染交互栏 */
+function renderInteractionBar(locName){
+    const favorites = $storage.get(STORAGE_KEY);
+    const isLiked   = favorites.includes(locName);
+    return `
+    <div class="interaction-bar">
+        <button class="${isLiked?'liked':''}" onclick="toggleFavorite('${locName}',this)">
+            <i class="fa${isLiked?'s':'r'} fa-heart"></i> 收藏
+        </button>
+        <button onclick="shareLocation('${locName}')">
+            <i class="fas fa-share-alt"></i> 分享
+        </button>
+        <button onclick="toggleComment('${locName}')">
+            <i class="fas fa-comment-dots"></i> 评论
+        </button>
+    </div>
+    <div id="comment-${locName.replace(/\s/g,'_')}" class="comment-box" style="display:none;">
+        <textarea placeholder="写下你的评论..."></textarea>
+        <button onclick="postComment('${locName}')">发表</button>
+        <ul class="comment-list"></ul>
+    </div>`;
+}
+
+/* 收藏切换 */
+function toggleFavorite(locName,btn){
+    let list = $storage.get(STORAGE_KEY);
+    const i   = list.indexOf(locName);
+    if(i>-1){ list.splice(i,1); btn.classList.remove('liked'); btn.innerHTML='<i class="far fa-heart"></i> 收藏'; }
+    else    { list.push(locName); btn.classList.add('liked'); btn.innerHTML='<i class="fas fa-heart"></i> 收藏'; }
+    $storage.set(STORAGE_KEY,list);
+}
+
+/* 分享（Web Share API + 降级） */
+function shareLocation(locName){
+    const url = location.href;
+    const text = `我在“南京文学地图”发现了一处有趣的地标：${locName}，快来看看！`;
+    if(navigator.share){navigator.share({title:'南京文学地图',text,url})}
+    else{navigator.clipboard.writeText(`${text} ${url}`);alert('链接已复制到剪贴板，快去分享给朋友吧！');}
+}
+
+/* 展开/收起评论区 */
+function toggleComment(locName){
+    const box=$(`#comment-${locName.replace(/\s/g,'_')}`);
+    box.slideToggle(200);
+    if(box.is(':visible')) loadComments(locName);
+}
+
+/* 加载评论 */
+function loadComments(locName){
+    const all=$storage.get(COMMENT_KEY).filter(c=>c.loc===locName);
+    const $list=$(`#comment-${locName.replace(/\s/g,'_')} .comment-list`);
+    $list.empty();
+    all.sort((a,b)=>b.time-a.time).forEach(c=>{
+        $list.append(`<li><span>${c.txt}</span><small>${new Date(c.time).toLocaleString()}</small></li>`);
+    });
+}
+
+/* 发表评论 */
+function postComment(locName){
+    const box=$(`#comment-${locName.replace(/\s/g,'_')}`);
+    const txt=box.find('textarea').val().trim();
+    if(!txt)return alert('内容不能为空');
+    const all=$storage.get(COMMENT_KEY);
+    all.push({id:uuid(),loc:locName,txt,time:Date.now()});
+    $storage.set(COMMENT_KEY,all);
+    box.find('textarea').val('');
+    loadComments(locName);
+}
+
+/* ====== 劫持原有详情渲染，注入交互栏 ====== */
+const originalShowLocationInfo = window.showLocationInfo;
+window.showLocationInfo = function(location){
+    originalShowLocationInfo(location); // 先执行原逻辑
+    const panel = document.querySelector('#infoPanel');
+    // 把交互栏追加到卡片尾部
+    const card = panel.querySelector('.location-info');
+    if(card && !card.querySelector('.interaction-bar')){
+        card.insertAdjacentHTML('beforeend', renderInteractionBar(location.name));
+    }
+};
+</script>
+</body>
+</html>
