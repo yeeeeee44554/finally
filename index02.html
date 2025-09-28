@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文都云图：南京现当代文学地图数字导览与文创平台</title>
+    <!-- 原有样式表 -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/ai_assistant.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        /* 新增：按钮可点击收缩提示 */
+        .panel-toggle{cursor:pointer;user-select:none;}
+    </style>
+</head>
+<body>
+    <!-- 左侧面板 -->
+    <div class="side-panel left-panel" id="leftPanel">
+        <div class="panel-header">南京文学时间轴</div>
+        <!-- 时间轴内容略（与原代码相同） -->
+        <div class="timeline-item">...</div>
+        <div class="panel-header" style="margin-top:2rem;">南京作家群</div>
+        <div class="author-list">...</div>
+        <div class="quote">...</div>
+    </div>
+
+    <!-- 右侧面板 -->
+    <div class="side-panel right-panel" id="rightPanel">
+        <div class="panel-header">文学地标导览</div>
+        <!-- 推荐书籍略（与原代码相同） -->
+        <div class="recommended-book">...</div>
+        <div class="quote">...</div>
+    </div>
+
+    <!-- 面板切换按钮 -->
+    <div class="panel-toggle left-toggle" id="leftToggle">文</div>
+    <div class="panel-toggle right-toggle" id="rightToggle">学</div>
+
+    <!-- 原 header / search / container / ai-assistant 等结构不变 -->
+    <div class="header"><h1>探索作家笔下的人文南京</h1></div>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="请输入作家姓名(如:叶兆言、朱自清...)">
+        <button id="searchBtn">搜索</button>
+    </div>
+    <div class="container">
+        <div id="mapContainer"></div>
+        <div class="sidebar">
+            <div id="infoPanel">...</div>
+            <div id="counter">...</div>
+        </div>
+    </div>
+    <div id="ai-assistant">...</div>
+    <div class="explore-btn-container"><a href="./html/product.html" class="explore-btn">文创产品</a></div>
+
+    <!-- 原脚本 -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/ai_assistant.js"></script>
+
+    <!-- ③ 面板可收缩脚本（新增） -->
+    <script>
+    // 左侧：时间轴 & 作家卡片
+    $('#leftToggle').on('click', function () {
+        $('#leftPanel').toggleClass('visible');
+    });
+
+    // 右侧：文学地标导览
+    $('#rightToggle').on('click', function () {
+        $('#rightPanel').toggleClass('visible');
+    });
+    </script>
+</body>
+</html>
