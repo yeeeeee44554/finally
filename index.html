@@ -490,7 +490,71 @@
             font-size: 0.85rem;
             line-height: 1.5;
         }
-        
+
+        /* 新增：年代筛选按钮样式 */
+        .era-filter {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            padding: 0 1rem;
+            flex-wrap: wrap;
+        }
+
+        .era-btn {
+            padding: 8px 16px;
+            border: 2px solid var(--primary-color);
+            background: white;
+            color: var(--primary-color);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .era-btn:hover {
+            background: rgba(42, 143, 230, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .era-btn.active {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 8px rgba(42, 143, 230, 0.3);
+        }
+
+        .era-btn.all {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .era-btn.all.active {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .map-controls {
+            position: absolute;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .map-title {
+            text-align: center;
+            margin-bottom: 10px;
+            font-family: 'Noto Serif SC', serif;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
         @media (max-width: 1200px) {
             .side-panel {
                 width: 240px;
@@ -524,6 +588,20 @@
             
             .panel-toggle {
                 display: none;
+            }
+
+            .era-filter {
+                gap: 5px;
+            }
+
+            .era-btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+
+            .map-controls {
+                top: 60px;
+                padding: 10px;
             }
         }
     </style>
@@ -638,6 +716,7 @@
                 <li>搜索框可查找作家及作品</li>
                 <li>作家卡片可快速定位相关地点</li>
                 <li>使用时间轴了解文学发展脉络</li>
+                <li>使用年代按钮分层查看历史地标</li>
             </ul>
         </div>
         
@@ -660,6 +739,18 @@
         <input type="text" id="searchInput" placeholder="请输入作家姓名(如:叶兆言、朱自清...)">
         <button id="searchBtn">搜索</button>
     </div>
+
+    <!-- 新增：年代筛选按钮 -->
+    <div class="map-controls">
+        <div class="map-title">南京文学地图</div>
+        <div class="era-filter">
+            <button class="era-btn all active" data-era="all">全部</button>
+            <button class="era-btn" data-era="1920-1930">1920-1930</button>
+            <button class="era-btn" data-era="1930-1940">1930-1940</button>
+            <button class="era-btn" data-era="1950-1960">1950-1960</button>
+            <button class="era-btn" data-era="1980至今">1980至今</button>
+        </div>
+    </div>
     
     <div class="container">
         <div id="mapContainer"></div>
@@ -671,6 +762,7 @@
                     <p>在搜索框中输入作家姓名，查看他们在南京的创作足迹</p>
                     <p>点击地图上的标记点，查看作品详情</p>
                     <p>使用两侧面板了解更多南京文学信息</p>
+                    <p>使用年代按钮分层查看不同时期的历史地标</p>
                 </div>
             </div>
             
@@ -732,48 +824,152 @@
                 document.getElementById('leftPanel').classList.add('visible');
             });
         });
+
+        // 年代筛选功能
+        let currentEra = 'all';
+        let allMarkers = [];
+        let myChart = null;
+
+        // 初始化年代按钮事件
+        document.querySelectorAll('.era-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // 移除所有按钮的active类
+                document.querySelectorAll('.era-btn').forEach(b => b.classList.remove('active'));
+                // 为当前按钮添加active类
+                this.classList.add('active');
+                
+                const era = this.getAttribute('data-era');
+                currentEra = era;
+                filterMarkersByEra(era);
+            });
+        });
+
+        // 按年代筛选标记点
+        function filterMarkersByEra(era) {
+            if (!myChart) return;
+
+            let filteredMarkers = [];
+            
+            if (era === 'all') {
+                filteredMarkers = allMarkers;
+            } else {
+                filteredMarkers = allMarkers.filter(marker => {
+                    // 根据标记点的年代信息进行筛选
+                    if (marker.era) {
+                        return marker.era === era;
+                    }
+                    // 如果没有明确的年代信息，根据作者活跃时期推断
+                    if (marker.authors) {
+                        return marker.authors.some(author => {
+                            const authorEra = getAuthorEra(author);
+                            return authorEra === era;
+                        });
+                    }
+                    return false;
+                });
+            }
+
+            // 更新地图数据
+            myChart.setOption({
+                series: [{
+                    data: filteredMarkers
+                }]
+            });
+
+            // 更新计数器
+            $('.counter-number').text(filteredMarkers.length);
+
+            // 更新信息面板
+            if (filteredMarkers.length > 0) {
+                $('#infoPanel').html(`
+                    <div class="author-info">
+                        <h3>${era} 时期文学地标</h3>
+                        <p>共找到 ${filteredMarkers.length} 个相关地标</p>
+                        <p>点击地图上的标记点查看详细信息</p>
+                    </div>
+                `);
+            } else {
+                $('#infoPanel').html(`
+                    <div class="author-info">
+                        <h3>${era} 时期</h3>
+                        <p>该时期暂无相关文学地标数据</p>
+                        <p>请尝试选择其他年代或查看全部地标</p>
+                    </div>
+                `);
+            }
+        }
+
+        // 根据作者获取年代信息
+        function getAuthorEra(author) {
+            const eraMap = {
+                '朱自清': '1920-1930',
+                '俞平伯': '1920-1930',
+                '张恨水': '1930-1940',
+                '巴金': '1930-1940',
+                '陆文夫': '1950-1960',
+                '高晓声': '1950-1960',
+                '叶兆言': '1980至今',
+                '苏童': '1980至今',
+                '毕飞宇': '1980至今'
+            };
+            return eraMap[author] || 'unknown';
+        }
+
+        // 为标记点添加年代信息
+        function enhanceMarkersWithEra(markers) {
+            return markers.map(marker => {
+                if (marker.authors && marker.authors.length > 0) {
+                    // 取第一个作者的年代作为标记点的年代
+                    marker.era = getAuthorEra(marker.authors[0]);
+                }
+                return marker;
+            });
+        }
     
         // 地图初始化代码
         $(document).ready(function() {
-            const myChart = echarts.init(document.getElementById('mapContainer'));
+            myChart = echarts.init(document.getElementById('mapContainer'));
         
-        // 使用全局函数获取标记点数据
-        const allMarkers = window.getNanjingMarkers();
+            // 使用全局函数获取标记点数据
+            allMarkers = window.getNanjingMarkers();
+            // 为标记点添加年代信息
+            allMarkers = enhanceMarkersWithEra(allMarkers);
+            
             // 显示加载动画
             myChart.showLoading({
-        text: '正在加载文学地图...',
-        color: '#4a6cf7',
-        textColor: '#4a5568',
-        maskColor: 'rgba(255, 255, 255, 0.95)',
-        spinnerRadius: 15,
-        lineWidth: 4,
-        fontSize: 16,
-        fontWeight: 'bold'
-    });
-    function showCustomLoading() {
-        $('#mapContainer').append(`
-            <div class="custom-loading">
-                <div class="loading-spinner">
-                    <div class="double-bounce1"></div>
-                    <div class="double-bounce2"></div>
-                </div>
-                <div class="loading-text">探索南京文学世界...</div>
-            </div>
-        `);
-    }
-    
-    function hideCustomLoading() {
-        $('.custom-loading').fadeOut(300, function() {
-            $(this).remove();
-        });
-    }
+                text: '正在加载文学地图...',
+                color: '#4a6cf7',
+                textColor: '#4a5568',
+                maskColor: 'rgba(255, 255, 255, 0.95)',
+                spinnerRadius: 15,
+                lineWidth: 4,
+                fontSize: 16,
+                fontWeight: 'bold'
+            });
+
+            function showCustomLoading() {
+                $('#mapContainer').append(`
+                    <div class="custom-loading">
+                        <div class="loading-spinner">
+                            <div class="double-bounce1"></div>
+                            <div class="double-bounce2"></div>
+                        </div>
+                        <div class="loading-text">探索南京文学世界...</div>
+                    </div>
+                `);
+            }
+            
+            function hideCustomLoading() {
+                $('.custom-loading').fadeOut(300, function() {
+                    $(this).remove();
+                });
+            }
+
             // 使用本地地图数据
             fetch('./data/nanjing.json')
                 .then(response => response.json())
                 .then(nanjingGeoJSON => {
                     echarts.registerMap('nanjing', nanjingGeoJSON);
-                    
-                    const allMarkers = window.getNanjingMarkers();
                     
                     const option = {
                         title: {
@@ -802,8 +998,10 @@
                             },
                             formatter: function(params) {
                                 if (params.componentType === 'series') {
+                                    const era = params.data.era ? `<div style="color:#718096;font-size:12px;margin-top:5px;">年代：${params.data.era}</div>` : '';
                                     return `<div style="font-weight:bold;margin-bottom:5px;">${params.name}</div>
                                             <div>${params.data.excerpt || '南京文学地标'}</div>
+                                            ${era}
                                             <div style="margin-top:8px;color:#4a5568;">点击查看详情</div>`;
                                 }
                                 return params.name;
@@ -865,51 +1063,53 @@
                     
                     // 地图点击事件
                     myChart.on('click', function(params) {
-    if (params.componentType === 'series') {
-        const location = params.data;
-        
-        let worksHtml = '';
-        if (location.works && location.works.length > 0) {
-            worksHtml = '<div class="literary-works"><h4>相关作品:</h4><ul>';
-            
-            location.works.forEach(work => {
-                const title = work.title || "未知作品";
-                const author = work.author || "未知作者";
-                const excerpt = work.excerpt || "暂无描述";
-                const nanjingDesc = work.nanjingDescription || "暂无南京相关描写";
-                const locationName = work.location || "未知地点";
-                
-                worksHtml += `
-                    <li class="work-item">
-                        <div class="work-header">
-                            <span class="work-title">《${title}》</span>
-                            <span class="work-location">- ${locationName}</span>
-                        </div>
-                        <div class="work-author">作者：${author}</div>
-                        <div class="work-excerpt">${excerpt}</div>
-                        <div class="nanjing-description">
-                            <div class="desc-title">南京描写：</div>
-                            <div class="desc-content">${nanjingDesc}</div>
-                        </div>
-                    </li>
-                `;
-            });
-            
-            worksHtml += '</ul></div>';
-        } else {
-            worksHtml = '<p class="no-works">暂无相关作品信息</p>';
-        }
-        
-        $('#infoPanel').html(`
-            <div class="location-info">
-                <h3>${location.name || "未知地点"}</h3>
-                <p class="location-description">${location.excerpt || "江苏省会，六朝古都，中国现代文学重要城市"}</p>
-                ${worksHtml}
-            </div>
-        `);
-    }
-});
-});
+                        if (params.componentType === 'series') {
+                            const location = params.data;
+                            
+                            let worksHtml = '';
+                            if (location.works && location.works.length > 0) {
+                                worksHtml = '<div class="literary-works"><h4>相关作品:</h4><ul>';
+                                
+                                location.works.forEach(work => {
+                                    const title = work.title || "未知作品";
+                                    const author = work.author || "未知作者";
+                                    const excerpt = work.excerpt || "暂无描述";
+                                    const nanjingDesc = work.nanjingDescription || "暂无南京相关描写";
+                                    const locationName = work.location || "未知地点";
+                                    
+                                    worksHtml += `
+                                        <li class="work-item">
+                                            <div class="work-header">
+                                                <span class="work-title">《${title}》</span>
+                                                <span class="work-location">- ${locationName}</span>
+                                            </div>
+                                            <div class="work-author">作者：${author}</div>
+                                            <div class="work-excerpt">${excerpt}</div>
+                                            <div class="nanjing-description">
+                                                <div class="desc-title">南京描写：</div>
+                                                <div class="desc-content">${nanjingDesc}</div>
+                                            </div>
+                                        </li>
+                                    `;
+                                });
+                                
+                                worksHtml += '</ul></div>';
+                            } else {
+                                worksHtml = '<p class="no-works">暂无相关作品信息</p>';
+                            }
+                            
+                            $('#infoPanel').html(`
+                                <div class="location-info">
+                                    <h3>${location.name || "未知地点"}</h3>
+                                    <p class="location-era">年代：${location.era || "未知"}</p>
+                                    <p class="location-description">${location.excerpt || "江苏省会，六朝古都，中国现代文学重要城市"}</p>
+                                    ${worksHtml}
+                                </div>
+                            `);
+                        }
+                    });
+                });
+
             // 响应窗口大小变化
             window.addEventListener('resize', function() {
                 myChart.resize();
@@ -919,8 +1119,8 @@
             $('#searchBtn').click(function() {
                 const query = $('#searchInput').val().trim().toLowerCase();
                 const exactMatch = Object.keys(authorsData).find(author => 
-        author.toLowerCase() === query
-    );
+                    author.toLowerCase() === query
+                );
                 // 先取消之前所有高亮
                 myChart.dispatchAction({ type: 'downplay' });
                 
@@ -951,36 +1151,36 @@
                     
                     // 查找作家信息
                     const matchedAuthor = Object.keys(authorsData).find(author => 
-            author.includes(query) || query.includes(author)
+                        author.includes(query) || query.includes(author)
                     );
                     
-                     if (matchedAuthor) {
-            const authorInfo = authorsData[matchedAuthor];
-            // 构建作品列表（完整代码）
-            let worksHtml = '';
-            if (authorInfo.works && authorInfo.works.length > 0) {
-                worksHtml = '<div class="literary-works"><h4>代表作品:</h4><ul>';
-                authorInfo.works.forEach(work => {
-                    // 确保显示作品描述
-                    worksHtml += `<li>
-                        <div class="work-title">《${work.title}》</div>
-                        <div class="work-location">地点: ${work.location}</div>
-                        <div class="work-excerpt">${work.excerpt}</div>
-                        <div class="nanjing-description">${work.nanjingDescription || '暂无南京相关描写'}</div>
-                    </li>`;
-                });
-                worksHtml += '</ul></div>';
-            }
-            
-            $('#infoPanel').html(`
-                <div class="author-info">
-                    <h3>${authorInfo.name}</h3>
-                    <p>${authorInfo.intro}</p>
-                    ${worksHtml}
-                </div>
-            `);
-        }
-    } else {
+                    if (matchedAuthor) {
+                        const authorInfo = authorsData[matchedAuthor];
+                        // 构建作品列表（完整代码）
+                        let worksHtml = '';
+                        if (authorInfo.works && authorInfo.works.length > 0) {
+                            worksHtml = '<div class="literary-works"><h4>代表作品:</h4><ul>';
+                            authorInfo.works.forEach(work => {
+                                // 确保显示作品描述
+                                worksHtml += `<li>
+                                    <div class="work-title">《${work.title}》</div>
+                                    <div class="work-location">地点: ${work.location}</div>
+                                    <div class="work-excerpt">${work.excerpt}</div>
+                                    <div class="nanjing-description">${work.nanjingDescription || '暂无南京相关描写'}</div>
+                                </li>`;
+                            });
+                            worksHtml += '</ul></div>';
+                        }
+                        
+                        $('#infoPanel').html(`
+                            <div class="author-info">
+                                <h3>${authorInfo.name}</h3>
+                                <p>${authorInfo.intro}</p>
+                                ${worksHtml}
+                            </div>
+                        `);
+                    }
+                } else {
                     $('#infoPanel').html(`<div class="author-info">
                         <h3>未找到相关结果</h3>
                         <p>请尝试搜索作家姓名(如:叶兆言、朱自清)或地点名称(如:秦淮河、夫子庙)</p>
