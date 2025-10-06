@@ -1,487 +1,544 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>跟着课本游南京 - 南京文学之旅</title>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-      body {
-        font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
-        line-height: 1.6;
-        color: #333;
-        background-color: #f0f7f7; /* 深色背景，显著增强雪花对比度 */
-        position: relative;
-        overflow-x: hidden;
-        /* 使用图片作为鼠标光标 */
-        cursor: url("../images/fly.cur"), auto;
-      }
-      /* 确保地图容器也应用光标样式 */
-      #mapContainer {
-        cursor: url("../images/fly.cur"), auto !important;
-      }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f0f7f7;
+            position: relative;
+            overflow-x: hidden;
+            cursor: url("../images/fly.cur"), auto;
+        }
+        
+        #mapContainer {
+            cursor: url("../images/fly.cur"), auto !important;
+        }
 
-      .container {
-        margin: 0 auto;
-        padding: 20px;
-      }
+        .container {
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-      header {
-        /* max-width: 1200px; */
-        text-align: center;
-        padding: 40px 20px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        margin-bottom: 40px;
-        border-radius: 10px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      }
-
-      header h1 {
-        font-size: 2.5rem;
-        margin-bottom: 10px;
-        font-weight: 700;
-      }
-
-      header p {
-        font-size: 1.2rem;
-        opacity: 0.9;
-      }
-
-      .nav {
-        max-width: 1200px;
-        margin: 0 auto;
-        background-color: white;
-        padding: 15px 0;
-        margin-bottom: 30px;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-      }
-
-      .nav ul {
-        display: flex;
-        justify-content: center;
-        list-style: none;
-      }
-
-      .nav li {
-        margin: 0 20px;
-      }
-
-      .nav a {
-        color: #555;
-        text-decoration: none;
-        padding: 8px 15px;
-        border-radius: 20px;
-        transition: all 0.3s ease;
-      }
-
-      .nav a:hover {
-        background-color: #667eea;
-        color: white;
-      }
-
-      .video-section {
-        max-width: 1200px;
-        margin: 0 auto;
-
-        margin-bottom: 50px;
-      }
-
-      .video-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 30px;
-        margin-top: 30px;
-      }
-
-      .video-card {
-        background-color: white;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .video-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-      }
-
-      .video-container {
-        position: relative;
-        padding-top: 56.25%;
-        /* 16:9 Aspect Ratio */
-        background-color: #000;
-      }
-
-      .video-container video {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-      }
-
-      .video-info {
-        padding: 20px;
-      }
-
-      .video-info h3 {
-        font-size: 1.3rem;
-        margin-bottom: 10px;
-        color: #333;
-      }
-
-      .video-info p {
-        color: #666;
-        margin-bottom: 15px;
-      }
-
-      .video-meta {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 0.9rem;
-        color: #888;
-      }
-
-      .play-btn {
-        display: inline-block;
-        padding: 8px 20px;
-        background-color: #667eea;
-        color: white;
-        border: none;
-        border-radius: 25px;
-        cursor: pointer;
-        font-size: 0.9rem;
-        transition: all 0.3s ease;
-        text-decoration: none;
-      }
-
-      .play-btn:hover {
-        background-color: #764ba2;
-        transform: scale(1.05);
-      }
-
-      footer {
-        /* max-width: 1200px; */
-        text-align: center;
-        padding: 30px;
-        margin-top: 50px;
-        background-color: #333;
-        color: white;
-        border-radius: 10px;
-      }
-
-      /* 全屏视频样式 */
-      .video-fullscreen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: 9999;
-        background-color: #000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .video-fullscreen video {
-        max-width: 100%;
-        max-height: 100%;
-        width: auto !important;
-        height: auto !important;
-      }
-
-      .close-btn {
-        position: absolute;
-        top: 20px;
-        right: 30px;
-        color: white;
-        background-color: rgba(0, 0, 0, 0.5);
-        border: none;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: all 0.3s ease;
-      }
-
-      .close-btn:hover {
-        background-color: rgba(0, 0, 0, 0.8);
-        transform: scale(1.1);
-      }
-
-      @media (max-width: 768px) {
-        .video-grid {
-          grid-template-columns: 1fr;
+        header {
+            text-align: center;
+            padding: 40极 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         header h1 {
-          font-size: 2rem;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 15px 0;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .nav ul {
-          flex-direction: column;
-          align-items: center;
+            display: flex;
+            justify-content: center;
+            list-style: none;
         }
 
         .nav li {
-          margin: 5px 0;
+            margin: 0 20px;
         }
-      }
+
+        .nav a {
+            color: #555;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav a:hover {
+            background-color: #667eea;
+            color: white;
+        }
+
+        .video-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-bottom: 50px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .video-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 极, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-container {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background-color: #000;
+        }
+
+        /* 视频占位图片样式 */
+        .video-poster {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            transition: opacity 0.5s ease;
+        }
+
+        .video-poster::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .video-poster:hover::after {
+            transform: scale(1.1);
+            background: rgba(102, 126, 234, 0.8);
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            z-index: 1;
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .video-info p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .play-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: #667eea;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .play-btn:hover {
+            background-color: #764ba2;
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            background-color: #333;
+            color: white;
+            border-radius: 10px;
+        }
+
+        /* 全屏视频样式 */
+        .video-fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9999;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-fullscreen video {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto !important;
+            height: auto !important;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav li {
+                margin: 5px 0;
+            }
+            
+            .video-poster::after {
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+            }
+        }
     </style>
-  </head>
-
-  <body>
+</head>
+<body>
     <div class="container">
-      <header>
-        <h1>跟着课本游南京</h1>
-        <p>让我们跟随语文课本，和文小都一起探索南京文学之路上的杰出作家与经典作品</p>
-      </header>
+        <header>
+            <h1>跟着课本游南京</h1>
+            <p>让我们跟随语文课本，和文小都一起探索南京文学之路上的杰出作家与经典作品</p>
+        </header>
 
-      <nav class="nav">
-        <ul>
-          <li><a href="../index.html">首页</a></li>
-          <li><a href="keben.html">跟着课本游南京</a></li>
-          <li><a href="authorCollection.html">跟着名人游南京</a></li>
-          <li><a href="didian.html">跟着南京忆名家</a></li>
-          <li><a href="product.html">文创商城</a></li>
-        </ul>
-      </nav>
+        <nav class="nav">
+            <ul>
+                <li><a href="../index.html">首页</a></li>
+                <极><a href="keben.html">跟着课本游南京</a></li>
+                <li><a href="authorCollection.html">跟着名人游南京</a></li>
+                <li><a href="didian.html">跟着南京忆名家</a></li>
+                <li><a href="product.html">文创商城</a></li>
+            </ul>
+        </nav>
 
-      <section class="video-section">
-        <h2 style="text-align: center; margin-bottom: 20px; color: #333">
-          精选视频合集
-        </h2>
-        <div class="video-grid">
-          <!-- 视频1 -->
-          <div class="video-card">
-            <div class="video-container">
-              <video
-                style="
-                  width: 100%;
-                  border-radius: 5px;
-                  object-fit: contain;
-                  background-color: #000;
-                  display: block;
-                  cursor: pointer;
-                "
-                controls
-                muted
-                playsinline
-                preload="auto"
-                poster="images/1.png"
-                class="click-to-fullscreen"
-              >
-                <source
-                  src="../video/xxx/book/1.mp4"
-                  type="video/mp4"
-                />
-                您的浏览器不支持HTML5视频播放。
-              </video>
-            </div>
-            <div class="video-info">
-              <h3>第一集</h3>
-              <p>背影</p>
-              <div class="video-meta">
-                <a href="#" class="play-btn">立即观看</a>
-              </div>
-            </div>
-          </div>
+        <section class="video-section">
+            <h2 style="text-align: center; margin-bottom: 20px; color: #333">
+                精选视频合集
+            </h2>
+            <div class="video-grid">
+                <!-- 视频1 -->
+                <div class="video-card">
+                    <div class="video-container">
+                        <div class="video-poster" style="background-image: url('images/1.png');"></div>
+                        <video
+                            controls
+                            muted
+                            playsinline
+                            preload="auto"
+                            class="click-to-fullscreen"
+                        >
+                            <source
+                                src="../video/xxx/book/1.mp4"
+                                type="video/mp4"
+                            />
+                            您的浏览器不支持HTML5视频播放。
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h3>第一集</h3>
+                        <p>背影</p>
+                        <div class="video-meta">
+                            <a href="#" class="play-btn">立即观看</a>
+                        </div>
+                    </div>
+                </div>
 
-          <!-- 视频2 -->
-          <div class="video-card">
-            <div class="video-container">
-              <video
-                style="
-                  width: 100%;
-                  border-radius: 5px;
-                  object-fit: contain;
-                  background-color: #000;
-                  display: block;
-                "
-                controls
-                muted
-                playsinline
-                preload="auto"
-                poster="images/1.png"
-              >
-                <source
-                  src="../video/xxx/book/2.mp4"
-                  type="video/mp4"
-                />
-                您的浏览器不支持HTML5视频播放。
-              </video>
-            </div>
-            <div class="video-info">
-              <h3>第二集</h3>
-              <p>桨声灯影里的秦淮河</p>
-              <div class="video-meta">
-                <a href="#" class="play-btn">立即观看</a>
-              </div>
-            </div>
-          </div>
+                <!-- 视频2 -->
+                <div class="video-card">
+                    <div class="video-container">
+                        <div class="video-poster" style="background-image: url('images/1.png');"></div>
+                        <video
+                            controls
+                            muted
+                            playsinline
+                            preload="auto"
+                        >
+                            <source
+                                src="../video/xxx/book/2.mp4"
+                                type="video/mp4"
+                            />
+                            您的浏览器不支持HTML5视频播放。
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h3>第二集</h3>
+                        <p>桨声灯影里的秦淮河</p>
+                        <div class="video-meta">
+                            <a href="#" class="play-btn">立即观看</a>
+                        </div>
+                    </div>
+                </div>
 
-          <!-- 视频3 -->
-          <div class="video-card">
-            <div class="video-container">
-              <video
-                style="
-                  width: 100%;
-                  border-radius: 5px;
-                  object-fit: contain;
-                  background-color: #000;
-                  display: block;
-                  cursor: pointer;
-                "
-                controls
-                muted
-                playsinline
-                preload="auto"
-                poster="images/1.png"
-                class="click-to-fullscreen"
-              >
-                <source
-                  src="../video/xxx/book/3.mp4"
-                  type="video/mp4"
-                />
-                您的浏览器不支持HTML5视频播放。
-              </video>
+                <!-- 视频3 -->
+                <div class="video-card">
+                    <div class="video-container">
+                        <div class="video-poster" style="background-image: url('images/1.png');"></div>
+                        <video
+                            controls
+                            muted
+                            playsinline
+                            preload="auto"
+                            class="click-to-fullscreen"
+                        >
+                            <source
+                                src="../video/xxx/book/3.mp4"
+                                type="video极/mp4"
+                            />
+                            您的浏览器不支持HTML5视频播放。
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h3>第三集</h3>
+                        <p>南京大屠杀 选段</p>
+                        <div class="video-meta">
+                            <a href="#" class="play-btn">立即观看</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="video-info">
-              <h3>第三集</h3>
-              <p>南京大屠杀 选段</p>
-              <div class="video-meta">
-                <a href="#" class="play-btn">立即观看</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <footer>
-        <p>&copy; 2025 南京现当代文学合集-语文课本系列</p>
-      </footer>
+        <footer>
+            <p>&copy; 2025 南京现当代文学合集-语文课本系列</p>
+        </footer>
     </div>
 
     <script>
-      // 平滑滚动效果
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          document.querySelector(this.getAttribute("href")).scrollIntoView({
-            behavior: "smooth",
-          });
+        // 平滑滚动效果
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute("href"));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                    });
+                }
+            });
         });
-      });
 
-      // 视频播放统计（模拟）
-      document.querySelectorAll(".play-btn").forEach((btn) => {
-        btn.addEventListener("click", function (e) {
-          e.preventDefault();
-          const video = this.closest(".video-card").querySelector("video");
-          video.play();
-          console.log("视频开始播放");
+        // 视频播放统计（模拟）
+        document.querySelectorAll(".play-btn").forEach((btn) => {
+            btn.addEventListener("click", function (e) {
+                e.preventDefault();
+                const videoCard = this.closest(".video-card");
+                const video = videoCard.querySelector("video");
+                const poster = videoCard.querySelector(".video-poster");
+                
+                // 隐藏占位图片并播放视频
+                poster.style.opacity = "0";
+                setTimeout(() => {
+                    poster.style.display = "none";
+                }, 500);
+                video.play();
+                console.log("视频开始播放");
+            });
         });
-      });
 
-      // 为所有视频添加点击放大功能
-      document.querySelectorAll("video").forEach((video) => {
-        // 添加click-to-fullscreen类和cursor: pointer样式
-        video.classList.add("click-to-fullscreen");
-        video.style.cursor = "pointer";
-
-        video.addEventListener("click", function (e) {
-          // 避免点击控制栏时也触发全屏
-          if (e.target !== this && e.target.tagName !== "VIDEO") return;
-
-          // 创建全屏容器
-          const fullscreenContainer = document.createElement("div");
-          fullscreenContainer.className = "video-fullscreen";
-
-          // 克隆视频元素
-          const clonedVideo = this.cloneNode(true);
-          clonedVideo.style.width = "auto";
-          clonedVideo.style.height = "auto";
-          clonedVideo.style.maxWidth = "100%";
-          clonedVideo.style.maxHeight = "100%";
-          clonedVideo.style.cursor = "default";
-
-          // 保存原视频的播放状态
-          const currentTime = this.currentTime;
-          const isPlaying = !this.paused;
-
-          // 添加关闭按钮
-          const closeBtn = document.createElement("button");
-          closeBtn.className = "close-btn";
-          closeBtn.innerHTML = "&times;";
-
-          // 关闭按钮事件
-          closeBtn.addEventListener("click", function () {
-            // 保存当前播放时间
-            const currentTime = clonedVideo.currentTime;
-
-            // 移除全屏容器
-            document.body.removeChild(fullscreenContainer);
-
-            // 恢复原视频的播放状态
-            video.currentTime = currentTime;
-            if (isPlaying) {
-              video.play();
+        // 视频加载完成后隐藏占位图片
+        document.querySelectorAll("video").forEach((video) => {
+            const poster = video.previousElementSibling;
+            
+            // 监听视频可以播放事件
+            video.addEventListener("canplay", function() {
+                poster.style.opacity = "0";
+                setTimeout(() => {
+                    poster.style.display = "none";
+                }, 500);
+            });
+            
+            // 如果视频已经可以播放，立即隐藏占位图片
+            if (video.readyState >= 3) {
+                poster.style.display = "none";
             }
-
-            // 恢复body滚动
-            document.body.style.overflow = "auto";
-          });
-
-          // 点击空白处关闭
-          fullscreenContainer.addEventListener("click", function (e) {
-            if (e.target === this) {
-              closeBtn.click();
-            }
-          });
-
-          // ESC键关闭
-          document.addEventListener("keydown", function handleEsc(e) {
-            if (e.key === "Escape") {
-              closeBtn.click();
-              document.removeEventListener("keydown", handleEsc);
-            }
-          });
-
-          // 添加元素到全屏容器
-          fullscreenContainer.appendChild(clonedVideo);
-          fullscreenContainer.appendChild(closeBtn);
-
-          // 添加到body
-          document.body.appendChild(fullscreenContainer);
-
-          // 暂停原视频
-          this.pause();
-
-          // 设置克隆视频的播放状态
-          clonedVideo.currentTime = currentTime;
-          if (isPlaying) {
-            clonedVideo.play();
-          }
-
-          // 禁止body滚动
-          document.body.style.overflow = "hidden";
+            
+            // 添加错误处理
+            video.addEventListener("error", function() {
+                console.error("视频加载失败: ", video.src);
+            });
+            
+            // 点击占位图片播放视频
+            poster.addEventListener("click", function() {
+                this.style.opacity = "0";
+                setTimeout(() => {
+                    this.style.display = "none";
+                    video.play();
+                }, 500);
+            });
         });
-      });
+
+        // 为所有视频添加点击放大功能
+        document.querySelectorAll("video").forEach((video) => {
+            video.classList.add("click-to-fullscreen");
+            video.style.cursor = "pointer";
+
+            video.addEventListener("click", function (e) {
+                // 避免点击控制栏时也触发全屏
+                if (e.target !== this && e.target.tagName !== "VIDEO") return;
+
+                // 创建全屏容器
+                const fullscreenContainer = document.createElement("div");
+                fullscreenContainer.className = "video-fullscreen";
+
+                // 克隆视频元素
+                const clonedVideo = this.cloneNode(true);
+                clonedVideo.style.width = "auto";
+                clonedVideo.style.height = "auto";
+                clonedVideo.style.maxWidth = "100%";
+                clonedVideo.style.maxHeight = "100%";
+                clonedVideo.style.cursor = "default";
+                clonedVideo.controls = true;
+
+                // 保存原视频的播放状态
+                const currentTime = this.currentTime;
+                const isPlaying = !this.paused;
+
+                // 添加关闭按钮
+                const closeBtn = document.createElement("button");
+                closeBtn.className = "close-btn";
+                closeBtn.innerHTML = "&times;";
+
+                // 关闭按钮事件
+                closeBtn.addEventListener("click", function () {
+                    // 保存当前播放时间
+                    const currentTime = clonedVideo.currentTime;
+
+                    // 移除全屏容器
+                    document.body.removeChild(fullscreenContainer);
+
+                    // 恢复原视频的播放状态
+                    video.currentTime = currentTime;
+                    if (isPlaying) {
+                        video.play();
+                    }
+
+                    // 恢复body滚动
+                    document.body.style.overflow = "auto";
+                });
+
+                // 点击空白处关闭
+                fullscreenContainer.addEventListener("click", function (e) {
+                    if (e.target === this) {
+                        closeBtn.click();
+                    }
+                });
+
+                // ESC键关闭
+                document.addEventListener("keydown", function handleEsc(e) {
+                    if (e.key === "Escape") {
+                        closeBtn.click();
+                        document.removeEventListener("keydown", handleEsc);
+                    }
+                });
+
+                // 添加元素到全屏容器
+                fullscreenContainer.appendChild(clonedVideo);
+                fullscreenContainer.appendChild(closeBtn);
+
+                // 添加到body
+                document.body.appendChild(fullscreenContainer);
+
+                // 暂停原视频
+                this.pause();
+
+                // 设置克隆视频的播放状态
+                clonedVideo.currentTime = currentTime;
+                if (isPlaying) {
+                    clonedVideo.play();
+                }
+
+                // 禁止body滚动
+                document.body.style.overflow = "hidden";
+            });
+        });
     </script>
-  </body>
+</body>
 </html>
