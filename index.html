@@ -28,6 +28,7 @@
         --bg-gradient: linear-gradient(135deg, #f8f9fa, #e9ecef);
         --side-panel-bg: rgba(255, 255, 255, 0.9);
         --side-panel-width: 280px;
+        --bottom-panel-height: 300px;
       }
 
       body {
@@ -373,14 +374,34 @@
         transform: translateX(100%);
       }
 
-      .side-panel.visible {
+      .bottom-panel {
+        position: fixed;
+        left: 0;
+        right: 0;
+        height: var(--bottom-panel-height);
+        background: var(--side-panel-bg);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        z-index: 100;
+        overflow-y: auto;
+        transition: transform 0.4s ease;
+        backdrop-filter: blur(5px);
+        border-radius: 12px 12px 0 0;
+        bottom: 0;
+        transform: translateY(100%);
+      }
+
+      .side-panel.visible,
+      .bottom-panel.visible {
         transform: translateX(0);
+      }
+
+      .bottom-panel.visible {
+        transform: translateY(0);
       }
 
       .panel-toggle {
         position: fixed;
-        top: 50%;
-        transform: translateY(-50%);
         background: var(--primary-color);
         color: white;
         width: 40px;
@@ -396,14 +417,28 @@
 
       /* 左侧按钮定位在面板外侧 */
       .left-toggle {
+        top: 50%;
         left: 0;
+        transform: translateY(-50%);
         border-radius: 0 8px 8px 0;
       }
 
       /* 右侧按钮定位在面板外侧 */
       .right-toggle {
+        top: 50%;
         right: 0;
+        transform: translateY(-50%);
         border-radius: 8px 0 0 8px;
+      }
+
+      /* 底部按钮定位 */
+      .bottom-toggle {
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        border-radius: 8px 8px 0 0;
+        width: 60px;
+        height: 40px;
       }
 
       /* 当左侧面板打开时，按钮的位置调整 */
@@ -416,18 +451,18 @@
         right: var(--side-panel-width);
       }
 
+      /* 当底部面板打开时，按钮的位置调整 */
+      .bottom-panel.visible ~ .bottom-toggle {
+        bottom: var(--bottom-panel-height);
+      }
+
       .panel-toggle:hover {
         background: var(--secondary-color);
         width: 45px;
       }
 
-      .left-toggle {
-        left: 0;
-      }
-
-      .right-toggle {
-        right: 0;
-        border-radius: 8px 0 0 8px;
+      .bottom-toggle:hover {
+        height: 45px;
       }
 
       .panel-header {
@@ -547,6 +582,276 @@
         line-height: 1.5;
       }
 
+      .attraction-list {
+        margin-bottom: 1.5rem;
+      }
+
+      .attraction-item {
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px dashed #e2e8f0;
+      }
+
+      .attraction-name {
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+
+      .attraction-name:hover {
+        color: var(--secondary-color);
+        text-decoration: underline;
+      }
+
+      .work-item {
+        margin-left: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .work-title {
+        font-weight: 500;
+      }
+
+      .work-author {
+        font-size: 0.85rem;
+        color: var(--light-text);
+      }
+
+      .education-content {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        text-align: justify;
+      }
+
+      .education-section {
+        margin-bottom: 1.5rem;
+        text-align: left;
+      }
+
+      .education-section h3 {
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+        text-align: center;
+      }
+
+      .education-section p {
+        margin-bottom: 0.8rem;
+        text-align: left;
+      }
+
+      /* 可点击的地点链接样式 */
+      .location-link {
+        color: var(--primary-color);
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s;
+        border-bottom: 1px dashed var(--primary-color);
+      }
+
+      .location-link:hover {
+        color: var(--secondary-color);
+        border-bottom: 1px solid var(--secondary-color);
+      }
+
+      /* 图片容器样式 - 添加居中和对齐控制 */
+      .image-container {
+        margin: 1.5rem auto;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 90%; /* 控制最大宽度 */
+        text-align: center; /* 确保内容居中 */
+      }
+
+      /* 图片大小控制 */
+      .image-container img {
+        width: 100%; /* 响应式宽度 */
+        max-width: 500px; /* 最大宽度限制 */
+        height: auto; /* 保持比例 */
+        display: block;
+        margin: 0 auto; /* 水平居中 */
+        transition: transform 0.3s ease;
+      }
+
+      /* 图片悬停效果 */
+      .image-container img:hover {
+        transform: scale(1.03);
+      }
+
+      /* 图片标题样式 */
+      .image-caption {
+        padding: 0.8rem;
+        background: rgba(0, 0, 0, 0.05);
+        font-size: 0.9rem;
+        color: var(--light-text);
+        text-align: center;
+        margin-top: 0.5rem;
+        border-radius: 0 0 8px 8px;
+      }
+
+      /* 为底部面板添加更好的布局 */
+      .bottom-panel .education-content {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+
+      /* AI助手样式 - 置顶 */
+      #ai-assistant {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+      }
+
+      #chat-container {
+        width: 350px;
+        height: 500px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .chat-header {
+        background: var(--primary-color);
+        color: white;
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .chat-header h3 {
+        margin: 0;
+        font-size: 1.2rem;
+      }
+
+      #close-chat {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #avatar-container {
+        height: 100px;
+        background: linear-gradient(135deg, #e8f4ff, #c2e0ff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      #avatar-animation {
+        width: 80px;
+        height: 80px;
+        background: url('./images/avatar.png') center/contain no-repeat;
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+
+      #chat-messages {
+        flex: 1;
+        padding: 15px;
+        overflow-y: auto;
+        background: #f8f9fa;
+      }
+
+      .message {
+        margin-bottom: 15px;
+        padding: 10px 15px;
+        border-radius: 18px;
+        max-width: 80%;
+        word-wrap: break-word;
+      }
+
+      .user-message {
+        background: var(--primary-color);
+        color: white;
+        margin-left: auto;
+        border-bottom-right-radius: 4px;
+      }
+
+      .assistant-message {
+        background: white;
+        border: 1px solid #e2e8f0;
+        margin-right: auto;
+        border-bottom-left-radius: 4px;
+      }
+
+      .chat-input {
+        display: flex;
+        padding: 15px;
+        border-top: 1px solid #e2e8f0;
+        background: white;
+      }
+
+      #user-input {
+        flex: 1;
+        padding: 12px 15px;
+        border: 1px solid #e2e8f0;
+        border-radius: 25px;
+        outline: none;
+        font-size: 0.9rem;
+      }
+
+      #send-btn {
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 25px;
+        padding: 0 20px;
+        margin-left: 10px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      #send-btn:hover {
+        background: var(--secondary-color);
+      }
+
+      #chat-toggle {
+        position: absolute;
+        bottom: -50px;
+        right: 0;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      #chat-toggle:hover {
+        background: var(--secondary-color);
+        transform: scale(1.1);
+      }
+
+      /* 响应式调整 */
       @media (max-width: 1200px) {
         .side-panel {
           width: 240px;
@@ -561,6 +866,16 @@
 
         .panel-header {
           font-size: 1.3rem;
+        }
+        
+        #ai-assistant {
+          right: 10px;
+          top: 10px;
+        }
+        
+        #chat-container {
+          width: 300px;
+          height: 450px;
         }
       }
 
@@ -578,8 +893,36 @@
           transform: translateX(100%);
         }
 
+        .bottom-panel {
+          height: 60%;
+        }
+
         .panel-toggle {
           display: none;
+        }
+
+        .image-container {
+          max-width: 95%;
+          margin: 1rem auto;
+        }
+        
+        .image-container img {
+          max-width: 100%; /* 在小屏幕上使用全宽 */
+        }
+        
+        .education-section h3 {
+          text-align: left; /* 小屏幕上标题左对齐 */
+        }
+        
+        #ai-assistant {
+          position: fixed;
+          top: 10px;
+          right: 10px;
+        }
+        
+        #chat-container {
+          width: calc(100vw - 40px);
+          height: 400px;
         }
       }
       .imgFooter {
@@ -591,7 +934,31 @@
     </style>
   </head>
   <body>
-    <!-- 左侧信息面板 -->
+    <!-- AI助手容器 - 置顶 -->
+    <div id="ai-assistant">
+      <div id="chat-container">
+        <div class="chat-header">
+          <h3>南京文学助手</h3>
+          <button id="close-chat">×</button>
+        </div>
+        <!-- 虚拟形象区域 -->
+        <div id="avatar-container">
+          <div id="avatar-animation"></div>
+        </div>
+        <div id="chat-messages"></div>
+        <div class="chat-input">
+          <input
+            type="text"
+            id="user-input"
+            placeholder="输入关于南京现当代文学的问题..."
+          />
+          <button id="send-btn">发送</button>
+        </div>
+      </div>
+      <button id="chat-toggle">💬</button>
+    </div>
+
+    <!-- 左侧信息面板 - 包含原有"文"和"学"的内容 -->
     <div class="side-panel left-panel" id="leftPanel">
       <div class="panel-header">南京文学时间轴</div>
 
@@ -663,11 +1030,8 @@
         "逛南京像逛古董铺子，到处都有些时代侵蚀的遗痕。你可以摩挲，可以凭吊，可以悠然遐想..."
         <div class="quote-author">—— 朱自清《南京》</div>
       </div>
-    </div>
 
-    <!-- 右侧信息面板 -->
-    <div class="side-panel right-panel" id="rightPanel">
-      <div class="panel-header">文学地标导览</div>
+      <div class="panel-header" style="margin-top: 2rem">文学地标导览</div>
 
       <div class="recommended-book">
         <div class="book-cover">秦淮河</div>
@@ -714,14 +1078,212 @@
       </div>
 
       <div class="quote">
-        "南京的可爱，在文学中表现得最为充分。六朝古都的沧桑，秦淮河的风月，玄武湖的烟波，都在作家笔下得到了永生。"
+        "南京的可爱，在文学中表现得最为充分。六朝古都的沧桑，秦淮河的风月，玄武湖的烟波，都在作家笔下得到了永生."
         <div class="quote-author">—— 叶兆言</div>
+      </div>
+    </div>
+
+    <!-- 右侧信息面板 - 旅游景点与作品 -->
+    <div class="side-panel right-panel" id="rightPanel">
+      <div class="panel-header">南京景点与文学作品</div>
+
+      <div class="attraction-list">
+        <div class="attraction-item">
+          <div class="attraction-name" data-location="秦淮河">秦淮河 / 秦淮</div>
+          <div class="work-item">
+            <div class="work-title">《桨声灯影里的秦淮河》</div>
+            <div class="work-author">朱自清</div>
+          </div>
+          <div class="work-item">
+            <div class="work-title">《桨声灯影里的秦淮河》</div>
+            <div class="work-author">俞平伯</div>
+          </div>
+          <div class="work-item">
+            <div class="work-title">《秦淮世家》</div>
+            <div class="work-author">张恨水</div>
+          </div>
+          <div class="work-item">
+            <div class="work-title">《秦淮百姓家》</div>
+            <div class="work-author">丁家桐</div>
+          </div>
+          <div class="work-item">
+            <div class="work-title">《秦淮拾梦记》</div>
+            <div class="work-author">黄裳</div>
+          </div>
+          <div class="work-item">
+            <div class="work-title">《秦淮河边拾瓷乐》</div>
+            <div class="work-author">王德安</div>
+          </div>
+          <div class="work-item">
+            <div class="work-title">《秦淮河上的遐思》</div>
+            <div class="work-author">赵瑞蕻</div>
+          </div>
+          <div class="work-item">
+            <div class="work-title">《哦，十里秦准》</div>
+            <div class="work-author">赵翼如</div>
+          </div>
+          <div class="work-item">
+            <div class="work-title">《秦准》</div>
+            <div class="work-author">娜彧</div>
+          </div>
+          <div class="work-item">
+            <div class="work-title">《旧影秦淮》</div>
+            <div class="work-author">叶兆言</div>
+          </div>
+          <div class="work-item">
+            <div class="work-title">《家住六朝烟水间》</div>
+            <div class="work-author">薛冰</div>
+          </div>
+        </div>
+
+        <div class="attraction-item">
+          <div class="attraction-name" data-location="玄武湖">玄武湖</div>
+          <div class="work-item">
+            <div class="work-title">《玄武湖之秋》</div>
+            <div class="work-author">倪贻德</div>
+          </div>
+          <div class="work-item">
+            <div class="work-title">《玄武湖忆旧》</div>
+            <div class="work-author">程千帆</div>
+          </div>
+        </div>
+
+        <div class="attraction-item">
+          <div class="attraction-name" data-location="钟山">钟山（紫金山）</div>
+          <div class="work-item">
+            <div class="work-title">《钟山行》</div>
+            <div class="work-author">朱偰</div>
+          </div>
+          <div class="work-item">
+            <div class="work-title">《江行望钟山》</div>
+            <div class="work-author">汪辟疆</div>
+          </div>
+          <div class="work-item">
+            <div class="work-title">《与祭钟山书院飨堂礼成有作》</div>
+            <div class="work-author">梁公约</div>
+          </div>
+          <div class="work-item">
+            <div class="work-title">《在紫金山星座上》</div>
+            <div class="work-author">冯亦同</div>
+          </div>
+        </div>
+
+        <div class="attraction-item">
+          <div class="attraction-name" data-location="明孝陵">明孝陵</div>
+          <div class="work-item">
+            <div class="work-title">《谒明孝陵》</div>
+            <div class="work-author">丘逢甲</div>
+          </div>
+          <div class="work-item">
+            <div class="work-title">《明孝陵志》</div>
+            <div class="work-author">王焕镳</div>
+          </div>
+          <div class="work-item">
+            <div class="work-title">《在明孝陵乘凉》</div>
+            <div class="work-author">魏微</div>
+          </div>
+        </div>
+
+        <div class="attraction-item">
+          <div class="attraction-name" data-location="莫愁湖">莫愁湖</div>
+          <div class="work-item">
+            <div class="work-title">《雪中游莫愁湖》</div>
+            <div class="work-author">丘逢甲</div>
+          </div>
+        </div>
+
+        <div class="attraction-item">
+          <div class="attraction-name" data-location="灵谷寺">灵谷寺</div>
+          <div class="work-item">
+            <div class="work-title">《独往灵谷寺》</div>
+            <div class="work-author">柳诒徽</div>
+          </div>
+          <div class="work-item">
+            <div class="work-title">《游灵谷寺记》</div>
+            <div class="work-author">觉余</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部信息面板 - 教育内容 -->
+    <div class="bottom-panel" id="bottomPanel">
+      <div class="panel-header">南京文学教育内容</div>
+      
+      <div class="education-content">
+        <div class="education-section">
+          <h3>《国行公祭，为佑世界和平》</h3>
+          <p><strong>背景知识</strong></p>
+          <p>1937年12月13日，侵华日军侵入南京并进行了惨绝人寰的大屠杀，在人类文明史上留下了最黑暗的一页。</p>
+
+          <p>2014年2月27日，第十二届全国人大常委会第七次会议通过决定，以立法形式将12月13日设立为南京大屠杀死难者国家公祭日。决议的通过，使得对南京大屠杀遇难者的纪念上升到国家层面。国家公祭日的设立表明中国人民反对侵略战争、捍卫人类尊严、维护世界和平的坚定立场。</p>
+          <p>2017年12月13日，是南京大屠杀惨案发生80周年，也是第四个南京大屠杀死难者国家公祭日，《人民日报》发表此文，深切缅怀南京大屠杀中的无辜死难者，并警示世人铭记历史，勿忘伤痛，共同捍卫世界和平.</p>
+        </div>
+
+        <div class="education-section">
+          <h3>知识拓展</h3>
+          <p><strong>1.南京大屠杀死难者国家公祭日</strong></p>
+          <p>2014年2月27日，第十二届全国人大常委会第七次会议通过决定，将每年的12月13日设立为南京大屠杀死难者国家公祭日.决议的通过，使得对南京大屠杀遇难者的纪念上升为国家层面，表明了中国人民反对侵略战争、捍卫人类尊严、维护世界和平的坚定立场.</p>
+          
+          <p><strong>2.南京大屠杀死难者国家公祭鼎</strong></p>
+          <p>国家公祭鼎高165厘米，口径132厘米.铜质的鼎身和铜质的底座重2014公斤，石质的底座重1213公斤，象征2014年12月13日举行首次国家公祭.</p>
+          <p>鼎上饰以植物纹和卷云纹.以鼎足为界，所有文字被刻在鼎身上的三个部分:左后方和右后方的两面，篆刻国家公祭日的记事文，共两百多字，用小楷书写;而正面篆刻最重要的铭文，一百六十字，用魏碑书写.</p>
+          
+          <p><strong>3.南京大屠杀死难者国家公祭鼎铭文</strong></p>
+          <p>泱泱华夏，赫赫文明.仁风远播，大化周行.泊及近代，积弱积贫.</p>
+          <p>侵华日寇，毁吾南京.劫掠黎庶，屠戮苍生.九原板荡，百载陆沉.</p>
+          <p>卅万亡灵，饮恨江城.日月惨淡，寰宇震惊.兽行暴虐，旷世未闻.</p>
+          <p>同胞何辜，国难正殷.哀兵奋起，金戈鼍鼓.兄弟同心，共御外侮.</p>
+          <p>捐躯洒血，浩气干云.尽扫狼烟，重振乾坤.乙酉既捷，家国维新.</p>
+          <p>国行公祭，法立典章.铸兹宝鼎，祀我国殇.昭昭前事，惕惕后人.</p>
+          <p>永矢弗谖，祈愿和平.中华圆梦，民族复兴.</p>
+        </div>
+
+        <div class="education-section">
+          <h3>链接文都</h3>
+          <p><strong><span class="location-link" data-location="侵华日军南京大屠杀遇难同胞纪念馆">侵华日军南京大屠杀遇难同胞纪念馆</span></strong></p>
+          <p>地址：江苏省南京市建邺区水西门大街418号</p>
+          <p>介绍：侵华日军南京大屠杀遇难同胞纪念馆建立在南京大屠杀死难者遗骸原址上，于1985年8月15日建成开放，为全国重点文物保护单位、全国爱国主义教育示范基地、国家一级博物馆、海峡两岸交流基地、国防教育基地，入选第一批"国家级抗战纪念设施、遗址名录".2014年起，成为南京大屠杀死难者国家公祭仪式举办地，是《南京市国家公祭保障条例》规定的国家公祭场所.</p>
+          <p>纪念馆总占地面积10.3万平方米，展陈面积近2万平方米，设有雕塑广场、公祭广场、史料陈列厅、悼念广场、墓地广场、"万人坑"遗址、祭场、冥思厅、和平公园等区域，管理南京利济巷慰安所旧址陈列馆；设有基本陈列"南京大屠杀史实展"、主题展览"正义必胜 和平必胜 人民必胜------中国战区反法西斯战争胜利暨审判日本战犯史实展"、"慰安妇"受害者专题陈列"二战中的性奴隶------日军'慰安妇'制度及其罪行展"，引导公众牢记历史、不忘过去，珍爱和平、开创未来.</p>
+          
+          <!-- 插入侵华日军南京大屠杀遇难同胞纪念馆照片 -->
+          <div class="image-container">
+            <img src="./images/育01.png" alt="侵华日军南京大屠杀遇难同胞纪念馆">
+            <div class="image-caption">侵华日军南京大屠杀遇难同胞纪念馆</div>
+          </div>
+        </div>
+
+        <div class="education-section">
+          <h3>《背影》</h3>
+          <p><strong>作者：</strong>朱自清（1898-1948），字佩弦，江苏省扬州市人.现代散文家、诗人、学者、民主战士.有诗文集《踪迹》，散文集《欧游杂记》等.</p>
+          
+          <p><strong>写作背景：</strong></p>
+          <p>1916年，朱家的境况已大不如前，父亲尽了最大的努力，体面地为自清筹办了婚事，并送他去北京大学读书.几乎与此同时，家中发生了一系列的变故.父亲的公卖局长职务交卸了，祖母的去世，都给家庭造成了一定的困难.父亲设法变卖了家产，又在扬州借了一笔高利贷.这时，朱自清接到了祖母去世的噩耗，便与父亲同路奔丧回扬州，此时他才真正感得了家境的凄凉：往日的巨大古钟、朱红胆瓶、碧玉如意、板桥手迹等，均早已进了当铺；满院枯枝败叶，一派萧条的景象.他凝视着微微发胖而略显龙钟的父亲、老实巴交的母亲和弟妹，心情十分沉重.办完祖母的丧事，朱自清要回北京，父亲也为了生计而匆匆前往南京谋职，于是父子同行至南京.《背影》记载的便是他俩在浦口东站分手时的情景.</p>
+          
+          <p><strong>课文简介：</strong></p>
+          <p>《背影》是八年级上册第四单元的一篇回忆性散文，它采用记实的手法，通过特定角度的背影去写父子间在那特殊的社会背景下相怜相爱的感情.作为语文教材的传统课文，《背影》感染了一代又一代人，因为它不仅写出了一种异常真挚与至诚的父子情，同时又是构思精巧、叙事中结合抒情的散文代表篇目.</p>
+          
+          <p><strong>链接文都：</strong></p>
+          <p><strong><span class="location-link" data-location="浦口火车站">浦口火车站</span></strong></p>
+          <p>地址：江苏省南京市浦口区津浦路30号</p>
+          <p>介绍：浦口火车站位于江苏省南京市浦口区，是全国重点文物保护单位，中国唯一保存民国特色的火车站.</p>
+          <p>浦口火车站是近现代重要史迹及代表性建筑，始建于1908年(清光绪三十四年)，1912年建成通车.中国近代许多重要历史事件均发生在此，朱自清的《背影》；毛泽东送留法学生去上海，在此丢失一双布鞋；郭沫若在此中转到南昌去寻找革命同志；孙中山先生灵榇抵此举行迎灵仪式；人民解放军发起渡江战役；邓小平和陈毅到此过江，进驻总统府皆发生于此.</p>
+          <p>浦口火车站是当年连接平津冀、鲁豫皖等11省的重要交通枢纽.解放后，随着南京长江大桥通车后火车站逐渐没落.1985年曾恢复部分客运，并更名为"南京北站".2004年永久性停运.近年来逐渐成为以民国为背景的电影及电视剧的重要外景基地.《情深深雨蒙蒙》、《国歌》、《金粉世家》等民国题材影视均在取景.</p>
+          <p>在中国铁路百年史上，浦口火车站和津浦铁路占有很重要的地位.因为它是中国最早最长的一条铁路，而浦口火车站是它南端的终点.浦口历来为南北交通的要冲，是接通大江南北的咽喉之地，在长江大桥未通车前，浦口火车站则是这咽喉的象征.车站大楼座落在浦口江边，远瞰南京下关，平吞江濑，实为浦口境内一大观.</p>
+          
+          <!-- 插入浦口火车站照片 -->
+          <div class="image-container">
+            <img src="./images/育02.png" alt="浦口火车站">
+            <div class="image-caption">浦口火车站 - 《背影》故事发生地</div>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- 面板切换按钮 -->
     <div class="panel-toggle left-toggle" id="leftToggle">文</div>
-    <div class="panel-toggle right-toggle" id="rightToggle">学</div>
+    <div class="panel-toggle right-toggle" id="rightToggle">旅</div>
+    <div class="panel-toggle bottom-toggle" id="bottomToggle">育</div>
 
     <div class="header">
       <h1>探索作家笔下的人文南京</h1>
@@ -757,30 +1319,6 @@
         </div>
       </div>
 
-    <!-- AI助手容器保持不变 -->
-    <div id="ai-assistant">
-      <div id="chat-container">
-        <div class="chat-header">
-          <h3>南京文学助手</h3>
-          <button id="close-chat">×</button>
-        </div>
-        <!-- 虚拟形象区域 -->
-        <div id="avatar-container">
-          <div id="avatar-animation"></div>
-        </div>
-        <div id="chat-messages"></div>
-        <div class="chat-input">
-          <input
-            type="text"
-            id="user-input"
-            placeholder="输入关于南京现当代文学的问题..."
-          />
-          <button id="send-btn">发送</button>
-        </div>
-      </div>
-      <button id="chat-toggle">💬💬</button>
-    </div>
-
     <div class="sidebar">
       <div id="infoPanel">
         <div class="default-message">
@@ -812,6 +1350,22 @@
     <script src="./js/ai_assistant.js"></script>
 
     <script>
+      // 全局变量存储地图实例
+      let myChart = null;
+      let allMarkers = [];
+
+      // 地点坐标数据
+      const locationCoordinates = {
+        '侵华日军南京大屠杀遇难同胞纪念馆': [118.7402, 32.0385],
+        '浦口火车站': [118.7246, 32.1089],
+        '秦淮河': [118.786, 32.018],
+        '玄武湖': [118.796, 32.070],
+        '钟山': [118.839, 32.058],
+        '明孝陵': [118.851, 32.058],
+        '莫愁湖': [118.758, 32.037],
+        '灵谷寺': [118.857, 32.054]
+      };
+
       // 面板切换功能
       document
         .getElementById("leftToggle")
@@ -823,6 +1377,12 @@
         .getElementById("rightToggle")
         .addEventListener("click", function () {
           document.getElementById("rightPanel").classList.toggle("visible");
+        });
+
+      document
+        .getElementById("bottomToggle")
+        .addEventListener("click", function () {
+          document.getElementById("bottomPanel").classList.toggle("visible");
         });
 
       // 点击作家卡片时自动搜索
@@ -837,12 +1397,105 @@
         });
       });
 
+      // 点击地点名称跳转到地图对应位置
+      function setupLocationLinks() {
+        // 设置"育"字面板中的地点链接
+        document.querySelectorAll('.location-link').forEach(link => {
+          link.addEventListener('click', function() {
+            const locationName = this.getAttribute('data-location');
+            jumpToLocation(locationName);
+          });
+        });
+
+        // 设置"旅"字面板中的景点名称
+        document.querySelectorAll('.attraction-name').forEach(attraction => {
+          attraction.addEventListener('click', function() {
+            const locationName = this.getAttribute('data-location');
+            jumpToLocation(locationName);
+          });
+        });
+      }
+
+      // 跳转到指定地点
+      function jumpToLocation(locationName) {
+        if (!myChart) return;
+
+        const coordinates = locationCoordinates[locationName];
+        if (coordinates) {
+          // 移动地图中心到指定位置
+          myChart.setOption({
+            geo: {
+              center: coordinates,
+              zoom: 12
+            }
+          });
+
+          // 高亮显示该地点
+          myChart.dispatchAction({
+            type: 'highlight',
+            seriesIndex: 0,
+            name: locationName
+          });
+
+          // 显示该地点的信息
+          const locationData = allMarkers.find(marker => marker.name === locationName);
+          if (locationData) {
+            let worksHtml = "";
+            if (locationData.works && locationData.works.length > 0) {
+              worksHtml = '<div class="literary-works"><h4>相关作品:</h4><ul>';
+              locationData.works.forEach((work) => {
+                const title = work.title || "未知作品";
+                const author = work.author || "未知作者";
+                const excerpt = work.excerpt || "暂无描述";
+                const nanjingDesc = work.nanjingDescription || "暂无南京相关描写";
+                const locationName = work.location || "未知地点";
+
+                worksHtml += `
+                  <li class="work-item">
+                    <div class="work-header">
+                      <span class="work-title">《${title}》</span>
+                      <span class="work-location">- ${locationName}</span>
+                    </div>
+                    <div class="work-author">作者：${author}</div>
+                    <div class="work-excerpt">${excerpt}</div>
+                    <div class="nanjing-description">
+                      <div class="desc-title">南京描写：</div>
+                      <div class="desc-content">${nanjingDesc}</div>
+                    </div>
+                  </li>
+                `;
+              });
+              worksHtml += "</ul></div>";
+            } else {
+              worksHtml = '<p class="no-works">暂无相关作品信息</p>';
+            }
+
+            $("#infoPanel").html(`
+              <div class="location-info">
+                <h3>${locationData.name || "未知地点"}</h3>
+                <p class="location-description">${
+                  locationData.excerpt || "江苏省会，六朝古都，中国现代文学重要城市"
+                }</p>
+                ${worksHtml}
+              </div>
+            `);
+          }
+
+          // 3秒后取消高亮
+          setTimeout(() => {
+            myChart.dispatchAction({
+              type: 'downplay',
+              seriesIndex: 0,
+              name: locationName
+            });
+          }, 3000);
+        }
+      }
+
       // 地图初始化代码
       $(document).ready(function () {
-        const myChart = echarts.init(document.getElementById("mapContainer"));
+        myChart = echarts.init(document.getElementById("mapContainer"));
 
-        // 使用全局函数获取标记点数据
-        const allMarkers = window.getNanjingMarkers();
         // 显示加载动画
         myChart.showLoading({
           text: "正在加载文学地图...",
@@ -854,30 +1507,24 @@
           fontSize: 16,
           fontWeight: "bold",
         });
-        function showCustomLoading() {
-          $("#mapContainer").append(`
-            <div class="custom-loading">
-                <div class="loading-spinner">
-                    <div class="double-bounce1"></div>
-                    <div class="double-bounce2"></div>
-                </div>
-                <div class="loading-text">探索南京文学世界...</div>
-            </div>
-        `);
-        }
 
-        function hideCustomLoading() {
-          $(".custom-loading").fadeOut(300, function () {
-            $(this).remove();
-          });
-        }
         // 使用本地地图数据
         fetch("./data/nanjing.json")
           .then((response) => response.json())
           .then((nanjingGeoJSON) => {
             echarts.registerMap("nanjing", nanjingGeoJSON);
 
-            const allMarkers = window.getNanjingMarkers();
+            // 获取标记点数据
+            allMarkers = window.getNanjingMarkers ? window.getNanjingMarkers() : [
+              {name: '侵华日军南京大屠杀遇难同胞纪念馆', value: [118.7402, 32.0385, 1], excerpt: '国家公祭场所'},
+              {name: '浦口火车站', value: [118.7246, 32.1089, 1], excerpt: '《背影》故事发生地'},
+              {name: '秦淮河', value: [118.786, 32.018, 1], excerpt: '朱自清《桨声灯影里的秦淮河》'},
+              {name: '玄武湖', value: [118.796, 32.070, 1], excerpt: '倪贻德《玄武湖之秋》'},
+              {name: '钟山', value: [118.839, 32.058, 1], excerpt: '紫金山文学地标'},
+              {name: '明孝陵', value: [118.851, 32.058, 1], excerpt: '明代皇陵'},
+              {name: '莫愁湖', value: [118.758, 32.037, 1], excerpt: '丘逢甲《雪中游莫愁湖》'},
+              {name: '灵谷寺', value: [118.857, 32.054, 1], excerpt: '柳诒徽《独往灵谷寺》'}
+            ];
 
             const option = {
               title: {
@@ -909,11 +1556,10 @@
                     return `<div style="font-weight:bold;margin-bottom:5px;">${
                       params.name
                     }</div>
-                                            <div>${
-                                              params.data.excerpt ||
-                                              "南京文学地标"
-                                            }</div>
-                                            <div style="margin-top:8px;color:#4a5568;">点击查看详情</div>`;
+                      <div>${
+                        params.data.excerpt || "南京文学地标"
+                      }</div>
+                      <div style="margin-top:8px;color:#4a5568;">点击查看详情</div>`;
                   }
                   return params.name;
                 },
@@ -974,8 +1620,10 @@
             // 更新计数器
             $(".counter-number").text(allMarkers.length);
 
+            // 设置地点链接点击事件
+            setupLocationLinks();
+
             // 设置ECharts地图的光标样式
-            // 获取ECharts容器内的canvas元素和外层容器
             const ecContainers = document.querySelectorAll(
               "#mapContainer canvas, #mapContainer > div"
             );
@@ -985,7 +1633,6 @@
 
             // 监听窗口大小变化，重新应用光标样式
             window.addEventListener("resize", function () {
-              // 重新设置光标样式
               const ecContainers = document.querySelectorAll(
                 "#mapContainer canvas, #mapContainer > div"
               );
@@ -1001,61 +1648,57 @@
 
                 let worksHtml = "";
                 if (location.works && location.works.length > 0) {
-                  worksHtml =
-                    '<div class="literary-works"><h4>相关作品:</h4><ul>';
-
+                  worksHtml = '<div class="literary-works"><h4>相关作品:</h4><ul>';
                   location.works.forEach((work) => {
                     const title = work.title || "未知作品";
                     const author = work.author || "未知作者";
                     const excerpt = work.excerpt || "暂无描述";
-                    const nanjingDesc =
-                      work.nanjingDescription || "暂无南京相关描写";
+                    const nanjingDesc = work.nanjingDescription || "暂无南京相关描写";
                     const locationName = work.location || "未知地点";
 
                     worksHtml += `
-                    <li class="work-item">
+                      <li class="work-item">
                         <div class="work-header">
-                            <span class="work-title">《${title}》</span>
-                            <span class="work-location">- ${locationName}</span>
+                          <span class="work-title">《${title}》</span>
+                          <span class="work-location">- ${locationName}</span>
                         </div>
                         <div class="work-author">作者：${author}</div>
                         <div class="work-excerpt">${excerpt}</div>
                         <div class="nanjing-description">
-                            <div class="desc-title">南京描写：</div>
-                            <div class="desc-content">${nanjingDesc}</div>
+                          <div class="desc-title">南京描写：</div>
+                          <div class="desc-content">${nanjingDesc}</div>
                         </div>
-                    </li>
-                `;
+                      </li>
+                    `;
                   });
-
                   worksHtml += "</ul></div>";
                 } else {
                   worksHtml = '<p class="no-works">暂无相关作品信息</p>';
                 }
 
                 $("#infoPanel").html(`
-            <div class="location-info">
-                <h3>${location.name || "未知地点"}</h3>
-                <p class="location-description">${
-                  location.excerpt || "江苏省会，六朝古都，中国现代文学重要城市"
-                }</p>
-                ${worksHtml}
-            </div>
-        `);
+                  <div class="location-info">
+                    <h3>${location.name || "未知地点"}</h3>
+                    <p class="location-description">${
+                      location.excerpt || "江苏省会，六朝古都，中国现代文学重要城市"
+                    }</p>
+                    ${worksHtml}
+                  </div>
+                `);
               }
             });
           });
+
         // 响应窗口大小变化
         window.addEventListener("resize", function () {
-          myChart.resize();
+          if (myChart) {
+            myChart.resize();
+          }
         });
 
         // 搜索按钮点击事件
         $("#searchBtn").click(function () {
           const query = $("#searchInput").val().trim().toLowerCase();
-          const exactMatch = Object.keys(authorsData).find(
-            (author) => author.toLowerCase() === query
-          );
           // 先取消之前所有高亮
           myChart.dispatchAction({ type: "downplay" });
 
@@ -1098,35 +1741,34 @@
               // 构建作品列表（完整代码）
               let worksHtml = "";
               if (authorInfo.works && authorInfo.works.length > 0) {
-                worksHtml =
-                  '<div class="literary-works"><h4>代表作品:</h4><ul>';
+                worksHtml = '<div class="literary-works"><h4>代表作品:</h4><ul>';
                 authorInfo.works.forEach((work) => {
                   // 确保显示作品描述
                   worksHtml += `<li>
-                        <div class="work-title">《${work.title}》</div>
-                        <div class="work-location">地点: ${work.location}</div>
-                        <div class="work-excerpt">${work.excerpt}</div>
-                        <div class="nanjing-description">${
-                          work.nanjingDescription || "暂无南京相关描写"
-                        }</div>
-                    </li>`;
+                    <div class="work-title">《${work.title}》</div>
+                    <div class="work-location">地点: ${work.location}</div>
+                    <div class="work-excerpt">${work.excerpt}</div>
+                    <div class="nanjing-description">${
+                      work.nanjingDescription || "暂无南京相关描写"
+                    }</div>
+                  </li>`;
                 });
                 worksHtml += "</ul></div>";
               }
 
               $("#infoPanel").html(`
                 <div class="author-info">
-                    <h3>${authorInfo.name}</h3>
-                    <p>${authorInfo.intro}</p>
-                    ${worksHtml}
+                  <h3>${authorInfo.name}</h3>
+                  <p>${authorInfo.intro}</p>
+                  ${worksHtml}
                 </div>
-            `);
+              `);
             }
           } else {
             $("#infoPanel").html(`<div class="author-info">
-                        <h3>未找到相关结果</h3>
-                        <p>请尝试搜索作家姓名(如:叶兆言、朱自清)或地点名称(如:秦淮河、夫子庙)</p>
-                    </div>`);
+              <h3>未找到相关结果</h3>
+              <p>请尝试搜索作家姓名(如:叶兆言、朱自清)或地点名称(如:秦淮河、夫子庙)</p>
+            </div>`);
 
             myChart.setOption({
               series: [
